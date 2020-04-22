@@ -1,5 +1,7 @@
 import typing
 
+from .direction import Direction
+
 
 class Node:
     """
@@ -7,9 +9,10 @@ class Node:
     have computation capacity.
     """
 
-    def __init__(self, cores, memory):
+    def __init__(self, cores, memory, direction=Direction.NONE):
         self.core: int = cores
         self.memeory: int = memory
+        self.direction: Direction = direction
 
 
 class Link:
