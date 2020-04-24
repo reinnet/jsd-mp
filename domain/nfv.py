@@ -1,14 +1,20 @@
 import typing
+import dataclasses
 
 from .direction import Direction
 
 
+@dataclasses.dataclass
 class Type:
-    def __init__(self, name, cores, memory, direction=Direction.NONE):
-        self.name: str = name
-        self.cores: int = cores
-        self.memory: int = memory
-        self.direction: Direction = direction
+    """
+    Each network function has a type with its specific requirements.
+    This class describes theses requirements.
+    """
+
+    name: str
+    cores: int
+    memory: int
+    direction: Direction = Direction.NONE
 
 
 class Chain:

@@ -1,23 +1,24 @@
 import typing
+import dataclasses
 
 from .direction import Direction
 
 
+@dataclasses.dataclass
 class Node:
     """
     Node represents a physical node in a data-center network. Nodes may
     have computation capacity.
     """
 
-    def __init__(self, cores, memory, direction=Direction.NONE):
-        self.core: int = cores
-        self.memeory: int = memory
-        self.direction: Direction = direction
+    core: int
+    memeory: int
+    direction: Direction
 
 
+@dataclasses.dataclass
 class Link:
-    def __init__(self, bandwidth):
-        self.bandwidth: int = bandwidth
+    bandwidth: int
 
 
 class Topology:
