@@ -13,7 +13,7 @@ class Node:
 
     core: int
     memeory: int
-    direction: Direction
+    direction: Direction = Direction.NONE
 
 
 @dataclasses.dataclass
