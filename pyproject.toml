@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "jsd-mp"
+name = "jsd_mp"
 version = "0.1.0"
 description = "Joint Service Deployment - Manager Placement"
 authors = ["Parham Alvani <parham.alvani@gmail.com>"]
