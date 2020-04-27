@@ -7,10 +7,10 @@ class TestNFV:
 
         ch = Chain("elahe", 100)
 
-        ch.add_function("1", f1)
-        ch.add_function("2", f1)
-        ch.add_function("3", f1)
-        ch.add_function("3", f1)
+        ch.add_function(f1)
+        ch.add_function(f1)
+        ch.add_function(f1)
+        ch.add_function(f1)
 
         assert len(ch) == 4
 
