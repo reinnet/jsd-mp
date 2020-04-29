@@ -1,9 +1,39 @@
 from .topology import Topology, Node, Link
 
 import pytest
+import copy
 
 
 class TestTopology:
+    def test_deep_copy(self):
+        topo = Topology()
+
+        topo.add_node("elahe", Node(1, 2))
+        assert topo.nodes["elahe"].cores == 1
+        assert topo.nodes["elahe"].memory == 2
+
+        deep_topo = copy.deepcopy(topo)
+
+        # deep copies of topology dom't change the base topology so they are GOOD
+        deep_topo.update_node("elahe", Node(2, 2))
+
+        assert topo.nodes["elahe"].cores == 1
+        assert topo.nodes["elahe"].memory == 2
+
+        assert deep_topo.nodes["elahe"].cores == 2
+        assert deep_topo.nodes["elahe"].memory == 2
+
+        # shallow copies of topology change the base topology so they are BAD
+        shallow_topo = copy.copy(topo)
+
+        shallow_topo.update_node("elahe", Node(2, 2))
+
+        assert topo.nodes["elahe"].cores == 2
+        assert topo.nodes["elahe"].memory == 2
+
+        assert shallow_topo.nodes["elahe"].cores == 2
+        assert shallow_topo.nodes["elahe"].memory == 2
+
     def test_unique_node_name(self):
         topo = Topology()
 
