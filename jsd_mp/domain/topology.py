@@ -11,10 +11,10 @@ class Node:
     have computation capacity.
     """
 
-    core: int
-    memeory: int
+    cores: int
+    memory: int
     direction: Direction = Direction.NONE
-    manager: bool = True
+    vnf_support: bool = True
 
 
 @dataclasses.dataclass
