@@ -1,3 +1,4 @@
+---
 types:
   - name: ingress
     cores: 0
