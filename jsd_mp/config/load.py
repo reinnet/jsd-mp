@@ -3,7 +3,7 @@ import yaml
 import typing
 import dataclasses
 
-from jsd_mp.domain import Chain, Type, Direction, Link, VNFM
+from domain import Chain, Type, Direction, Link, VNFM
 
 
 @dataclasses.dataclass(frozen=True)
