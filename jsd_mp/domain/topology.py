@@ -14,6 +14,7 @@ class Node:
     core: int
     memeory: int
     direction: Direction = Direction.NONE
+    manager: bool = True
 
 
 @dataclasses.dataclass
