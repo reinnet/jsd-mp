@@ -27,3 +27,9 @@ def test_laod():
     assert cfg.vnfm.radius == 100
     assert cfg.vnfm.bandwidth == 1
     assert cfg.vnfm.license_cost == 100
+
+    assert "switch-15" in cfg.topology.nodes
+    assert "server-1" in cfg.topology.nodes
+    assert cfg.topology.nodes["server-1"].cores == 20
+    assert cfg.topology.nodes["server-1"].memory == 100
+    assert cfg.topology.nodes["server-1"].vnf_support

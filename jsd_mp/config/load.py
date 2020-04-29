@@ -3,7 +3,7 @@ import yaml
 import typing
 import dataclasses
 
-from domain import Chain, Type, Direction, Link, VNFM
+from domain import Chain, Type, Direction, Link, VNFM, Topology, Node
 
 
 @dataclasses.dataclass(frozen=True)
@@ -11,6 +11,7 @@ class Config:
     types: typing.Dict[str, Type]
     chains: typing.List[Chain]
     vnfm: VNFM
+    topology: Topology
 
 
 def load(directory: str) -> Config:
@@ -45,6 +46,8 @@ def load(directory: str) -> Config:
                         types_yml = c["types"]
                     if entry.name == "vnfm.yml":
                         vnfm_yml = c
+                    if entry.name == "topology.yml":
+                        topology_yml = c
     # build structure from loaded yamls
     for t in types_yml:
         types[t["name"]] = Type(
@@ -77,5 +80,25 @@ def load(directory: str) -> Config:
         radius=vnfm_yml["radius"],
         license_cost=vnfm_yml["licenseFee"],
     )
+    topology = Topology()
+    for n in topology_yml["nodes"]:
+        d = Direction.NONE
+        if n.get("ingress", False) and n.get("egress", False):
+            d = Direction.BOTH
+        if n.get("egress", False):
+            d = Direction.EGRESS
+        if n.get("ingress", False):
+            d = Direction.INGRESS
+        topology.add_node(
+            n["id"],
+            Node(
+                cores=n["cores"],
+                memory=n["ram"],
+                vnf_support=n["vnfSupport"],
+                direction=d,
+            ),
+        )
+    for l in topology_yml["links"]:
+        topology.add_link(l["source"], l["destination"], Link(bandwidth=l["bandwidth"]))
 
-    return Config(types, chains, vnfm)
+    return Config(types, chains, vnfm, topology)
