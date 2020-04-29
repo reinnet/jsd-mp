@@ -5,7 +5,7 @@ from .direction import Direction
 from .topology import Link
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class Type:
     """
     Each network function has a type with its specific requirements.
@@ -30,6 +30,7 @@ class Chain:
         self.links: typing.Map(typing.Tuple(int, int), Link) = {}
 
     def add_function(self, function: Type):
+        self.connections[len(self.functions)] = []
         self.functions.append(function)
 
     def add_link(self, source: int, destination: int, link: Link):

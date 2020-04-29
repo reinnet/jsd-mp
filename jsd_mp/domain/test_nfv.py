@@ -1,5 +1,8 @@
 from .nfv import Chain, Type
 
+import pytest
+import dataclasses
+
 
 class TestNFV:
     def test_chain(self):
@@ -11,6 +14,9 @@ class TestNFV:
         ch.add_function(f1)
         ch.add_function(f1)
         ch.add_function(f1)
+
+        with pytest.raises(dataclasses.FrozenInstanceError):
+            f1.cores = 2
 
         assert len(ch) == 4
 
