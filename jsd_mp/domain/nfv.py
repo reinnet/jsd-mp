@@ -16,6 +16,7 @@ class Type:
     cores: int
     memory: int
     direction: Direction = Direction.NONE
+    manageable: bool = True
 
 
 class Chain:
