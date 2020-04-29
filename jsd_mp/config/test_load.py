@@ -1,5 +1,5 @@
 from .load import load
-from jsd_mp.domain import Type, Direction
+from domain import Direction
 
 
 def test_laod():
