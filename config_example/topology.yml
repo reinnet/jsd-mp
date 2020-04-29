@@ -1,0 +1,159 @@
+---
+nodes:
+    - id: server-1
+      cores: 20
+      ram: 100
+      vnfSupport: true
+      notManagerNodes:
+          - server-1
+          - server-3
+          - server-5
+          - server-6
+          - server-7
+          - server-8
+    - id: server-2
+      cores: 144
+      ram: 1408
+      vnfSupport: false
+      notManagerNodes: []
+    - id: server-3
+      cores: 10
+      ram: 20
+      vnfSupport: true
+      notManagerNodes:
+        - server-1
+        - server-3
+        - server-5
+        - server-6
+        - server-7
+        - server-8
+    - id: server-4
+      cores: 72
+      ram: 288
+      vnfSupport: false
+      notManagerNodes: []
+    - id: server-5
+      cores: 20
+      ram: 60
+      vnfSupport: true
+      notManagerNodes:
+        - server-1
+        - server-2
+        - server-3
+        - server-5
+        - server-7
+        - server-8
+    - id: server-6
+      cores: 72
+      ram: 288
+      vnfSupport: false
+      notManagerNodes: []
+    - id: server-7
+      cores: 10
+      ram: 100
+      vnfSupport: true
+      notManagerNodes:
+        - server-1
+        - server-2
+        - server-3
+        - server-4
+        - server-5
+        - server-7
+    - id: server-8
+      cores: 144
+      ram: 1408
+      vnfSupport: false
+      notManagerNodes: []
+    - id: switch-9
+      egress: true
+      ingress: true
+      cores: 0
+      ram: 0
+      vnfSupport: true
+      notManagerNodes: []
+    - id: switch-10
+      cores: 0
+      ram: 0
+      vnfSupport: false
+      notManagerNodes: []
+    - id: switch-11
+      cores: 0
+      ram: 0
+      vnfSupport: false
+      notManagerNodes: []
+    - id: switch-12
+      cores: 0
+      ram: 0
+      vnfSupport: false
+      notManagerNodes: []
+    - id: switch-13
+      cores: 0
+      ram: 0
+      vnfSupport: false
+      notManagerNodes: []
+    - id: switch-14
+      cores: 0
+      ram: 0
+      vnfSupport: false
+      notManagerNodes: []
+    - id: switch-15
+      cores: 0
+      ram: 0
+      vnfSupport: false
+      notManagerNodes: []
+
+links:
+  - source: server-1
+    destination: switch-12
+    bandwidth: 40000
+  - source: server-2
+    destination: switch-12
+    bandwidth: 40000
+  - source: server-3
+    destination: switch-13
+    bandwidth: 40000
+  - source: server-4
+    destination: switch-13
+    bandwidth: 40000
+  - source: server-5
+    destination: switch-14
+    bandwidth: 40000
+  - source: server-6
+    destination: switch-14
+    bandwidth: 40000
+  - source: server-7
+    destination: switch-15
+    bandwidth: 40000
+  - source: server-8
+    destination: switch-15
+    bandwidth: 40000
+  - source: switch-12
+    destination: switch-10
+    bandwidth: 125
+  - source: switch-12
+    destination: switch-11
+    bandwidth: 125
+  - source: switch-13
+    destination: switch-10
+    bandwidth: 500
+  - source: switch-13
+    destination: switch-11
+    bandwidth: 500
+  - source: switch-14
+    destination: switch-10
+    bandwidth: 40000
+  - source: switch-14
+    destination: switch-11
+    bandwidth: 40000
+  - source: switch-15
+    destination: switch-10
+    bandwidth: 40000
+  - source: switch-15
+    destination: switch-11
+    bandwidth: 40000
+  - source: switch-10
+    destination: switch-9
+    bandwidth: 40000
+  - source: switch-11
+    destination: switch-9
+    bandwidth: 40000
