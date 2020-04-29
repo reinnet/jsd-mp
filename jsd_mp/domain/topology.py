@@ -4,7 +4,7 @@ import dataclasses
 from .direction import Direction
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class Node:
     """
     Node represents a physical node in a data-center network. Nodes may
@@ -17,7 +17,7 @@ class Node:
     vnf_support: bool = True
 
 
-@dataclasses.dataclass
+@dataclasses.dataclass(frozen=True)
 class Link:
     bandwidth: int
 
@@ -40,6 +40,18 @@ class Topology:
             raise ValueError("node's name must be unique")
         self.nodes[name] = node
         self.connections[name] = []
+
+    def update_node(self, name: str, node: Node):
+        if name not in self.nodes:
+            return self.add_node(name, node)
+        self.nodes[name] = node
+
+    def update_link(self, source: str, destination: str, link: Link):
+        if source not in self.nodes or destination not in self.nodes:
+            raise ValueError("source and destination must be valid nodes")
+        if (source, destination) not in self.links:
+            return self.add_link(source, destination, link)
+        self.links[(source, destination)] = link
 
     def add_link(self, source: str, destination: str, link: Link):
         """
