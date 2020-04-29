@@ -5,3 +5,4 @@ class Direction(Enum):
     INGRESS = 1
     EGRESS = 2
     NONE = 3
+    BOTH = 4
