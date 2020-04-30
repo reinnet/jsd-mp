@@ -1,17 +1,9 @@
 import os
 import yaml
 import typing
-import dataclasses
 
 from domain import Chain, Type, Direction, Link, VNFM, Topology, Node
-
-
-@dataclasses.dataclass(frozen=True)
-class Config:
-    types: typing.Dict[str, Type]
-    chains: typing.List[Chain]
-    vnfm: VNFM
-    topology: Topology
+from .config import Config
 
 
 def load(directory: str) -> Config:
