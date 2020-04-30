@@ -24,7 +24,14 @@ def bari(config, verbose, placement):
                 print(f"funcion-{i} [{p.chain.functions[i].name}] is placed on {n}")
 
             for (f, t), path in p.links.items():
-                print(f"function-{f} -> function{t} is placed on the following links:")
+                print(f"function-{f} -> function-{t} is placed on the following links:")
+                for (f, t) in path:
+                    print(f"\t{f} -> {t}")
+
+            print(f"manage by {pm.management_node}")
+
+            for i, path in enumerate(pm.management_links):
+                print(f"management route of function-{i}:")
                 for (f, t) in path:
                     print(f"\t{f} -> {t}")
         print()
