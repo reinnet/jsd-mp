@@ -76,10 +76,6 @@ class Bari(Solver):
             if self.is_resource_available(
                 self.topology, "", n, chain.functions[0], None
             ):
-                self.logger.info(
-                    f"There is a way for placing function 0 of {chain.name} on node {n}"
-                )
-
                 cost[(0, n)] = self.get_cost(
                     self.topology, "", n, chain.functions[0], None
                 )
@@ -112,9 +108,6 @@ class Bari(Solver):
 
                 if min_cost == float("inf"):
                     continue
-                self.logger.info(
-                    f"There is a way for placing function {i} of {chain.name} on node {j}"
-                )
                 cost[(i, j)] = int(min_cost)
                 path = (
                     pi[(i - 1, min_k)]
