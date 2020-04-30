@@ -74,7 +74,7 @@ class Topology:
         see: typing.Set[str] = set()
 
         while len(q) != 0:
-            root = q.pop()
+            root = q.pop(0)
             see.add(root[0])
 
             if root[0] == destination:
@@ -107,7 +107,7 @@ class Topology:
         see: typing.Set[str] = set()
 
         while len(q) != 0:
-            root: typing.Tuple[str, int] = q.pop()
+            root: typing.Tuple[str, int] = q.pop(0)
             see.add(root[0])
             height = root[1]
 
