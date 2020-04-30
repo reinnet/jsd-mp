@@ -157,3 +157,58 @@ links:
   - source: switch-11
     destination: switch-9
     bandwidth: 40000
+
+  - destination: server-1
+    source: switch-12
+    bandwidth: 40000
+  - destination: server-2
+    source: switch-12
+    bandwidth: 40000
+  - destination: server-3
+    source: switch-13
+    bandwidth: 40000
+  - destination: server-4
+    source: switch-13
+    bandwidth: 40000
+  - destination: server-5
+    source: switch-14
+    bandwidth: 40000
+  - destination: server-6
+    source: switch-14
+    bandwidth: 40000
+  - destination: server-7
+    source: switch-15
+    bandwidth: 40000
+  - destination: server-8
+    source: switch-15
+    bandwidth: 40000
+  - destination: switch-12
+    source: switch-10
+    bandwidth: 125
+  - destination: switch-12
+    source: switch-11
+    bandwidth: 125
+  - destination: switch-13
+    source: switch-10
+    bandwidth: 500
+  - destination: switch-13
+    source: switch-11
+    bandwidth: 500
+  - destination: switch-14
+    source: switch-10
+    bandwidth: 40000
+  - destination: switch-14
+    source: switch-11
+    bandwidth: 40000
+  - destination: switch-15
+    source: switch-10
+    bandwidth: 40000
+  - destination: switch-15
+    source: switch-11
+    bandwidth: 40000
+  - destination: switch-10
+    source: switch-9
+    bandwidth: 40000
+  - destination: switch-11
+    source: switch-9
+    bandwidth: 40000
