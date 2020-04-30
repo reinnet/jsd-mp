@@ -34,3 +34,4 @@ def test_laod():
     assert cfg.topology.nodes["server-1"].memory == 100
     assert cfg.topology.nodes["server-1"].vnf_support
     assert cfg.topology.nodes["switch-9"].direction == Direction.BOTH
+    assert "switch-12" in cfg.topology.connections["server-1"]
