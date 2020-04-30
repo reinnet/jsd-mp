@@ -3,6 +3,7 @@ from bari import Bari
 
 import click
 import logging
+import time
 
 
 @click.command()
@@ -13,9 +14,16 @@ def bari(config, verbose, placement):
     if verbose is True:
         logging.basicConfig(level=logging.INFO)
 
+    start = time.time()
     cfg = load(config)
+    end = time.time()
+    print(f"load configuration takes {end - start} seconds")
+
     b = Bari(cfg)
+    start = time.time()
     b.solve()
+    end = time.time()
+    print(f"bari solution takes {end - start} seconds")
 
     if placement is True:
         for (p, pm) in b.solution:
