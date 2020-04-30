@@ -77,9 +77,9 @@ def load(directory: str) -> Config:
         d = Direction.NONE
         if n.get("ingress", False) and n.get("egress", False):
             d = Direction.BOTH
-        if n.get("egress", False):
+        elif n.get("egress", False):
             d = Direction.EGRESS
-        if n.get("ingress", False):
+        elif n.get("ingress", False):
             d = Direction.INGRESS
         topology.add_node(
             n["id"],
