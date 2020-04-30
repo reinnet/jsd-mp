@@ -47,7 +47,27 @@ class TestTopology:
         with pytest.raises(ValueError):
             topo.add_link("elahe", "parham", Link(10))
 
-    def test_bfg(self):
+    def test_path(self):
+        topo = Topology()
+
+        topo.add_node("s1", Node(1, 2))
+        topo.add_node("s2", Node(1, 2))
+        topo.add_node("s3", Node(1, 2))
+        topo.add_node("s4", Node(1, 2))
+        topo.add_node("s5", Node(1, 2))
+
+        topo.add_link("s1", "s2", Link(10))
+        topo.add_link("s1", "s3", Link(5))
+        topo.add_link("s2", "s3", Link(10))
+        topo.add_link("s3", "s4", Link(10))
+        topo.add_link("s4", "s5", Link(5))
+
+        assert topo.path("s1", "s2", 5) == [("s1", "s2")]
+        assert topo.path("s1", "s2", 15) is None
+        assert topo.path("s1", "s3", 5) == [("s1", "s3")]
+        assert topo.path("s1", "s3", 10) == [("s1", "s2"), ("s2", "s3")]
+
+    def test_bfs(self):
         topo = Topology()
 
         topo.add_node("s1", Node(1, 2))

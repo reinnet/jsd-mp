@@ -27,9 +27,9 @@ class Topology:
         # stores nodes with their name
         self.nodes: typing.Map[str, Node] = {}
         # stores connections in adjacency list
-        self.connections: typing.Map(str, typing.List[str]) = {}
+        self.connections: typing.Dict[str, typing.List[str]] = {}
         # stores link information of source and destination
-        self.links: typing.Map(typing.Tuple(str, str), Link) = {}
+        self.links: typing.Dict[typing.Tuple[str, str], Link] = {}
 
     def add_node(self, name: str, node: Node):
         """
@@ -62,11 +62,40 @@ class Topology:
         self.connections[source].append(destination)
         self.links[(source, destination)] = link
 
+    def path(
+        self, source: str, destination: str, required_bandwidth: int
+    ) -> typing.Union[typing.List[typing.Tuple[str, str]], None]:
+        if source not in self.nodes or destination not in self.nodes:
+            raise ValueError("source must be valid nodes")
+
+        q: typing.List[typing.Tuple[str, typing.List[typing.Tuple[str, str]]]] = [
+            (source, [])
+        ]
+        see: typing.Set[str] = set()
+
+        while len(q) != 0:
+            root = q.pop()
+            see.add(root[0])
+
+            if root[0] == destination:
+                return root[1]
+
+            for adj in self.connections[root[0]]:
+                if (
+                    adj not in see
+                    and self.links[(root[0], adj)].bandwidth >= required_bandwidth
+                ):
+                    path = root[1].copy()
+                    path.append((root[0], adj))
+                    q.append((adj, path))
+
+        return None
+
     def bfs(
         self, source: str, required_bandwidth: int
     ) -> typing.List[typing.Tuple[str, int]]:
         """
-        Run BFS from a given source and return its reachable nodess.
+        Run BFS from a given source and return its reachable nodes.
         It returns reachability information in the following tuple:
         (node, height)
         """
