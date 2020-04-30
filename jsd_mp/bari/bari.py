@@ -11,19 +11,53 @@ from domain import (
 from .placement import PartialPlacement
 
 import typing
+import copy
+import math
 
 
 class Bari(Solver):
-    def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+    def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
 
         for ch in self.chains:
             p = self.place(ch)
             if p is not None:
-                p.apply_on_topology(self.topology)
-                placements.append((p, None))
+                topo = copy.deepcopy(self.topology)
+                p.apply_on_topology(topo)
+                mp = self.place_manager(ch, topo, p)
+                if mp is not None:
+                    self.manage_by_node[mp.management_node] = self.manage_by_node.get(
+                        mp.management_node, 0
+                    ) + len(ch)
+                    p.apply_on_topology(self.topology)
+                    mp.apply_on_topology(self.topology)
+                    placements.append((p, mp))
 
         return placements
+
+    def place_manager(
+        self, chain: Chain, topology: Topology, placement: Placement
+    ) -> typing.Union[ManagementPlacement, None]:
+        min_cost = float("inf")
+        min_node = ""
+
+        for n in topology.nodes:
+            if self.is_management_resource_available(topology, n, placement.nodes):
+                c = self.get_management_cost(topology, n, placement.nodes)
+                if min_cost > c:
+                    min_cost = c
+                    min_node = n
+
+        if min_cost == float("inf"):
+            return None
+
+        paths = []
+        for n in placement.nodes:
+            path = topology.path(min_node, n, self.vnfm.bandwidth)
+            if path is not None:
+                paths.append(path)
+
+        return ManagementPlacement(chain, self.vnfm, min_node, paths)
 
     def place(self, chain: Chain) -> typing.Union[Placement, None]:
         # cost represents the cumulative cost of placing the i-th function
@@ -88,6 +122,36 @@ class Bari(Solver):
         if min_placement is None:
             return None
         return Placement(chain, min_placement.nodes, min_placement.links)
+
+    def is_management_resource_available(
+        self, topology: Topology, manager: str, nodes: typing.List[str],
+    ) -> bool:
+        node = topology.nodes[manager]
+
+        if node.memory < self.vnfm.memory:
+            return False
+
+        if node.cores < self.vnfm.cores:
+            return False
+
+        r = topology.bfs(manager, self.vnfm.bandwidth)
+
+        for node in nodes:
+            for (destination, height) in r:
+                if destination == node and height <= self.vnfm.radius:
+                    break
+            else:
+                return False
+        return True
+
+    def get_management_cost(
+        self, topology: Topology, manager: str, nodes: typing.List[str],
+    ) -> int:
+        current = math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
+        future = math.ceil(
+            (self.manage_by_node.get(manager, 0) + len(nodes)) / self.vnfm.capacity
+        )
+        return future - current
 
     @staticmethod
     def get_cost(

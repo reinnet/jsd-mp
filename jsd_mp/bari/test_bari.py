@@ -63,11 +63,17 @@ class TestBari:
         topo.add_node("s1", Node(2, 2))
         topo.add_node("s2", Node(2, 2))
         topo.add_node("s3", Node(2, 2))
+        topo.add_node("s4", Node(4, 4))
         topo.add_link("s1", "s2", Link(20))
         topo.add_link("s2", "s1", Link(20))
         topo.add_link("s1", "s3", Link(20))
+        topo.add_link("s4", "s1", Link(2))
+        topo.add_link("s4", "s2", Link(2))
+        topo.add_link("s4", "s3", Link(2))
 
-        vnfm = VNFM(2, 2, 2, 2, 2, 2)
+        vnfm = VNFM(
+            cores=2, memory=2, capacity=2, radius=2, license_cost=2, bandwidth=2,
+        )
 
         cfg = Config(types=[fw], chains=[ch1, ch2], topology=topo, vnfm=vnfm)
 
@@ -75,7 +81,19 @@ class TestBari:
         pls = bari.solve()
 
         assert len(pls) == 1
-        assert pls[0].chain.fee == 100
+        assert pls[0][0].nodes == ["s2", "s1", "s3"]
+        assert pls[0][0].links == {
+            (0, 1): [("s2", "s1")],
+            (1, 2): [("s1", "s3")],
+        }
+        assert pls[0][1].management_node == "s4"
+        assert pls[0][1].management_links == [
+            [("s4", "s2")],
+            [("s4", "s1")],
+            [("s4", "s3")],
+        ]
+        assert bari.profit == 100
+        assert bari.cost == 2
 
     def test_placeable_chain(self):
         fw = Type("fw", 2, 2)
@@ -93,11 +111,17 @@ class TestBari:
         topo.add_node("s1", Node(2, 2))
         topo.add_node("s2", Node(2, 2))
         topo.add_node("s3", Node(2, 2))
+        topo.add_node("s4", Node(4, 4))
         topo.add_link("s1", "s2", Link(20))
         topo.add_link("s2", "s1", Link(20))
         topo.add_link("s1", "s3", Link(20))
+        topo.add_link("s4", "s1", Link(2))
+        topo.add_link("s4", "s2", Link(2))
+        topo.add_link("s4", "s3", Link(2))
 
-        vnfm = VNFM(2, 2, 2, 2, 2, 2)
+        vnfm = VNFM(
+            cores=2, memory=2, capacity=2, radius=2, license_cost=2, bandwidth=2,
+        )
 
         cfg = Config(types=[fw], chains=[ch], topology=topo, vnfm=vnfm)
 
@@ -106,8 +130,8 @@ class TestBari:
 
         assert len(pls) == 1
 
-        assert pls[0].nodes == ["s2", "s1", "s3"]
-        assert pls[0].links == {
+        assert pls[0][0].nodes == ["s2", "s1", "s3"]
+        assert pls[0][0].links == {
             (0, 1): [("s2", "s1")],
             (1, 2): [("s1", "s3")],
         }
