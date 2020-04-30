@@ -16,7 +16,7 @@ import random
 
 
 class DummySolver(Solver):
-    def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+    def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
 
         for chain in self.chains:
@@ -31,7 +31,20 @@ class DummySolver(Solver):
                 )
                 if r is not None:
                     links[(source, destination)] = r
-            placements.append((Placement(chain, nodes, links), None))
+            management_node = random.choice(list(self.topology.nodes.keys()))
+            management_paths = []
+            for n in nodes:
+                path = self.topology.path(management_node, n, self.vnfm.bandwidth)
+                if path is not None:
+                    management_paths.append(path)
+            placements.append(
+                (
+                    Placement(chain, nodes, links),
+                    ManagementPlacement(
+                        chain, self.vnfm, management_node, management_paths
+                    ),
+                )
+            )
 
         return placements
 
@@ -62,12 +75,12 @@ class TestDummySolver:
         random.seed(a=1378)
         pls = DummySolver(cfg).solve()
 
-        assert pls[0].chain == ch
-        assert len(pls[0].nodes) == 3
-        assert len(pls[0].links) == 2
+        assert pls[0][0].chain == ch
+        assert len(pls[0][0].nodes) == 3
+        assert len(pls[0][0].links) == 2
 
-        assert pls[0].nodes == ["s1", "s1", "s2"]
-        assert pls[0].links == {
+        assert pls[0][0].nodes == ["s1", "s1", "s2"]
+        assert pls[0][0].links == {
             (0, 1): [],
             (1, 2): [("s1", "s2")],
         }
