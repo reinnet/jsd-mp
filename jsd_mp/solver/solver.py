@@ -5,6 +5,7 @@ import abc
 import typing
 import copy
 import math
+import logging
 
 
 class Solver(abc.ABC):
@@ -20,6 +21,8 @@ class Solver(abc.ABC):
         self.vnfm = config.vnfm
         self.topology = copy.deepcopy(config.topology)
 
+        self.logger: logging.Logger = logging.getLogger(__name__)
+
         self.manage_by_node: typing.Dict[str, int] = {}
         self.solved: bool = False
         self.solution: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
@@ -29,6 +32,7 @@ class Solver(abc.ABC):
         pass
 
     def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+        self.logger.info(f"{self.__class__.__name__} Started")
         if self.solved is False:
             self.solution = self._solve()
         return self.solution
