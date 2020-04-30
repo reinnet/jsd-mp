@@ -1,5 +1,14 @@
 from .solver import Solver
-from domain import Placement, Type, Node, Topology, Link, Chain, VNFM
+from domain import (
+    Placement,
+    ManagementPlacement,
+    Type,
+    Node,
+    Topology,
+    Link,
+    Chain,
+    VNFM,
+)
 from config import Config
 
 import typing
@@ -7,8 +16,8 @@ import random
 
 
 class DummySolver(Solver):
-    def solve(self) -> typing.List[Placement]:
-        placements: typing.List[Placement] = []
+    def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+        placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
 
         for chain in self.chains:
             nodes = []
@@ -22,7 +31,7 @@ class DummySolver(Solver):
                 )
                 if r is not None:
                     links[(source, destination)] = r
-            placements.append(Placement(chain, nodes, links))
+            placements.append((Placement(chain, nodes, links), None))
 
         return placements
 

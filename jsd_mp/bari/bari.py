@@ -1,19 +1,27 @@
 from solver import Solver
-from domain import Placement, Chain, Type, Direction, Link, Topology
+from domain import (
+    Placement,
+    ManagementPlacement,
+    Chain,
+    Type,
+    Direction,
+    Link,
+    Topology,
+)
 from .placement import PartialPlacement
 
 import typing
 
 
 class Bari(Solver):
-    def solve(self) -> typing.List[Placement]:
-        placements: typing.List[Placement] = []
+    def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+        placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
 
         for ch in self.chains:
             p = self.place(ch)
             if p is not None:
                 p.apply_on_topology(self.topology)
-                placements.append(p)
+                placements.append((p, None))
 
         return placements
 
