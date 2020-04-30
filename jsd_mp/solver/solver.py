@@ -1,5 +1,5 @@
 from config import Config
-from domain import Placement
+from domain import Placement, ManagementPlacement
 
 import abc
 import typing
@@ -13,5 +13,5 @@ class Solver(abc.ABC):
         self.topology = copy.deepcopy(config.topology)
 
     @abc.abstractmethod
-    def solve(self) -> typing.List[Placement]:
+    def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         pass
