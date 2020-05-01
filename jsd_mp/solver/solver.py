@@ -42,7 +42,7 @@ class Solver(abc.ABC):
         cost = 0
         for manager in self.topology.nodes:
             cost += math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
-        return cost
+        return cost * self.vnfm.license_cost
 
     @property
     def profit(self):
