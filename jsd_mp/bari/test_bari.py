@@ -93,7 +93,7 @@ class TestBari:
             [("s4", "s3")],
         ]
         assert bari.profit == 100
-        assert bari.cost == 2
+        assert bari.cost == 2 * 2
 
     def test_placeable_chain(self):
         fw = Type("fw", 2, 2)
