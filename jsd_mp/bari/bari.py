@@ -1,14 +1,12 @@
-from solver import Solver
+from solver import Solver, PartialPlacement
 from domain import (
     Placement,
     ManagementPlacement,
     Chain,
     Type,
-    Direction,
     Link,
     Topology,
 )
-from .placement import PartialPlacement
 
 import typing
 import copy
