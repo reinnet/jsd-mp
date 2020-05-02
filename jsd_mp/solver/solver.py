@@ -62,7 +62,7 @@ class Solver(abc.ABC):
         if node.cores < self.vnfm.cores:
             return False
 
-        r = topology.bfs(manager, self.vnfm.bandwidth)
+        r = topology.bfs(manager, self.vnfm.bandwidth, max_height=self.vnfm.radius)
 
         for node in nodes:
             for (destination, height) in r:
@@ -79,6 +79,7 @@ class Solver(abc.ABC):
         current: str,
         fn: Type,
         link: typing.Union[Link, None],
+        radius: int = -1,
     ) -> bool:
         """
         Check the availability of current node for the given function.
@@ -105,7 +106,10 @@ class Solver(abc.ABC):
                 return False
 
         if previous != "" and link is not None:
-            if topology.path(previous, current, link.bandwidth) is None:
+            if (
+                topology.path(previous, current, link.bandwidth, max_height=radius)
+                is None
+            ):
                 return False
 
         return True
