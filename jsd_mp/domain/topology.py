@@ -63,7 +63,11 @@ class Topology:
         self.links[(source, destination)] = link
 
     def path(
-        self, source: str, destination: str, required_bandwidth: int
+        self,
+        source: str,
+        destination: str,
+        required_bandwidth: int,
+        max_height: int = -1,
     ) -> typing.Union[typing.List[typing.Tuple[str, str]], None]:
         if source not in self.nodes or destination not in self.nodes:
             raise ValueError("source must be valid nodes")
@@ -80,6 +84,9 @@ class Topology:
             if root[0] == destination:
                 return root[1]
 
+            if len(root[0]) == max_height:
+                continue
+
             for adj in self.connections[root[0]]:
                 if (
                     adj not in see
@@ -92,7 +99,7 @@ class Topology:
         return None
 
     def bfs(
-        self, source: str, required_bandwidth: int
+        self, source: str, required_bandwidth: int, max_height: int = -1,
     ) -> typing.List[typing.Tuple[str, int]]:
         """
         Run BFS from a given source and return its reachable nodes.
@@ -112,6 +119,9 @@ class Topology:
             height = root[1]
 
             reachability.append(root)
+
+            if height == max_height:
+                continue
 
             for adj in self.connections[root[0]]:
                 if (
