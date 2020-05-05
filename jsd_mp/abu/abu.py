@@ -9,9 +9,12 @@ from domain import (
 )
 
 import typing
+import random
 
 
 class Abu(Bari):
+    n_iter: int = 1000
+
     def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, None]] = []
 
@@ -26,16 +29,29 @@ class Abu(Bari):
             else:
                 self.logger.info(f"VNF Placement of {ch.name} failed")
 
+        active_vnfms: typing.Set[str] = set()
         actual_placements: typing.List[
             typing.Tuple[Placement, ManagementPlacement]
         ] = []
         for p, _ in placements:
             mp = self.place_manager(p.chain, self.topology, p)
             if mp is not None:
+                active_vnfms.add(mp.management_node)
                 mp.apply_on_topology(self.topology)
                 actual_placements.append((p, mp))
             else:
                 pass  # TODO: put the chain's resources back
+
+        # in each iteration we try to improve the manager placement
+        for _ in range(self.n_iter):
+            # randomly switch chains between vnfms
+            p, mp = random.choice(actual_placements)
+            vnfm = random.choice(list(active_vnfms - set(mp.management_node)))
+            if self.is_management_resource_available(self.topology, vnfm, p.nodes):
+                pass
+                # TODO: revert current manager placement
+                # apply new manager placement
+        return actual_placements
 
     def place_manager(
         self, chain: Chain, topology: Topology, placement: Placement
