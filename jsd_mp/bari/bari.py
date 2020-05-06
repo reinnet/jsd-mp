@@ -20,25 +20,25 @@ class Bari(Solver):
     def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
 
-        for ch in self.chains:
-            self.logger.info(f"Placement of {ch.name} started")
+        for chain in self.chains:
+            self.logger.info("Placement of %s started", chain.name)
 
-            p = self.place(ch)
+            p = self.place(chain)
             if p is not None:
-                self.logger.info(f"VNF Placement of {ch.name} was successful")
+                self.logger.info("VNF Placement of %s was successful", chain.name)
 
                 topo = copy.deepcopy(self.topology)
                 p.apply_on_topology(topo)
-                mp = self.place_manager(ch, topo, p)
+                mp = self.place_manager(chain, topo, p)
                 if mp is not None:
                     self.manage_by_node[mp.management_node] = self.manage_by_node.get(
                         mp.management_node, 0
-                    ) + len(ch)
+                    ) + len(chain)
                     p.apply_on_topology(self.topology)
                     mp.apply_on_topology(self.topology)
                     placements.append((p, mp))
             else:
-                self.logger.info(f"VNF Placement of {ch.name} failed")
+                self.logger.info("VNF Placement of %s failed", chain.name)
 
         return placements
 
@@ -48,19 +48,19 @@ class Bari(Solver):
         min_cost = float("inf")
         min_node = ""
 
-        for n in topology.nodes:
-            if self.is_management_resource_available(topology, n, placement.nodes):
-                c = self.get_management_cost(topology, n, placement.nodes)
+        for node in topology.nodes:
+            if self.is_management_resource_available(topology, node, placement.nodes):
+                c = self.get_management_cost(topology, node, placement.nodes)
                 if min_cost > c:
                     min_cost = c
-                    min_node = n
+                    min_node = node
 
         if min_cost == float("inf"):
             return None
 
         paths = []
-        for n in placement.nodes:
-            path = topology.path(min_node, n, self.vnfm.bandwidth)
+        for node in placement.nodes:
+            path = topology.path(min_node, node, self.vnfm.bandwidth)
             if path is not None:
                 paths.append(path)
 
