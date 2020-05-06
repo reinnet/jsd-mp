@@ -1,11 +1,11 @@
-from config import Config
-from domain import Placement, ManagementPlacement, Topology, Link, Type, Direction
-
 import abc
 import typing
 import copy
 import math
 import logging
+
+from config import Config
+from domain import Placement, ManagementPlacement, Topology, Link, Type, Direction
 
 
 class Solver(abc.ABC):
@@ -32,13 +32,19 @@ class Solver(abc.ABC):
         pass
 
     def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
-        self.logger.info(f"{self.__class__.__name__} Started")
+        """
+        Solve the given JSD-MP problem return the placement
+        """
+        self.logger.info("%s Started", self.__class__.__name__)
         if self.solved is False:
             self.solution = self._solve()
         return self.solution
 
     @property
     def cost(self):
+        """
+        Calculate the cost of the solution.
+        """
         cost = 0
         for manager in self.topology.nodes:
             cost += math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
@@ -46,6 +52,9 @@ class Solver(abc.ABC):
 
     @property
     def profit(self):
+        """
+        Calculate the profit of the solution.
+        """
         profit = 0
         for (p, mp) in self.solution:
             profit += p.chain.fee
