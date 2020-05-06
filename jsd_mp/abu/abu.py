@@ -18,27 +18,30 @@ class Abu(Bari):
     def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, None]] = []
 
-        for ch in self.chains:
-            self.logger.info(f"Placement of {ch.name} started")
+        # place chains with Bari algorithm
+        for chain in self.chains:
+            self.logger.info("Placement of %s started", chain.name)
 
-            p = self.place(ch)
+            p = self.place(chain)
             if p is not None:
-                self.logger.info(f"VNF Placement of {ch.name} was successful")
+                self.logger.info("VNF Placement of %s was successful", chain.name)
                 p.apply_on_topology(self.topology)
                 placements.append((p, None))
             else:
-                self.logger.info(f"VNF Placement of {ch.name} failed")
+                self.logger.info("VNF Placement of %s failed", chain.name)
 
         active_vnfms: typing.Set[str] = set()
         actual_placements: typing.List[
             typing.Tuple[Placement, ManagementPlacement]
         ] = []
+
+        # find manager placement for each placed chain
         for p, _ in placements:
             mp = self.place_manager(p.chain, self.topology, p)
             if mp is not None:
                 self.manage_by_node[mp.management_node] = self.manage_by_node.get(
                     mp.management_node, 0
-                ) + len(ch)
+                ) + len(p.chain)
 
                 active_vnfms.add(mp.management_node)
                 mp.apply_on_topology(self.topology)
@@ -52,17 +55,32 @@ class Abu(Bari):
             index = random.randint(0, len(actual_placements))
             p, mp = actual_placements[index]
             vnfm = random.choice(list(active_vnfms - set(mp.management_node)))
+
+            # revert the current manager placement
             mp.revert_on_topology(self.topology)
+            self.manage_by_node[mp.management_node] = self.manage_by_node.get(
+                mp.management_node, 0
+            ) - len(p.chain)
+
+            # find new manager placement
             if self.is_management_resource_available(self.topology, vnfm, p.nodes):
                 paths = []
                 for n in p.nodes:
                     path = self.topology.path(vnfm, n, self.vnfm.bandwidth)
                     if path is not None:
                         paths.append(path)
+                mp = ManagementPlacement(p.chain, self.vnfm, vnfm, paths)
+
+                # apply new manager placement
                 mp.apply_on_topology(self.topology)
+                self.manage_by_node[mp.management_node] = self.manage_by_node.get(
+                    mp.management_node, 0
+                ) + len(p.chain)
+
+                # update the placement
                 actual_placements[index] = (
                     p,
-                    ManagementPlacement(p.chain, self.vnfm, vnfm, paths),
+                    mp,
                 )
         return actual_placements
 
