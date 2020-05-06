@@ -39,6 +39,26 @@ class ManagementPlacement:
                     Link(topo.links[step].bandwidth - self.vnfm.bandwidth),
                 )
 
+    def revert_on_topology(self, topo: Topology):
+        node = topo.nodes[self.management_node]
+        topo.update_node(
+            self.management_node,
+            Node(
+                cores=node.cores + self.vnfm.cores,
+                memory=node.memory + self.vnfm.memory,
+                direction=node.direction,
+                vnf_support=node.vnf_support,
+            ),
+        )
+
+        for path in self.management_links:
+            for step in path:
+                topo.update_link(
+                    step[0],
+                    step[1],
+                    Link(topo.links[step].bandwidth + self.vnfm.bandwidth),
+                )
+
 
 @dataclasses.dataclass(frozen=True)
 class Placement:
@@ -75,4 +95,26 @@ class Placement:
             for step in path:
                 topo.update_link(
                     step[0], step[1], Link(topo.links[step].bandwidth - link.bandwidth)
+                )
+
+    def revert_on_topology(self, topo: Topology):
+        for i, n in enumerate(self.nodes):
+            node = topo.nodes[n]
+            t = self.chain.functions[i]
+            topo.update_node(
+                n,
+                Node(
+                    cores=node.cores + t.cores,
+                    memory=node.memory + t.memory,
+                    direction=node.direction,
+                    vnf_support=node.vnf_support,
+                ),
+            )
+
+        for (source, destination), path in self.links.items():
+            link = self.chain.links[(source, destination)]
+
+            for step in path:
+                topo.update_link(
+                    step[0], step[1], Link(topo.links[step].bandwidth + link.bandwidth)
                 )
