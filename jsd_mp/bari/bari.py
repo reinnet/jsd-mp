@@ -11,9 +11,12 @@ from domain import (
 import typing
 import copy
 import math
+from concurrent.futures import ThreadPoolExecutor
 
 
 class Bari(Solver):
+    executor = ThreadPoolExecutor(max_workers=100)
+
     def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
 
@@ -81,7 +84,8 @@ class Bari(Solver):
 
         # place rest of the functions
         for i in range(1, len(chain.functions)):
-            for j in self.topology.nodes:
+
+            def task(j: str):
                 min_cost = float("inf")
                 min_k = ""
 
@@ -103,9 +107,10 @@ class Bari(Solver):
                         if min_cost > c:
                             min_cost = c
                             min_k = k
+                            break
 
                 if min_cost == float("inf"):
-                    continue
+                    return
                 cost[(i, j)] = int(min_cost)
                 path = (
                     pi[(i - 1, min_k)]
@@ -113,6 +118,9 @@ class Bari(Solver):
                     .path(min_k, j, chain.links[(i - 1, i)].bandwidth)
                 )
                 pi[(i, j)] = pi[(i - 1, min_k)].copy().append(j, path)
+
+            for _ in self.executor.map(task, [j for j in self.topology.nodes]):
+                pass
 
         # find the minimum cost of placement
         min_cost = float("inf")
