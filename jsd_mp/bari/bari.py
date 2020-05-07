@@ -11,6 +11,7 @@ from domain import (
 import typing
 import copy
 import math
+import itertools
 from concurrent.futures import ThreadPoolExecutor
 
 
@@ -33,7 +34,7 @@ class Bari(Solver):
                 if mp is not None:
                     self.manage_by_node[mp.management_node] = self.manage_by_node.get(
                         mp.management_node, 0
-                    ) + len(chain)
+                    ) + sum(chain.manageable_functions)
                     p.apply_on_topology(self.topology)
                     mp.apply_on_topology(self.topology)
                     placements.append((p, mp))
@@ -49,8 +50,19 @@ class Bari(Solver):
         min_node = ""
 
         for node in topology.nodes:
-            if self.is_management_resource_available(topology, node, placement.nodes):
-                c = self.get_management_cost(topology, node, placement.nodes)
+            if self.is_management_resource_available(
+                topology,
+                node,
+                list(itertools.compress(placement.nodes, chain.manageable_functions)),
+            ):
+                c = self.get_management_cost(
+                    topology,
+                    node,
+                    list(
+                        itertools.compress(placement.nodes, chain.manageable_functions)
+                    ),
+                )
+                print(chain.name, c, node)
                 if min_cost > c:
                     min_cost = c
                     min_node = node
@@ -59,7 +71,7 @@ class Bari(Solver):
             return None
 
         paths = []
-        for node in placement.nodes:
+        for node in itertools.compress(placement.nodes, chain.manageable_functions):
             path = topology.path(min_node, node, self.vnfm.bandwidth)
             if path is not None:
                 paths.append(path)
