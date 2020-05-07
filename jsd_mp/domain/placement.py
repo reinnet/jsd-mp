@@ -16,8 +16,19 @@ class ManagementPlacement:
     ] = dataclasses.field(default_factory=list)
 
     def __post_init__(self):
-        if sum(self.chain.managebale_functions) != len(self.management_links):
+        if sum(self.chain.manageable_functions) != len(self.management_links):
             raise ValueError("Each node of chain must have management link")
+
+    def __repr__(self):
+        repr = ""
+        repr += f"manage by {self.management_node}\n"
+
+        for i, path in enumerate(self.management_links):
+            repr += f"management route of function-{i}:\n"
+            for (source, sink) in path:
+                repr += f"\t{source} -> {sink}\n"
+
+        return repr
 
     def apply_on_topology(self, topo: Topology):
         node = topo.nodes[self.management_node]
@@ -74,6 +85,22 @@ class Placement:
         for p in self.chain.links:
             if p not in self.links:
                 raise ValueError("Placement must place every link of the chain")
+
+    def __repr__(self):
+        repr = ""
+        for i, node in enumerate(self.nodes):
+            repr += (
+                f"funcion-{i} [{self.chain.functions[i].name}] is placed on {node}\n"
+            )
+
+        for (from_function, to_function), path in self.links.items():
+            repr += (
+                f"function-{from_function} -> function-{to_function}"
+                " is placed on the following links:\n"
+            )
+            for (source, sink) in path:
+                repr += f"\t{source} -> {sink}\n"
+        return repr
 
     def apply_on_topology(self, topo: Topology):
         for i, n in enumerate(self.nodes):
