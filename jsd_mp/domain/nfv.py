@@ -41,6 +41,10 @@ class Chain:
         self.connections[source].append(destination)
         self.links[(source, destination)] = link
 
+    @property
+    def manageable_functions(self) -> typing.Iterable[bool]:
+        return map(lambda t: t.manageable, self.functions)
+
     def __len__(self):
         return len(self.functions)
 

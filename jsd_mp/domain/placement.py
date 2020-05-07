@@ -16,7 +16,7 @@ class ManagementPlacement:
     ] = dataclasses.field(default_factory=list)
 
     def __post_init__(self):
-        if len(self.chain.functions) != len(self.management_links):
+        if sum(self.chain.managebale_functions) != len(self.management_links):
             raise ValueError("Each node of chain must have management link")
 
     def apply_on_topology(self, topo: Topology):
