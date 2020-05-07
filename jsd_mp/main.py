@@ -36,23 +36,8 @@ def bari(config, verbose, placement):
     if placement is True:
         for (p, pm) in solver.solution:
             print(f"{p.chain.name:=^25}")
-            for i, node in enumerate(p.nodes):
-                print(f"funcion-{i} [{p.chain.functions[i].name}] is placed on {node}")
-
-            for (from_function, to_function), path in p.links.items():
-                print(
-                    f"function-{from_function} -> function-{to_function} "
-                    "is placed on the following links:"
-                )
-                for (source, sink) in path:
-                    print(f"\t{source} -> {sink}")
-
-            print(f"manage by {pm.management_node}")
-
-            for i, path in enumerate(pm.management_links):
-                print(f"management route of function-{i}:")
-                for (source, sink) in path:
-                    print(f"\t{source} -> {sink}")
+            print(p)
+            print(pm)
         print()
 
     print(f"Placement has profit: {solver.profit} and cost: {solver.cost}")
