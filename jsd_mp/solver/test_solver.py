@@ -13,6 +13,7 @@ from config import Config
 
 import typing
 import random
+import itertools
 
 
 class DummySolver(Solver):
@@ -33,7 +34,7 @@ class DummySolver(Solver):
                     links[(source, destination)] = r
             management_node = random.choice(list(self.topology.nodes.keys()))
             management_paths = []
-            for n in nodes:
+            for n in itertools.compress(nodes, chain.manageable_functions):
                 path = self.topology.path(management_node, n, self.vnfm.bandwidth)
                 if path is not None:
                     management_paths.append(path)

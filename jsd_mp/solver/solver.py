@@ -65,11 +65,16 @@ class Solver(abc.ABC):
     ) -> bool:
         node = topology.nodes[manager]
 
-        if node.memory < self.vnfm.memory:
-            return False
+        current = math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
+        future = math.ceil(
+            (self.manage_by_node.get(manager, 0) + len(nodes)) / self.vnfm.capacity
+        )
 
-        if node.cores < self.vnfm.cores:
-            return False
+        if current < future:
+            if node.memory < self.vnfm.memory:
+                return False
+            if node.cores < self.vnfm.cores:
+                return False
 
         r = topology.bfs(manager, self.vnfm.bandwidth, max_height=self.vnfm.radius)
 
