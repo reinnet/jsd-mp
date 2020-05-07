@@ -62,7 +62,6 @@ class Bari(Solver):
                         itertools.compress(placement.nodes, chain.manageable_functions)
                     ),
                 )
-                print(chain.name, c, node)
                 if min_cost > c:
                     min_cost = c
                     min_node = node
