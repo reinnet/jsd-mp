@@ -45,6 +45,15 @@ class TestAbu:
         ch2.add_link(1, 2, Link(5))
         ch2.add_link(2, 3, Link(5))
 
+        ch3 = Chain("ch-3", 300)
+        ch3.add_function(ingress)
+        ch3.add_function(fw)
+        ch3.add_function(svr)
+        ch3.add_function(egress)
+        ch3.add_link(0, 1, Link(5))
+        ch3.add_link(1, 2, Link(5))
+        ch3.add_link(2, 3, Link(5))
+
         vnfm = VNFM(
             cores=2, memory=2, capacity=4, radius=100, bandwidth=1, license_cost=100
         )
@@ -56,3 +65,10 @@ class TestAbu:
 
         assert len(abu.solution) == 2
         assert abu.profit == 300
+
+        cfg = Config(types=[fw], chains=[ch1, ch2, ch3], topology=topo, vnfm=vnfm)
+
+        abu = Abu(cfg)
+        abu.solve()
+
+        assert len(abu.solution) == 0
