@@ -10,7 +10,7 @@ class TestAbu:
         topo.add_node("s1", Node(0, 0))
         topo.add_node("s2", Node(0, 0))
         for n in ("n1", "n2", "n3", "n4", "n5", "n6"):
-            topo.add_node(n, Node(2, 2))
+            topo.add_node(n, Node(4, 4))
         topo.add_link("s0", "s1", Link(15))
         topo.add_link("s1", "s0", Link(15))
         topo.add_link("s0", "s2", Link(15))
@@ -55,7 +55,7 @@ class TestAbu:
         ch3.add_link(2, 3, Link(5))
 
         vnfm = VNFM(
-            cores=2, memory=2, capacity=4, radius=100, bandwidth=1, license_cost=100
+            cores=1, memory=1, capacity=4, radius=100, bandwidth=1, license_cost=100
         )
 
         cfg = Config(types=[fw], chains=[ch1, ch2], topology=topo, vnfm=vnfm)
@@ -71,4 +71,4 @@ class TestAbu:
         abu = Abu(cfg)
         abu.solve()
 
-        assert len(abu.solution) == 0
+        assert len(abu.solution) == 3
