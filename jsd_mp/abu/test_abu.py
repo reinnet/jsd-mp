@@ -65,6 +65,7 @@ class TestAbu:
 
         assert len(abu.solution) == 2
         assert abu.profit == 300
+        assert abu.cost == 100
 
         cfg = Config(types=[fw], chains=[ch1, ch2, ch3], topology=topo, vnfm=vnfm)
 
@@ -72,3 +73,4 @@ class TestAbu:
         abu.solve()
 
         assert len(abu.solution) == 3
+        assert abu.cost == 200

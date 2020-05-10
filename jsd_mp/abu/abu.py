@@ -79,6 +79,8 @@ class Abu(Bari):
 
         # in each iteration we try to improve the manager placement
         for _ in range(self.n_iter):
+            current_cost = self.cost
+
             # randomly switch chains between vnfms
             index = random.randint(0, len(actual_placements) - 1)
             p, mp = actual_placements[index]
@@ -91,10 +93,7 @@ class Abu(Bari):
             )
 
             # revert the current manager placement
-            mp.revert_on_topology(self.topology)
-            self.manage_by_node[mp.management_node] = self.manage_by_node.get(
-                mp.management_node, 0
-            ) - sum(p.chain.manageable_functions)
+            self.revert_management(mp)
 
             # find new manager placement
             manageable_functions = list(
@@ -108,26 +107,36 @@ class Abu(Bari):
                     path = self.topology.path(vnfm, n, self.vnfm.bandwidth)
                     if path is not None:
                         paths.append(path)
-                mp = ManagementPlacement(p.chain, self.vnfm, vnfm, paths)
+                new_mp = ManagementPlacement(p.chain, self.vnfm, vnfm, paths)
 
                 # apply new manager placement
-                mp.apply_on_topology(self.topology)
-                self.manage_by_node[mp.management_node] = self.manage_by_node.get(
-                    mp.management_node, 0
-                ) + sum(p.chain.manageable_functions)
+                self.apply_management(new_mp)
 
-                # update the placement
-                actual_placements[index] = (
-                    p,
-                    mp,
-                )
+                if self.cost > current_cost:
+                    self.revert_management(new_mp)
+                    self.apply_management(mp)
+                else:
+                    # update the placement
+                    actual_placements[index] = (
+                        p,
+                        new_mp,
+                    )
             else:
-                mp.apply_on_topology(self.topology)
-                self.manage_by_node[mp.management_node] = self.manage_by_node.get(
-                    mp.management_node, 0
-                ) + sum(p.chain.manageable_functions)
+                self.apply_management(mp)
 
         return actual_placements
+
+    def apply_management(self, mp: ManagementPlacement):
+        mp.apply_on_topology(self.topology)
+        self.manage_by_node[mp.management_node] = self.manage_by_node.get(
+            mp.management_node, 0
+        ) + len(mp.management_links)
+
+    def revert_management(self, mp: ManagementPlacement):
+        mp.revert_on_topology(self.topology)
+        self.manage_by_node[mp.management_node] = self.manage_by_node.get(
+            mp.management_node, 0
+        ) - len(mp.management_links)
 
     def place_manager(
         self, chain: Chain, topology: Topology, placement: Placement
