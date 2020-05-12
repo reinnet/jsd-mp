@@ -97,7 +97,7 @@ class Abu(Bari):
 
             # find new manager placement
             manageable_functions = list(
-                itertools.compress(p.nodes, chain.manageable_functions)
+                itertools.compress(p.nodes, p.chain.manageable_functions)
             )
             if self.is_management_resource_available(
                 self.topology, vnfm, manageable_functions
