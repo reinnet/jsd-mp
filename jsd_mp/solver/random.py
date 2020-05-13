@@ -3,12 +3,7 @@ from .placement import PartialPlacement
 from domain import (
     Placement,
     ManagementPlacement,
-    Type,
-    Node,
-    Topology,
-    Link,
-    Chain,
-    VNFM,
+    Direction,
 )
 
 import typing
@@ -32,6 +27,10 @@ class Random(Solver):
                         if node.memory >= function.memory
                         and node.cores >= function.cores
                         and node.vnf_support
+                        and (
+                            function.direction is node.direction
+                            or node.direction is Direction.BOTH
+                        )
                     ]
                 )
 

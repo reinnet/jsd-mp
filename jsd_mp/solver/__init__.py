@@ -6,3 +6,4 @@ for each chain.
 
 from .solver import Solver
 from .placement import PartialPlacement
+from .random import Random
