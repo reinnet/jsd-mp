@@ -83,6 +83,9 @@ class Random(Solver):
                     mp = ManagementPlacement(
                         chain, self.vnfm, management_node, management_paths
                     )
+                    self.manage_by_node[management_node] = self.manage_by_node.get(
+                        management_node, 0
+                    ) + sum(chain.manageable_functions)
                     mp.apply_on_topology(self.topology)
                     placements.append((p, mp))
 
