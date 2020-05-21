@@ -1,3 +1,7 @@
+import typing
+import random
+import itertools
+
 from bari import Bari
 from domain import (
     Placement,
@@ -7,21 +11,22 @@ from domain import (
     Node,
 )
 
-import typing
-import random
-import itertools
-
 
 class Abu(Bari):
     n_iter: int = 1000
 
-    def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+    def _solve(
+        self,
+    ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, None]] = []
 
         # we need to reserve resources on nodes for future VNFMs provisioning
         reserved_nodes: typing.List[str] = []
         for id, node in self.topology.nodes.items():
-            if node.cores <= self.vnfm.cores or node.memory <= self.vnfm.memory:
+            if (
+                node.cores <= self.vnfm.cores
+                or node.memory <= self.vnfm.memory
+            ):
                 continue
             reserved_nodes.append(id)
             self.topology.update_node(
@@ -40,13 +45,16 @@ class Abu(Bari):
 
             p = self.place(chain)
             if p is not None:
-                self.logger.info("VNF Placement of %s was successful", chain.name)
+                self.logger.info(
+                    "VNF Placement of %s was successful", chain.name
+                )
                 p.apply_on_topology(self.topology)
                 placements.append((p, None))
             else:
                 self.logger.info("VNF Placement of %s failed", chain.name)
 
-        # valid placements are the placements which has their manager on one of their's node.
+        # valid placements are the placements which has their
+        # manager on one of their's node.
         actual_placements: typing.List[
             typing.Tuple[Placement, ManagementPlacement]
         ] = []
@@ -68,9 +76,11 @@ class Abu(Bari):
         for p, _ in placements:
             mp = self.place_manager(p.chain, self.topology, p)
             if mp is not None:
-                self.manage_by_node[mp.management_node] = self.manage_by_node.get(
-                    mp.management_node, 0
-                ) + sum(p.chain.manageable_functions)
+                self.manage_by_node[
+                    mp.management_node
+                ] = self.manage_by_node.get(mp.management_node, 0) + sum(
+                    p.chain.manageable_functions
+                )
 
                 mp.apply_on_topology(self.topology)
                 actual_placements.append((p, mp))
@@ -143,11 +153,17 @@ class Abu(Bari):
     ) -> typing.Union[ManagementPlacement, None]:
         node = ""
 
-        for n in set(itertools.compress(placement.nodes, chain.manageable_functions)):
+        for n in set(
+            itertools.compress(placement.nodes, chain.manageable_functions)
+        ):
             if self.is_management_resource_available(
                 topology,
                 n,
-                list(itertools.compress(placement.nodes, chain.manageable_functions)),
+                list(
+                    itertools.compress(
+                        placement.nodes, chain.manageable_functions
+                    )
+                ),
             ):
                 node = n
                 break
