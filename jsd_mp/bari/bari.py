@@ -1,3 +1,9 @@
+import typing
+import copy
+import math
+import itertools
+from concurrent.futures import ThreadPoolExecutor
+
 from solver import Solver, PartialPlacement
 from domain import (
     Placement,
@@ -8,33 +14,35 @@ from domain import (
     Topology,
 )
 
-import typing
-import copy
-import math
-import itertools
-from concurrent.futures import ThreadPoolExecutor
-
 
 class Bari(Solver):
     executor = ThreadPoolExecutor(max_workers=100)
 
-    def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
-        placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
+    def _solve(
+        self,
+    ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+        placements: typing.List[
+            typing.Tuple[Placement, ManagementPlacement]
+        ] = []
 
         for chain in self.chains:
             self.logger.info("Placement of %s started", chain.name)
 
             p = self.place(chain)
             if p is not None:
-                self.logger.info("VNF Placement of %s was successful", chain.name)
+                self.logger.info(
+                    "VNF Placement of %s was successful", chain.name
+                )
 
                 topo = copy.deepcopy(self.topology)
                 p.apply_on_topology(topo)
                 mp = self.place_manager(chain, topo, p)
                 if mp is not None:
-                    self.manage_by_node[mp.management_node] = self.manage_by_node.get(
-                        mp.management_node, 0
-                    ) + sum(chain.manageable_functions)
+                    self.manage_by_node[
+                        mp.management_node
+                    ] = self.manage_by_node.get(mp.management_node, 0) + sum(
+                        chain.manageable_functions
+                    )
                     p.apply_on_topology(self.topology)
                     mp.apply_on_topology(self.topology)
                     placements.append((p, mp))
@@ -53,13 +61,19 @@ class Bari(Solver):
             if self.is_management_resource_available(
                 topology,
                 node,
-                list(itertools.compress(placement.nodes, chain.manageable_functions)),
+                list(
+                    itertools.compress(
+                        placement.nodes, chain.manageable_functions
+                    )
+                ),
             ):
                 c = self.get_management_cost(
                     topology,
                     node,
                     list(
-                        itertools.compress(placement.nodes, chain.manageable_functions)
+                        itertools.compress(
+                            placement.nodes, chain.manageable_functions
+                        )
                     ),
                 )
                 if min_cost > c:
@@ -70,7 +84,9 @@ class Bari(Solver):
             return None
 
         paths = []
-        for node in itertools.compress(placement.nodes, chain.manageable_functions):
+        for node in itertools.compress(
+            placement.nodes, chain.manageable_functions
+        ):
             path = topology.path(min_node, node, self.vnfm.bandwidth)
             if path is not None:
                 paths.append(path)
@@ -149,9 +165,12 @@ class Bari(Solver):
     def get_management_cost(
         self, topology: Topology, manager: str, nodes: typing.List[str],
     ) -> int:
-        current = math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
+        current = math.ceil(
+            self.manage_by_node.get(manager, 0) / self.vnfm.capacity
+        )
         future = math.ceil(
-            (self.manage_by_node.get(manager, 0) + len(nodes)) / self.vnfm.capacity
+            (self.manage_by_node.get(manager, 0) + len(nodes))
+            / self.vnfm.capacity
         )
         return future - current
 
