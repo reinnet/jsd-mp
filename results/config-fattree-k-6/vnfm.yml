@@ -1,0 +1,7 @@
+---
+ram: 4
+cores: 2
+capacity: 10
+radius: 100
+bandwidth: 10
+licenseFee: 100
