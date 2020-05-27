@@ -3,7 +3,8 @@
 
 ## Introduction
 Here we want to solve the placement problem of Virtual Network Functions and in the same time
-provide them with VNFMs.
+provide them with VNFMs. This is a NP-Hard problem so here we implement some heuristics to make
+solution faster.
 
-## Reports
+## Results
 Here we use Jupyter Notebook to collect all results from the optimal and huristic solutions.
