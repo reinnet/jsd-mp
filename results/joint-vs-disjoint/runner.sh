@@ -19,10 +19,12 @@ current_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 jsd_mp="$( cd $current_dir/../.. && pwd )"
 
 usage() {
-        echo "usage: $0 [-t times (10)] [-n number of chains (100)]"
+        echo "usage: $0 run [-t times (10)] [-n number of chains (100)]"
+        echo "usage: $0 parse"
+        echo "usage: $0 clean"
 }
 
-main() {
+run() {
         number_of_chains=100
         times=10
 
@@ -60,6 +62,28 @@ main() {
         done
 }
 
+parse() {
+        for ty in joint disjoint; do
+                echo
+                echo $ty
+                echo
+                costs=""
+                chains=""
+                vnfms=""
+
+                for result in $(ls $ty-result-*); do
+                        costs="$costs, $(cat $result | grep "cost" | cut -d " " -f 4 -)"
+                        chains="$chains, $(cat $result | grep "chains are accepted" | cut -d " " -f 1 -)"
+                        vnfms="$vnfms, $(cat $result | grep "VNFMs is used" | cut -d " " -f 1 -)"
+                done
+                echo
+                echo costs = [ $costs ]
+                echo chains = [ $chains ]
+                echo vnfms = [ $vnfms ]
+                echo
+        done
+}
+
 echo
 echo "> jsd-mp root directory located at $jsd_mp"
 echo "> assume the following structure:"
@@ -68,4 +92,15 @@ echo "  |- jsd-mp/"
 echo "  |- jsd-mp.simulation/"
 echo
 
-main $@
+case $1 in
+        parse)
+                parse
+                ;;
+        run)
+                run $@
+                ;;
+        clean)
+                rm *.yaml
+                rm *.txt
+                ;;
+esac
