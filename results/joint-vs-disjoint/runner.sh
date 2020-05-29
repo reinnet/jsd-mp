@@ -42,6 +42,7 @@ run() {
                                 ;;
                 esac
         done
+        echo "execute simulations for ${number_of_chains} chains ${times} times"
 
         for i in $(seq $times); do
                 echo run $i
@@ -97,6 +98,7 @@ case $1 in
                 parse
                 ;;
         run)
+                shift
                 run $@
                 ;;
         clean)
