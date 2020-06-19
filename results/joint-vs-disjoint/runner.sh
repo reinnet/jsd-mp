@@ -105,4 +105,7 @@ case $1 in
                 rm *.yaml
                 rm *.txt
                 ;;
+        *)
+                usage
+                ;;
 esac
