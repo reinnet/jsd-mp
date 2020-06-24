@@ -71,14 +71,17 @@ parse() {
                 costs=""
                 chains=""
                 vnfms=""
+                gaps=""
 
                 for result in $(ls $ty-result-*); do
                         costs="$costs, $(cat $result | grep "cost" | cut -d " " -f 4 -)"
+                        gaps="$gaps, $(cat $result | grep "gap" | cut -d " " -f 4 -)"
                         chains="$chains, $(cat $result | grep "chains are accepted" | cut -d " " -f 1 -)"
                         vnfms="$vnfms, $(cat $result | grep "VNFMs is used" | cut -d " " -f 1 -)"
                 done
                 echo
                 echo costs = [ $costs ]
+                echo gaps = [ $gaps ]
                 echo chains = [ $chains ]
                 echo vnfms = [ $vnfms ]
                 echo
