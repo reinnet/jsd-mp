@@ -1,1676 +1,1676 @@
 nodes:
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-1
-    notManagerNodes: []
-  - cores: 43
-    ram: 147
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-1-1
-    notManagerNodes: []
-  - cores: 17
-    ram: 418
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-1-2
-    notManagerNodes: []
-  - cores: 10
-    ram: 356
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-1-3
-    notManagerNodes: []
-  - cores: 44
-    ram: 611
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-1-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-2
-    notManagerNodes: []
-  - cores: 46
-    ram: 174
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-2-1
-    notManagerNodes: []
-  - cores: 25
-    ram: 537
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-2-2
-    notManagerNodes: []
-  - cores: 33
-    ram: 166
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-2-3
-    notManagerNodes: []
-  - cores: 34
-    ram: 547
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-2-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-3
-    notManagerNodes: []
-  - cores: 36
-    ram: 490
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-3-1
-    notManagerNodes: []
-  - cores: 19
-    ram: 508
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-3-2
-    notManagerNodes: []
-  - cores: 17
-    ram: 529
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-3-3
-    notManagerNodes: []
-  - cores: 19
-    ram: 131
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-3-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-4
-    notManagerNodes: []
-  - cores: 37
-    ram: 590
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-4-1
-    notManagerNodes: []
-  - cores: 23
-    ram: 533
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-4-2
-    notManagerNodes: []
-  - cores: 18
-    ram: 224
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-4-3
-    notManagerNodes: []
-  - cores: 31
-    ram: 457
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-4-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-5
-    notManagerNodes: []
-  - cores: 21
-    ram: 500
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-5-1
-    notManagerNodes: []
-  - cores: 20
-    ram: 238
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-5-2
-    notManagerNodes: []
-  - cores: 11
-    ram: 351
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-5-3
-    notManagerNodes: []
-  - cores: 25
-    ram: 256
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-5-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-6
-    notManagerNodes: []
-  - cores: 15
-    ram: 102
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-6-1
-    notManagerNodes: []
-  - cores: 16
-    ram: 263
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-6-2
-    notManagerNodes: []
-  - cores: 36
-    ram: 618
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-6-3
-    notManagerNodes: []
-  - cores: 36
-    ram: 677
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-6-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-7
-    notManagerNodes: []
-  - cores: 44
-    ram: 523
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-7-1
-    notManagerNodes: []
-  - cores: 47
-    ram: 233
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-7-2
-    notManagerNodes: []
-  - cores: 35
-    ram: 333
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-7-3
-    notManagerNodes: []
-  - cores: 15
-    ram: 302
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-7-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-8
-    notManagerNodes: []
-  - cores: 12
-    ram: 407
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-8-1
-    notManagerNodes: []
-  - cores: 31
-    ram: 652
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-8-2
-    notManagerNodes: []
-  - cores: 19
-    ram: 498
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-8-3
-    notManagerNodes: []
-  - cores: 11
-    ram: 415
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-8-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-9
-    notManagerNodes: []
-  - cores: 14
-    ram: 110
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-9-1
-    notManagerNodes: []
-  - cores: 26
-    ram: 332
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-9-2
-    notManagerNodes: []
-  - cores: 15
-    ram: 491
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-9-3
-    notManagerNodes: []
-  - cores: 10
-    ram: 197
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-9-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-10
-    notManagerNodes: []
-  - cores: 21
-    ram: 394
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-10-1
-    notManagerNodes: []
-  - cores: 40
-    ram: 481
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-10-2
-    notManagerNodes: []
-  - cores: 42
-    ram: 370
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-10-3
-    notManagerNodes: []
-  - cores: 26
-    ram: 119
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-10-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-11
-    notManagerNodes: []
-  - cores: 43
-    ram: 185
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-11-1
-    notManagerNodes: []
-  - cores: 13
-    ram: 449
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-11-2
-    notManagerNodes: []
-  - cores: 46
-    ram: 484
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-11-3
-    notManagerNodes: []
-  - cores: 10
-    ram: 447
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-11-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-12
-    notManagerNodes: []
-  - cores: 24
-    ram: 339
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-12-1
-    notManagerNodes: []
-  - cores: 14
-    ram: 351
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-12-2
-    notManagerNodes: []
-  - cores: 34
-    ram: 251
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-12-3
-    notManagerNodes: []
-  - cores: 30
-    ram: 405
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-12-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-13
-    notManagerNodes: []
-  - cores: 32
-    ram: 302
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-13-1
-    notManagerNodes: []
-  - cores: 41
-    ram: 331
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-13-2
-    notManagerNodes: []
-  - cores: 22
-    ram: 322
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-13-3
-    notManagerNodes: []
-  - cores: 30
-    ram: 508
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-13-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-14
-    notManagerNodes: []
-  - cores: 34
-    ram: 610
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-14-1
-    notManagerNodes: []
-  - cores: 40
-    ram: 204
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-14-2
-    notManagerNodes: []
-  - cores: 11
-    ram: 115
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-14-3
-    notManagerNodes: []
-  - cores: 11
-    ram: 530
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-14-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-15
-    notManagerNodes: []
-  - cores: 27
-    ram: 420
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-15-1
-    notManagerNodes: []
-  - cores: 40
-    ram: 484
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-15-2
-    notManagerNodes: []
-  - cores: 28
-    ram: 465
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-15-3
-    notManagerNodes: []
-  - cores: 15
-    ram: 220
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-15-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-16
-    notManagerNodes: []
-  - cores: 45
-    ram: 166
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-16-1
-    notManagerNodes: []
-  - cores: 22
-    ram: 529
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-16-2
-    notManagerNodes: []
-  - cores: 15
-    ram: 677
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-16-3
-    notManagerNodes: []
-  - cores: 12
-    ram: 699
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-16-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-17
-    notManagerNodes: []
-  - cores: 10
-    ram: 188
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-17-1
-    notManagerNodes: []
-  - cores: 37
-    ram: 388
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-17-2
-    notManagerNodes: []
-  - cores: 28
-    ram: 119
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-17-3
-    notManagerNodes: []
-  - cores: 15
-    ram: 352
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-17-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-18
-    notManagerNodes: []
-  - cores: 27
-    ram: 695
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-18-1
-    notManagerNodes: []
-  - cores: 27
-    ram: 170
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-18-2
-    notManagerNodes: []
-  - cores: 16
-    ram: 132
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-18-3
-    notManagerNodes: []
-  - cores: 20
-    ram: 422
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-18-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-19
-    notManagerNodes: []
-  - cores: 28
-    ram: 320
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-19-1
-    notManagerNodes: []
-  - cores: 26
-    ram: 364
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-19-2
-    notManagerNodes: []
-  - cores: 25
-    ram: 481
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-19-3
-    notManagerNodes: []
-  - cores: 26
-    ram: 300
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-19-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-20
-    notManagerNodes: []
-  - cores: 13
-    ram: 661
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-20-1
-    notManagerNodes: []
-  - cores: 45
-    ram: 609
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-20-2
-    notManagerNodes: []
-  - cores: 29
-    ram: 114
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-20-3
-    notManagerNodes: []
-  - cores: 18
-    ram: 440
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-20-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-21
-    notManagerNodes: []
-  - cores: 37
-    ram: 135
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-21-1
-    notManagerNodes: []
-  - cores: 33
-    ram: 490
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-21-2
-    notManagerNodes: []
-  - cores: 11
-    ram: 570
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-21-3
-    notManagerNodes: []
-  - cores: 30
-    ram: 572
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-21-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-22
-    notManagerNodes: []
-  - cores: 10
-    ram: 337
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-22-1
-    notManagerNodes: []
-  - cores: 47
-    ram: 106
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-22-2
-    notManagerNodes: []
-  - cores: 40
-    ram: 320
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-22-3
-    notManagerNodes: []
-  - cores: 33
-    ram: 417
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-22-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-23
-    notManagerNodes: []
-  - cores: 38
-    ram: 179
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-23-1
-    notManagerNodes: []
-  - cores: 45
-    ram: 331
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-23-2
-    notManagerNodes: []
-  - cores: 19
-    ram: 211
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-23-3
-    notManagerNodes: []
-  - cores: 45
-    ram: 466
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-23-4
-    notManagerNodes: []
-  - cores: 0
-    ram: 0
-    vnfSupport: true
-    egress: true
-    ingress: true
-    id: switch-24
-    notManagerNodes: []
-  - cores: 36
-    ram: 508
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-24-1
-    notManagerNodes: []
-  - cores: 41
-    ram: 674
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-24-2
-    notManagerNodes: []
-  - cores: 13
-    ram: 174
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-24-3
-    notManagerNodes: []
-  - cores: 41
-    ram: 186
-    vnfSupport: true
-    egress: false
-    ingress: false
-    id: server-24-4
-    notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-1
+      notManagerNodes: []
+    - cores: 33
+      ram: 581
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-1-1
+      notManagerNodes: []
+    - cores: 47
+      ram: 240
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-1-2
+      notManagerNodes: []
+    - cores: 10
+      ram: 594
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-1-3
+      notManagerNodes: []
+    - cores: 42
+      ram: 189
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-1-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-2
+      notManagerNodes: []
+    - cores: 21
+      ram: 606
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-2-1
+      notManagerNodes: []
+    - cores: 12
+      ram: 228
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-2-2
+      notManagerNodes: []
+    - cores: 27
+      ram: 647
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-2-3
+      notManagerNodes: []
+    - cores: 36
+      ram: 490
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-2-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-3
+      notManagerNodes: []
+    - cores: 17
+      ram: 529
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-3-1
+      notManagerNodes: []
+    - cores: 19
+      ram: 131
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-3-2
+      notManagerNodes: []
+    - cores: 14
+      ram: 113
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-3-3
+      notManagerNodes: []
+    - cores: 34
+      ram: 463
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-3-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: false
+      id: switch-4
+      notManagerNodes: []
+    - cores: 37
+      ram: 253
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-4-1
+      notManagerNodes: []
+    - cores: 19
+      ram: 289
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-4-2
+      notManagerNodes: []
+    - cores: 42
+      ram: 605
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-4-3
+      notManagerNodes: []
+    - cores: 14
+      ram: 203
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-4-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-5
+      notManagerNodes: []
+    - cores: 30
+      ram: 566
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-5-1
+      notManagerNodes: []
+    - cores: 15
+      ram: 102
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-5-2
+      notManagerNodes: []
+    - cores: 16
+      ram: 263
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-5-3
+      notManagerNodes: []
+    - cores: 36
+      ram: 618
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-5-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: false
+      id: switch-6
+      notManagerNodes: []
+    - cores: 46
+      ram: 120
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-6-1
+      notManagerNodes: []
+    - cores: 13
+      ram: 437
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-6-2
+      notManagerNodes: []
+    - cores: 43
+      ram: 359
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-6-3
+      notManagerNodes: []
+    - cores: 15
+      ram: 591
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-6-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-7
+      notManagerNodes: []
+    - cores: 35
+      ram: 640
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-7-1
+      notManagerNodes: []
+    - cores: 42
+      ram: 343
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-7-2
+      notManagerNodes: []
+    - cores: 14
+      ram: 325
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-7-3
+      notManagerNodes: []
+    - cores: 11
+      ram: 657
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-7-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-8
+      notManagerNodes: []
+    - cores: 26
+      ram: 332
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-8-1
+      notManagerNodes: []
+    - cores: 15
+      ram: 491
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-8-2
+      notManagerNodes: []
+    - cores: 10
+      ram: 197
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-8-3
+      notManagerNodes: []
+    - cores: 13
+      ram: 571
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-8-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-9
+      notManagerNodes: []
+    - cores: 43
+      ram: 566
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-9-1
+      notManagerNodes: []
+    - cores: 47
+      ram: 386
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-9-2
+      notManagerNodes: []
+    - cores: 25
+      ram: 352
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-9-3
+      notManagerNodes: []
+    - cores: 41
+      ram: 210
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-9-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-10
+      notManagerNodes: []
+    - cores: 30
+      ram: 403
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-10-1
+      notManagerNodes: []
+    - cores: 47
+      ram: 512
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-10-2
+      notManagerNodes: []
+    - cores: 24
+      ram: 339
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-10-3
+      notManagerNodes: []
+    - cores: 14
+      ram: 351
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-10-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-11
+      notManagerNodes: []
+    - cores: 30
+      ram: 405
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-11-1
+      notManagerNodes: []
+    - cores: 15
+      ram: 190
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-11-2
+      notManagerNodes: []
+    - cores: 46
+      ram: 467
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-11-3
+      notManagerNodes: []
+    - cores: 20
+      ram: 454
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-11-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: true
+      id: switch-12
+      notManagerNodes: []
+    - cores: 11
+      ram: 668
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-12-1
+      notManagerNodes: []
+    - cores: 22
+      ram: 435
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-12-2
+      notManagerNodes: []
+    - cores: 38
+      ram: 662
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-12-3
+      notManagerNodes: []
+    - cores: 43
+      ram: 271
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-12-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-13
+      notManagerNodes: []
+    - cores: 27
+      ram: 420
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-13-1
+      notManagerNodes: []
+    - cores: 40
+      ram: 484
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-13-2
+      notManagerNodes: []
+    - cores: 28
+      ram: 465
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-13-3
+      notManagerNodes: []
+    - cores: 15
+      ram: 220
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-13-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-14
+      notManagerNodes: []
+    - cores: 26
+      ram: 156
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-14-1
+      notManagerNodes: []
+    - cores: 18
+      ram: 531
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-14-2
+      notManagerNodes: []
+    - cores: 16
+      ram: 420
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-14-3
+      notManagerNodes: []
+    - cores: 10
+      ram: 347
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-14-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-15
+      notManagerNodes: []
+    - cores: 26
+      ram: 218
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-15-1
+      notManagerNodes: []
+    - cores: 19
+      ram: 507
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-15-2
+      notManagerNodes: []
+    - cores: 42
+      ram: 175
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-15-3
+      notManagerNodes: []
+    - cores: 27
+      ram: 695
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-15-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: false
+      id: switch-16
+      notManagerNodes: []
+    - cores: 16
+      ram: 132
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-16-1
+      notManagerNodes: []
+    - cores: 20
+      ram: 422
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-16-2
+      notManagerNodes: []
+    - cores: 19
+      ram: 560
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-16-3
+      notManagerNodes: []
+    - cores: 11
+      ram: 454
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-16-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: true
+      id: switch-17
+      notManagerNodes: []
+    - cores: 33
+      ram: 616
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-17-1
+      notManagerNodes: []
+    - cores: 43
+      ram: 137
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-17-2
+      notManagerNodes: []
+    - cores: 37
+      ram: 104
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-17-3
+      notManagerNodes: []
+    - cores: 15
+      ram: 515
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-17-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-18
+      notManagerNodes: []
+    - cores: 34
+      ram: 100
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-18-1
+      notManagerNodes: []
+    - cores: 37
+      ram: 135
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-18-2
+      notManagerNodes: []
+    - cores: 33
+      ram: 490
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-18-3
+      notManagerNodes: []
+    - cores: 11
+      ram: 570
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-18-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-19
+      notManagerNodes: []
+    - cores: 39
+      ram: 274
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-19-1
+      notManagerNodes: []
+    - cores: 12
+      ram: 193
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-19-2
+      notManagerNodes: []
+    - cores: 40
+      ram: 652
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-19-3
+      notManagerNodes: []
+    - cores: 34
+      ram: 671
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-19-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-20
+      notManagerNodes: []
+    - cores: 25
+      ram: 492
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-20-1
+      notManagerNodes: []
+    - cores: 25
+      ram: 621
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-20-2
+      notManagerNodes: []
+    - cores: 47
+      ram: 443
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-20-3
+      notManagerNodes: []
+    - cores: 10
+      ram: 559
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-20-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: true
+      id: switch-21
+      notManagerNodes: []
+    - cores: 41
+      ram: 674
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-21-1
+      notManagerNodes: []
+    - cores: 13
+      ram: 174
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-21-2
+      notManagerNodes: []
+    - cores: 41
+      ram: 186
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-21-3
+      notManagerNodes: []
+    - cores: 32
+      ram: 358
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-21-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: true
+      id: switch-22
+      notManagerNodes: []
+    - cores: 21
+      ram: 557
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-22-1
+      notManagerNodes: []
+    - cores: 29
+      ram: 431
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-22-2
+      notManagerNodes: []
+    - cores: 33
+      ram: 428
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-22-3
+      notManagerNodes: []
+    - cores: 26
+      ram: 377
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-22-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: true
+      ingress: false
+      id: switch-23
+      notManagerNodes: []
+    - cores: 18
+      ram: 689
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-23-1
+      notManagerNodes: []
+    - cores: 41
+      ram: 130
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-23-2
+      notManagerNodes: []
+    - cores: 14
+      ram: 659
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-23-3
+      notManagerNodes: []
+    - cores: 30
+      ram: 318
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-23-4
+      notManagerNodes: []
+    - cores: 0
+      ram: 0
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: switch-24
+      notManagerNodes: []
+    - cores: 26
+      ram: 181
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-24-1
+      notManagerNodes: []
+    - cores: 40
+      ram: 409
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-24-2
+      notManagerNodes: []
+    - cores: 40
+      ram: 595
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-24-3
+      notManagerNodes: []
+    - cores: 42
+      ram: 177
+      vnfSupport: true
+      egress: false
+      ingress: false
+      id: server-24-4
+      notManagerNodes: []
 links:
-  - source: server-1-1
-    destination: switch-1
-    bandwidth: 40000
-  - source: switch-1
-    destination: server-1-1
-    bandwidth: 40000
-  - source: server-1-2
-    destination: switch-1
-    bandwidth: 40000
-  - source: switch-1
-    destination: server-1-2
-    bandwidth: 40000
-  - source: server-1-3
-    destination: switch-1
-    bandwidth: 40000
-  - source: switch-1
-    destination: server-1-3
-    bandwidth: 40000
-  - source: server-1-4
-    destination: switch-1
-    bandwidth: 40000
-  - source: switch-1
-    destination: server-1-4
-    bandwidth: 40000
-  - source: server-2-1
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-2
-    destination: server-2-1
-    bandwidth: 40000
-  - source: server-2-2
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-2
-    destination: server-2-2
-    bandwidth: 40000
-  - source: server-2-3
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-2
-    destination: server-2-3
-    bandwidth: 40000
-  - source: server-2-4
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-2
-    destination: server-2-4
-    bandwidth: 40000
-  - source: server-3-1
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: server-3-1
-    bandwidth: 40000
-  - source: server-3-2
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: server-3-2
-    bandwidth: 40000
-  - source: server-3-3
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: server-3-3
-    bandwidth: 40000
-  - source: server-3-4
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: server-3-4
-    bandwidth: 40000
-  - source: server-4-1
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-4
-    destination: server-4-1
-    bandwidth: 40000
-  - source: server-4-2
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-4
-    destination: server-4-2
-    bandwidth: 40000
-  - source: server-4-3
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-4
-    destination: server-4-3
-    bandwidth: 40000
-  - source: server-4-4
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-4
-    destination: server-4-4
-    bandwidth: 40000
-  - source: server-5-1
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-5
-    destination: server-5-1
-    bandwidth: 40000
-  - source: server-5-2
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-5
-    destination: server-5-2
-    bandwidth: 40000
-  - source: server-5-3
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-5
-    destination: server-5-3
-    bandwidth: 40000
-  - source: server-5-4
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-5
-    destination: server-5-4
-    bandwidth: 40000
-  - source: server-6-1
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: server-6-1
-    bandwidth: 40000
-  - source: server-6-2
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: server-6-2
-    bandwidth: 40000
-  - source: server-6-3
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: server-6-3
-    bandwidth: 40000
-  - source: server-6-4
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: server-6-4
-    bandwidth: 40000
-  - source: server-7-1
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: server-7-1
-    bandwidth: 40000
-  - source: server-7-2
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: server-7-2
-    bandwidth: 40000
-  - source: server-7-3
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: server-7-3
-    bandwidth: 40000
-  - source: server-7-4
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: server-7-4
-    bandwidth: 40000
-  - source: server-8-1
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-8
-    destination: server-8-1
-    bandwidth: 40000
-  - source: server-8-2
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-8
-    destination: server-8-2
-    bandwidth: 40000
-  - source: server-8-3
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-8
-    destination: server-8-3
-    bandwidth: 40000
-  - source: server-8-4
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-8
-    destination: server-8-4
-    bandwidth: 40000
-  - source: server-9-1
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: server-9-1
-    bandwidth: 40000
-  - source: server-9-2
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: server-9-2
-    bandwidth: 40000
-  - source: server-9-3
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: server-9-3
-    bandwidth: 40000
-  - source: server-9-4
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: server-9-4
-    bandwidth: 40000
-  - source: server-10-1
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: server-10-1
-    bandwidth: 40000
-  - source: server-10-2
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: server-10-2
-    bandwidth: 40000
-  - source: server-10-3
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: server-10-3
-    bandwidth: 40000
-  - source: server-10-4
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: server-10-4
-    bandwidth: 40000
-  - source: server-11-1
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: server-11-1
-    bandwidth: 40000
-  - source: server-11-2
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: server-11-2
-    bandwidth: 40000
-  - source: server-11-3
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: server-11-3
-    bandwidth: 40000
-  - source: server-11-4
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: server-11-4
-    bandwidth: 40000
-  - source: server-12-1
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: server-12-1
-    bandwidth: 40000
-  - source: server-12-2
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: server-12-2
-    bandwidth: 40000
-  - source: server-12-3
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: server-12-3
-    bandwidth: 40000
-  - source: server-12-4
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: server-12-4
-    bandwidth: 40000
-  - source: server-13-1
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: server-13-1
-    bandwidth: 40000
-  - source: server-13-2
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: server-13-2
-    bandwidth: 40000
-  - source: server-13-3
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: server-13-3
-    bandwidth: 40000
-  - source: server-13-4
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: server-13-4
-    bandwidth: 40000
-  - source: server-14-1
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-14
-    destination: server-14-1
-    bandwidth: 40000
-  - source: server-14-2
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-14
-    destination: server-14-2
-    bandwidth: 40000
-  - source: server-14-3
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-14
-    destination: server-14-3
-    bandwidth: 40000
-  - source: server-14-4
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-14
-    destination: server-14-4
-    bandwidth: 40000
-  - source: server-15-1
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-15
-    destination: server-15-1
-    bandwidth: 40000
-  - source: server-15-2
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-15
-    destination: server-15-2
-    bandwidth: 40000
-  - source: server-15-3
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-15
-    destination: server-15-3
-    bandwidth: 40000
-  - source: server-15-4
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-15
-    destination: server-15-4
-    bandwidth: 40000
-  - source: server-16-1
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: server-16-1
-    bandwidth: 40000
-  - source: server-16-2
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: server-16-2
-    bandwidth: 40000
-  - source: server-16-3
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: server-16-3
-    bandwidth: 40000
-  - source: server-16-4
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: server-16-4
-    bandwidth: 40000
-  - source: server-17-1
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: server-17-1
-    bandwidth: 40000
-  - source: server-17-2
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: server-17-2
-    bandwidth: 40000
-  - source: server-17-3
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: server-17-3
-    bandwidth: 40000
-  - source: server-17-4
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: server-17-4
-    bandwidth: 40000
-  - source: server-18-1
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-18
-    destination: server-18-1
-    bandwidth: 40000
-  - source: server-18-2
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-18
-    destination: server-18-2
-    bandwidth: 40000
-  - source: server-18-3
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-18
-    destination: server-18-3
-    bandwidth: 40000
-  - source: server-18-4
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-18
-    destination: server-18-4
-    bandwidth: 40000
-  - source: server-19-1
-    destination: switch-19
-    bandwidth: 40000
-  - source: switch-19
-    destination: server-19-1
-    bandwidth: 40000
-  - source: server-19-2
-    destination: switch-19
-    bandwidth: 40000
-  - source: switch-19
-    destination: server-19-2
-    bandwidth: 40000
-  - source: server-19-3
-    destination: switch-19
-    bandwidth: 40000
-  - source: switch-19
-    destination: server-19-3
-    bandwidth: 40000
-  - source: server-19-4
-    destination: switch-19
-    bandwidth: 40000
-  - source: switch-19
-    destination: server-19-4
-    bandwidth: 40000
-  - source: server-20-1
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-20
-    destination: server-20-1
-    bandwidth: 40000
-  - source: server-20-2
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-20
-    destination: server-20-2
-    bandwidth: 40000
-  - source: server-20-3
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-20
-    destination: server-20-3
-    bandwidth: 40000
-  - source: server-20-4
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-20
-    destination: server-20-4
-    bandwidth: 40000
-  - source: server-21-1
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-21
-    destination: server-21-1
-    bandwidth: 40000
-  - source: server-21-2
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-21
-    destination: server-21-2
-    bandwidth: 40000
-  - source: server-21-3
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-21
-    destination: server-21-3
-    bandwidth: 40000
-  - source: server-21-4
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-21
-    destination: server-21-4
-    bandwidth: 40000
-  - source: server-22-1
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: server-22-1
-    bandwidth: 40000
-  - source: server-22-2
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: server-22-2
-    bandwidth: 40000
-  - source: server-22-3
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: server-22-3
-    bandwidth: 40000
-  - source: server-22-4
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: server-22-4
-    bandwidth: 40000
-  - source: server-23-1
-    destination: switch-23
-    bandwidth: 40000
-  - source: switch-23
-    destination: server-23-1
-    bandwidth: 40000
-  - source: server-23-2
-    destination: switch-23
-    bandwidth: 40000
-  - source: switch-23
-    destination: server-23-2
-    bandwidth: 40000
-  - source: server-23-3
-    destination: switch-23
-    bandwidth: 40000
-  - source: switch-23
-    destination: server-23-3
-    bandwidth: 40000
-  - source: server-23-4
-    destination: switch-23
-    bandwidth: 40000
-  - source: switch-23
-    destination: server-23-4
-    bandwidth: 40000
-  - source: server-24-1
-    destination: switch-24
-    bandwidth: 40000
-  - source: switch-24
-    destination: server-24-1
-    bandwidth: 40000
-  - source: server-24-2
-    destination: switch-24
-    bandwidth: 40000
-  - source: switch-24
-    destination: server-24-2
-    bandwidth: 40000
-  - source: server-24-3
-    destination: switch-24
-    bandwidth: 40000
-  - source: switch-24
-    destination: server-24-3
-    bandwidth: 40000
-  - source: server-24-4
-    destination: switch-24
-    bandwidth: 40000
-  - source: switch-24
-    destination: server-24-4
-    bandwidth: 40000
-  - source: switch-1
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-2
-    destination: switch-1
-    bandwidth: 40000
-  - source: switch-1
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: switch-1
-    bandwidth: 40000
-  - source: switch-2
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-2
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: switch-2
-    bandwidth: 40000
-  - source: switch-3
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-4
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-3
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-5
-    destination: switch-3
-    bandwidth: 40000
-  - source: switch-4
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-5
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-4
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: switch-4
-    bandwidth: 40000
-  - source: switch-5
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-8
-    destination: switch-5
-    bandwidth: 40000
-  - source: switch-6
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-6
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: switch-6
-    bandwidth: 40000
-  - source: switch-7
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-7
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-8
-    destination: switch-7
-    bandwidth: 40000
-  - source: switch-8
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: switch-8
-    bandwidth: 40000
-  - source: switch-9
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-9
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: switch-9
-    bandwidth: 40000
-  - source: switch-10
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-10
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-14
-    destination: switch-10
-    bandwidth: 40000
-  - source: switch-11
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: switch-19
-    bandwidth: 40000
-  - source: switch-19
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-11
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-15
-    destination: switch-11
-    bandwidth: 40000
-  - source: switch-12
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-12
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: switch-12
-    bandwidth: 40000
-  - source: switch-13
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-14
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-13
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: switch-13
-    bandwidth: 40000
-  - source: switch-14
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-18
-    destination: switch-14
-    bandwidth: 40000
-  - source: switch-15
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-20
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-15
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: switch-15
-    bandwidth: 40000
-  - source: switch-16
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-21
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-16
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: switch-16
-    bandwidth: 40000
-  - source: switch-17
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: switch-23
-    bandwidth: 40000
-  - source: switch-23
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-17
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-18
-    destination: switch-17
-    bandwidth: 40000
-  - source: switch-18
-    destination: switch-24
-    bandwidth: 40000
-  - source: switch-24
-    destination: switch-18
-    bandwidth: 40000
-  - source: switch-19
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-20
-    destination: switch-19
-    bandwidth: 40000
-  - source: switch-20
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-21
-    destination: switch-20
-    bandwidth: 40000
-  - source: switch-21
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-22
-    destination: switch-21
-    bandwidth: 40000
-  - source: switch-22
-    destination: switch-23
-    bandwidth: 40000
-  - source: switch-23
-    destination: switch-22
-    bandwidth: 40000
-  - source: switch-23
-    destination: switch-24
-    bandwidth: 40000
-  - source: switch-24
-    destination: switch-23
-    bandwidth: 40000
+    - source: server-1-1
+      destination: switch-1
+      bandwidth: 40000
+    - source: switch-1
+      destination: server-1-1
+      bandwidth: 40000
+    - source: server-1-2
+      destination: switch-1
+      bandwidth: 40000
+    - source: switch-1
+      destination: server-1-2
+      bandwidth: 40000
+    - source: server-1-3
+      destination: switch-1
+      bandwidth: 40000
+    - source: switch-1
+      destination: server-1-3
+      bandwidth: 40000
+    - source: server-1-4
+      destination: switch-1
+      bandwidth: 40000
+    - source: switch-1
+      destination: server-1-4
+      bandwidth: 40000
+    - source: server-2-1
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-2
+      destination: server-2-1
+      bandwidth: 40000
+    - source: server-2-2
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-2
+      destination: server-2-2
+      bandwidth: 40000
+    - source: server-2-3
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-2
+      destination: server-2-3
+      bandwidth: 40000
+    - source: server-2-4
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-2
+      destination: server-2-4
+      bandwidth: 40000
+    - source: server-3-1
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: server-3-1
+      bandwidth: 40000
+    - source: server-3-2
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: server-3-2
+      bandwidth: 40000
+    - source: server-3-3
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: server-3-3
+      bandwidth: 40000
+    - source: server-3-4
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: server-3-4
+      bandwidth: 40000
+    - source: server-4-1
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-4
+      destination: server-4-1
+      bandwidth: 40000
+    - source: server-4-2
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-4
+      destination: server-4-2
+      bandwidth: 40000
+    - source: server-4-3
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-4
+      destination: server-4-3
+      bandwidth: 40000
+    - source: server-4-4
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-4
+      destination: server-4-4
+      bandwidth: 40000
+    - source: server-5-1
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-5
+      destination: server-5-1
+      bandwidth: 40000
+    - source: server-5-2
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-5
+      destination: server-5-2
+      bandwidth: 40000
+    - source: server-5-3
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-5
+      destination: server-5-3
+      bandwidth: 40000
+    - source: server-5-4
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-5
+      destination: server-5-4
+      bandwidth: 40000
+    - source: server-6-1
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: server-6-1
+      bandwidth: 40000
+    - source: server-6-2
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: server-6-2
+      bandwidth: 40000
+    - source: server-6-3
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: server-6-3
+      bandwidth: 40000
+    - source: server-6-4
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: server-6-4
+      bandwidth: 40000
+    - source: server-7-1
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: server-7-1
+      bandwidth: 40000
+    - source: server-7-2
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: server-7-2
+      bandwidth: 40000
+    - source: server-7-3
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: server-7-3
+      bandwidth: 40000
+    - source: server-7-4
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: server-7-4
+      bandwidth: 40000
+    - source: server-8-1
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-8
+      destination: server-8-1
+      bandwidth: 40000
+    - source: server-8-2
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-8
+      destination: server-8-2
+      bandwidth: 40000
+    - source: server-8-3
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-8
+      destination: server-8-3
+      bandwidth: 40000
+    - source: server-8-4
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-8
+      destination: server-8-4
+      bandwidth: 40000
+    - source: server-9-1
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: server-9-1
+      bandwidth: 40000
+    - source: server-9-2
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: server-9-2
+      bandwidth: 40000
+    - source: server-9-3
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: server-9-3
+      bandwidth: 40000
+    - source: server-9-4
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: server-9-4
+      bandwidth: 40000
+    - source: server-10-1
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: server-10-1
+      bandwidth: 40000
+    - source: server-10-2
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: server-10-2
+      bandwidth: 40000
+    - source: server-10-3
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: server-10-3
+      bandwidth: 40000
+    - source: server-10-4
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: server-10-4
+      bandwidth: 40000
+    - source: server-11-1
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: server-11-1
+      bandwidth: 40000
+    - source: server-11-2
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: server-11-2
+      bandwidth: 40000
+    - source: server-11-3
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: server-11-3
+      bandwidth: 40000
+    - source: server-11-4
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: server-11-4
+      bandwidth: 40000
+    - source: server-12-1
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: server-12-1
+      bandwidth: 40000
+    - source: server-12-2
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: server-12-2
+      bandwidth: 40000
+    - source: server-12-3
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: server-12-3
+      bandwidth: 40000
+    - source: server-12-4
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: server-12-4
+      bandwidth: 40000
+    - source: server-13-1
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: server-13-1
+      bandwidth: 40000
+    - source: server-13-2
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: server-13-2
+      bandwidth: 40000
+    - source: server-13-3
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: server-13-3
+      bandwidth: 40000
+    - source: server-13-4
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: server-13-4
+      bandwidth: 40000
+    - source: server-14-1
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-14
+      destination: server-14-1
+      bandwidth: 40000
+    - source: server-14-2
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-14
+      destination: server-14-2
+      bandwidth: 40000
+    - source: server-14-3
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-14
+      destination: server-14-3
+      bandwidth: 40000
+    - source: server-14-4
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-14
+      destination: server-14-4
+      bandwidth: 40000
+    - source: server-15-1
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-15
+      destination: server-15-1
+      bandwidth: 40000
+    - source: server-15-2
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-15
+      destination: server-15-2
+      bandwidth: 40000
+    - source: server-15-3
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-15
+      destination: server-15-3
+      bandwidth: 40000
+    - source: server-15-4
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-15
+      destination: server-15-4
+      bandwidth: 40000
+    - source: server-16-1
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: server-16-1
+      bandwidth: 40000
+    - source: server-16-2
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: server-16-2
+      bandwidth: 40000
+    - source: server-16-3
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: server-16-3
+      bandwidth: 40000
+    - source: server-16-4
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: server-16-4
+      bandwidth: 40000
+    - source: server-17-1
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: server-17-1
+      bandwidth: 40000
+    - source: server-17-2
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: server-17-2
+      bandwidth: 40000
+    - source: server-17-3
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: server-17-3
+      bandwidth: 40000
+    - source: server-17-4
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: server-17-4
+      bandwidth: 40000
+    - source: server-18-1
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-18
+      destination: server-18-1
+      bandwidth: 40000
+    - source: server-18-2
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-18
+      destination: server-18-2
+      bandwidth: 40000
+    - source: server-18-3
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-18
+      destination: server-18-3
+      bandwidth: 40000
+    - source: server-18-4
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-18
+      destination: server-18-4
+      bandwidth: 40000
+    - source: server-19-1
+      destination: switch-19
+      bandwidth: 40000
+    - source: switch-19
+      destination: server-19-1
+      bandwidth: 40000
+    - source: server-19-2
+      destination: switch-19
+      bandwidth: 40000
+    - source: switch-19
+      destination: server-19-2
+      bandwidth: 40000
+    - source: server-19-3
+      destination: switch-19
+      bandwidth: 40000
+    - source: switch-19
+      destination: server-19-3
+      bandwidth: 40000
+    - source: server-19-4
+      destination: switch-19
+      bandwidth: 40000
+    - source: switch-19
+      destination: server-19-4
+      bandwidth: 40000
+    - source: server-20-1
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-20
+      destination: server-20-1
+      bandwidth: 40000
+    - source: server-20-2
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-20
+      destination: server-20-2
+      bandwidth: 40000
+    - source: server-20-3
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-20
+      destination: server-20-3
+      bandwidth: 40000
+    - source: server-20-4
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-20
+      destination: server-20-4
+      bandwidth: 40000
+    - source: server-21-1
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-21
+      destination: server-21-1
+      bandwidth: 40000
+    - source: server-21-2
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-21
+      destination: server-21-2
+      bandwidth: 40000
+    - source: server-21-3
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-21
+      destination: server-21-3
+      bandwidth: 40000
+    - source: server-21-4
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-21
+      destination: server-21-4
+      bandwidth: 40000
+    - source: server-22-1
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: server-22-1
+      bandwidth: 40000
+    - source: server-22-2
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: server-22-2
+      bandwidth: 40000
+    - source: server-22-3
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: server-22-3
+      bandwidth: 40000
+    - source: server-22-4
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: server-22-4
+      bandwidth: 40000
+    - source: server-23-1
+      destination: switch-23
+      bandwidth: 40000
+    - source: switch-23
+      destination: server-23-1
+      bandwidth: 40000
+    - source: server-23-2
+      destination: switch-23
+      bandwidth: 40000
+    - source: switch-23
+      destination: server-23-2
+      bandwidth: 40000
+    - source: server-23-3
+      destination: switch-23
+      bandwidth: 40000
+    - source: switch-23
+      destination: server-23-3
+      bandwidth: 40000
+    - source: server-23-4
+      destination: switch-23
+      bandwidth: 40000
+    - source: switch-23
+      destination: server-23-4
+      bandwidth: 40000
+    - source: server-24-1
+      destination: switch-24
+      bandwidth: 40000
+    - source: switch-24
+      destination: server-24-1
+      bandwidth: 40000
+    - source: server-24-2
+      destination: switch-24
+      bandwidth: 40000
+    - source: switch-24
+      destination: server-24-2
+      bandwidth: 40000
+    - source: server-24-3
+      destination: switch-24
+      bandwidth: 40000
+    - source: switch-24
+      destination: server-24-3
+      bandwidth: 40000
+    - source: server-24-4
+      destination: switch-24
+      bandwidth: 40000
+    - source: switch-24
+      destination: server-24-4
+      bandwidth: 40000
+    - source: switch-1
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-2
+      destination: switch-1
+      bandwidth: 40000
+    - source: switch-1
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: switch-1
+      bandwidth: 40000
+    - source: switch-2
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-2
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: switch-2
+      bandwidth: 40000
+    - source: switch-3
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-4
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-3
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-5
+      destination: switch-3
+      bandwidth: 40000
+    - source: switch-4
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-5
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-4
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: switch-4
+      bandwidth: 40000
+    - source: switch-5
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-8
+      destination: switch-5
+      bandwidth: 40000
+    - source: switch-6
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-6
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: switch-6
+      bandwidth: 40000
+    - source: switch-7
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-7
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-8
+      destination: switch-7
+      bandwidth: 40000
+    - source: switch-8
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: switch-8
+      bandwidth: 40000
+    - source: switch-9
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-9
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: switch-9
+      bandwidth: 40000
+    - source: switch-10
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-10
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-14
+      destination: switch-10
+      bandwidth: 40000
+    - source: switch-11
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: switch-19
+      bandwidth: 40000
+    - source: switch-19
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-11
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-15
+      destination: switch-11
+      bandwidth: 40000
+    - source: switch-12
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-12
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: switch-12
+      bandwidth: 40000
+    - source: switch-13
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-14
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-13
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: switch-13
+      bandwidth: 40000
+    - source: switch-14
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-18
+      destination: switch-14
+      bandwidth: 40000
+    - source: switch-15
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-20
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-15
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: switch-15
+      bandwidth: 40000
+    - source: switch-16
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-21
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-16
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: switch-16
+      bandwidth: 40000
+    - source: switch-17
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: switch-23
+      bandwidth: 40000
+    - source: switch-23
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-17
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-18
+      destination: switch-17
+      bandwidth: 40000
+    - source: switch-18
+      destination: switch-24
+      bandwidth: 40000
+    - source: switch-24
+      destination: switch-18
+      bandwidth: 40000
+    - source: switch-19
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-20
+      destination: switch-19
+      bandwidth: 40000
+    - source: switch-20
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-21
+      destination: switch-20
+      bandwidth: 40000
+    - source: switch-21
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-22
+      destination: switch-21
+      bandwidth: 40000
+    - source: switch-22
+      destination: switch-23
+      bandwidth: 40000
+    - source: switch-23
+      destination: switch-22
+      bandwidth: 40000
+    - source: switch-23
+      destination: switch-24
+      bandwidth: 40000
+    - source: switch-24
+      destination: switch-23
+      bandwidth: 40000
