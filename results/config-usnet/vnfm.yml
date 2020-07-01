@@ -2,6 +2,6 @@
 ram: 4
 cores: 2
 capacity: 10
-radius: 100
+radius: 4
 bandwidth: 10
 licenseFee: 100
