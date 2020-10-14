@@ -8,3 +8,8 @@ solution faster.
 
 ## Results
 Here we use Jupyter Notebook to collect all results from the optimal and huristic solutions.
+
+## How to Run
+```sh
+python jsd_mp/main.py -ss rari -c config/
+```
