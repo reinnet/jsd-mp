@@ -42,7 +42,7 @@ def main(config, verbose, placement, solvers):
         print(f"Placement has profit: {solver.profit} and cost: {solver.cost}")
         print(
             f"{len(solver.solution)} has been placed"
-            " successfully from {len(cfg.chains)}"
+            f" successfully from {len(cfg.chains)}"
         )
 
 
