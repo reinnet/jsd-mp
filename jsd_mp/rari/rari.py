@@ -1,3 +1,8 @@
+import typing
+import random
+import math
+import itertools
+
 from bari import Bari
 from solver import Solver, Random
 from config import Config
@@ -6,26 +11,29 @@ from domain import (
     ManagementPlacement,
 )
 
-import typing
-import random
-import math
-import itertools
-
 
 class Rari(Solver):
     n_iter: int = 100
 
-    def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
-        placements: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
+    def _solve(
+        self,
+    ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+        placements: typing.List[
+            typing.Tuple[Placement, ManagementPlacement]
+        ] = []
 
         rnd_index = math.ceil(len(self.chains) / 2)
 
-        rnd = Random(Config({}, self.chains[:rnd_index], self.vnfm, self.topology))
+        rnd = Random(
+            Config({}, self.chains[:rnd_index], self.vnfm, self.topology)
+        )
         placements.extend(rnd.solve())
         for node, count in rnd.manage_by_node.items():
             self.manage_by_node[node] = count
 
-        self.logger.info("Random place %d chains of %d", len(placements), rnd_index)
+        self.logger.info(
+            "Random place %d chains of %d", len(placements), rnd_index
+        )
         placed_chains = [p.chain for (p, _) in placements]
 
         bari = Bari(
@@ -38,7 +46,9 @@ class Rari(Solver):
         )
         placements.extend(bari.solve())
         for node, count in bari.manage_by_node.items():
-            self.manage_by_node[node] = self.manage_by_node.get(node, 0) + count
+            self.manage_by_node[node] = (
+                self.manage_by_node.get(node, 0) + count
+            )
 
         self.logger.info(
             "Bari place %d chains of remaining %d",
