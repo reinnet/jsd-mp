@@ -6,7 +6,7 @@ kind: pipeline
 
 steps:
   - name: test
-    image: python
+    image: python:3.8
     commands:
       - pip install pipenv
       - pipenv install --dev -v
