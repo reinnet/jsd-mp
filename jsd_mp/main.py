@@ -30,7 +30,7 @@ def main(config, verbose, placement, solvers):
         start = time.time()
         solver.solve()
         end = time.time()
-        print(f"bari solution takes {end - start} seconds")
+        print(f"{name} solution takes {end - start} seconds")
 
         if placement is True:
             for (p, pm) in solver.solution:
