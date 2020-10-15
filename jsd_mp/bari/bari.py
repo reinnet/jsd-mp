@@ -112,7 +112,7 @@ class Bari(Solver):
         # place rest of the functions
         for i in range(1, len(chain.functions)):
 
-            def task(j: str):
+            def task(j: str, i: int):
                 min_cost = float("inf")
                 min_k = ""
 
@@ -146,7 +146,9 @@ class Bari(Solver):
                 )
                 pi[(i, j)] = pi[(i - 1, min_k)].copy().append(j, path)
 
-            for _ in self.executor.map(task, [j for j in self.topology.nodes]):
+            for _ in self.executor.map(
+                task, self.topology.nodes, [i for _ in self.topology.nodes]
+            ):
                 pass
 
         # find the minimum cost of placement
@@ -163,7 +165,10 @@ class Bari(Solver):
         return Placement(chain, min_placement.nodes, min_placement.links)
 
     def get_management_cost(
-        self, topology: Topology, manager: str, nodes: typing.List[str],
+        self,
+        topology: Topology,
+        manager: str,
+        nodes: typing.List[str],
     ) -> int:
         current = math.ceil(
             self.manage_by_node.get(manager, 0) / self.vnfm.capacity
