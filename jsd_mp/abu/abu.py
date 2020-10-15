@@ -13,6 +13,17 @@ from domain import (
 
 
 class Abu(Bari):
+    """
+    Abu implements the Mohammad Abu-Lebdeh (10.1109/TNSM.2017.2730199)
+    tabu search for placing the VNFMs.
+
+    Note that Abu-Lebdeh doesn't mention the VNF placement so we are using
+    the Bari solution here for placement.
+
+    If we doesn't provision any resources for VNFMs in the first place,
+    this can cause unfeasible solution.
+    """
+
     n_iter: int = 1000
 
     def _solve(

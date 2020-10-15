@@ -25,9 +25,9 @@ class Chain:
         self.fee: int = fee
         self.functions: typing.List[Type] = []
         # stores connections in adjacency list
-        self.connections: typing.Map(int, typing.List[int]) = {}
+        self.connections: typing.Dict[int, typing.List[int]] = {}
         # stores link information of source and destination
-        self.links: typing.Map(typing.Tuple(int, int), Link) = {}
+        self.links: typing.Dict[typing.Tuple[int, int], Link] = {}
 
     def add_function(self, function: Type):
         self.connections[len(self.functions)] = []
@@ -35,9 +35,13 @@ class Chain:
 
     def add_link(self, source: int, destination: int, link: Link):
         if source < 0 or source >= len(self.functions):
-            raise ValueError("source must be a valid index of a chain's function")
+            raise ValueError(
+                "source must be a valid index of a chain's function"
+            )
         if destination < 0 or destination >= len(self.functions):
-            raise ValueError("destination must be a valid index of a chain's function")
+            raise ValueError(
+                "destination must be a valid index of a chain's function"
+            )
         self.connections[source].append(destination)
         self.links[(source, destination)] = link
 

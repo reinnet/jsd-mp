@@ -1,6 +1,6 @@
 import os
-import yaml
 import typing
+import yaml
 
 from domain import Chain, Type, Direction, Link, VNFM, Topology, Node
 from .config import Config
@@ -9,10 +9,10 @@ from .config import Config
 def load(directory: str) -> Config:
     """
     load configuration files for:
-    - physical toplogy (topology.yml)
-    - chains (chains.yml)
-    - vnf types (types.yml)
-    - vnfm (vnfm.yml)
+    - physical toplogy (from topology.yml)
+    - chains (from chains.yml)
+    - vnf types (from types.yml)
+    - vnfm (from vnfm.yml)
     """
     types: typing.Dict[str, Type] = {}
     chains: typing.List[Chain] = []
@@ -91,6 +91,8 @@ def load(directory: str) -> Config:
             ),
         )
     for l in topology_yml["links"]:
-        topology.add_link(l["source"], l["destination"], Link(bandwidth=l["bandwidth"]))
+        topology.add_link(
+            l["source"], l["destination"], Link(bandwidth=l["bandwidth"])
+        )
 
     return Config(types, chains, vnfm, topology)
