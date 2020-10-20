@@ -16,7 +16,9 @@ class PartialPlacement(Placement):
         pass
 
     def append(
-        self, node: str, path: typing.Union[typing.List[typing.Tuple[str, str]], None]
+        self,
+        node: str,
+        path: typing.Union[typing.List[typing.Tuple[str, str]], None],
     ) -> PartialPlacement:
         self.nodes.append(node)
         if len(self.nodes) > 1 and path is not None:

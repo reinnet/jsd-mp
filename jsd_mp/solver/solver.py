@@ -4,8 +4,15 @@ import copy
 import math
 import logging
 
+from domain import (
+    Placement,
+    ManagementPlacement,
+    Topology,
+    Link,
+    Type,
+    Direction,
+)
 from config import Config
-from domain import Placement, ManagementPlacement, Topology, Link, Type, Direction
 
 
 class Solver(abc.ABC):
@@ -13,7 +20,7 @@ class Solver(abc.ABC):
     Solver solves the placement problem.
     Solver must consider all of the constraints and
     document its shortage or specific use cases.
-    Path have direction and management paths goes from manager to nodes.
+    Paths have direction and management paths goes from manager to nodes.
     """
 
     def __init__(self, config: Config):
@@ -25,13 +32,19 @@ class Solver(abc.ABC):
 
         self.manage_by_node: typing.Dict[str, int] = {}
         self.solved: bool = False
-        self.solution: typing.List[typing.Tuple[Placement, ManagementPlacement]] = []
+        self.solution: typing.List[
+            typing.Tuple[Placement, ManagementPlacement]
+        ] = []
 
     @abc.abstractmethod
-    def _solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+    def _solve(
+        self,
+    ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         pass
 
-    def solve(self) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
+    def solve(
+        self,
+    ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         """
         Solve the given JSD-MP problem return the placement
         """
@@ -47,7 +60,9 @@ class Solver(abc.ABC):
         """
         cost = 0
         for manager in self.topology.nodes:
-            cost += math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
+            cost += math.ceil(
+                self.manage_by_node.get(manager, 0) / self.vnfm.capacity
+            )
         return cost * self.vnfm.license_cost
 
     @property
@@ -61,13 +76,19 @@ class Solver(abc.ABC):
         return profit
 
     def is_management_resource_available(
-        self, topology: Topology, manager: str, nodes: typing.List[str],
+        self,
+        topology: Topology,
+        manager: str,
+        nodes: typing.List[str],
     ) -> bool:
         node = topology.nodes[manager]
 
-        current = math.ceil(self.manage_by_node.get(manager, 0) / self.vnfm.capacity)
+        current = math.ceil(
+            self.manage_by_node.get(manager, 0) / self.vnfm.capacity
+        )
         future = math.ceil(
-            (self.manage_by_node.get(manager, 0) + len(nodes)) / self.vnfm.capacity
+            (self.manage_by_node.get(manager, 0) + len(nodes))
+            / self.vnfm.capacity
         )
 
         if current < future:
@@ -76,7 +97,9 @@ class Solver(abc.ABC):
             if node.cores < self.vnfm.cores:
                 return False
 
-        r = topology.bfs(manager, self.vnfm.bandwidth, max_height=self.vnfm.radius)
+        r = topology.bfs(
+            manager, self.vnfm.bandwidth, max_height=self.vnfm.radius
+        )
 
         for node in nodes:
             for (destination, height) in r:
@@ -112,16 +135,24 @@ class Solver(abc.ABC):
             return False
 
         if fn.direction is Direction.INGRESS:
-            if node.direction is Direction.NONE or node.direction is Direction.EGRESS:
+            if (
+                node.direction is Direction.NONE
+                or node.direction is Direction.EGRESS
+            ):
                 return False
 
         if fn.direction is Direction.EGRESS:
-            if node.direction is Direction.NONE or node.direction is Direction.INGRESS:
+            if (
+                node.direction is Direction.NONE
+                or node.direction is Direction.INGRESS
+            ):
                 return False
 
         if previous != "" and link is not None:
             if (
-                topology.path(previous, current, link.bandwidth, max_height=radius)
+                topology.path(
+                    previous, current, link.bandwidth, max_height=radius
+                )
                 is None
             ):
                 return False
