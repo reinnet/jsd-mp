@@ -37,6 +37,16 @@ cp topology.yaml ../jsd-mp/config/topology.yml
 
 Please note that you must also consider to store these configuration for future re-runs.
 
+## [Chains](https://github.com/reinnet/chainer)
+
+We are going to place SFCs on our network and there is project that generate chains.
+The generated chains chains can be copied and used with this project as follow:
+
+```sh
+chainer -n 100
+cp chains.yaml ../jsd-mp/config/chains.yml
+```
+
 ## How to Run
 
 ```sh
