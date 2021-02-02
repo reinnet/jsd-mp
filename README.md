@@ -25,6 +25,18 @@ reserve_percentage
 
 Here we use Jupyter Notebook to collect all results from the optimal and heuristic solutions that you can find them at `/results`.
 
+## [Topologies](https://github.com/reinnet/topology)
+
+There are two topology that are considering here, fattree and usnet. There is another project that generate networks with these two topology.
+The generated configuration that must be copied and used with this project as follow:
+
+```sh
+topology fattree -k 4
+cp topology.yaml ../jsd-mp/config/topology.yml
+```
+
+Please note that you must also consider to store these configuration for future re-runs.
+
 ## How to Run
 
 ```sh
