@@ -7,7 +7,7 @@ provide them with VNFMs. This is a NP-Hard problem so here we implement some heu
 solution faster.
 
 ## Results
-Here we use Jupyter Notebook to collect all results from the optimal and huristic solutions.
+Here we use Jupyter Notebook to collect all results from the optimal and heuristic solutions.
 
 ## How to Run
 ```sh
