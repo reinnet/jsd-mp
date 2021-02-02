@@ -21,7 +21,8 @@ class Abu(Bari):
     the Bari solution here for placement.
 
     If we doesn't provision any resources for VNFMs in the first place,
-    this can cause unfeasible solution.
+    this can cause unfeasible solution so we are provisioning resources
+    at least one vnfm per node.
     """
 
     n_iter: int = 1000
