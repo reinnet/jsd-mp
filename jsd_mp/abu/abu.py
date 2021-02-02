@@ -26,12 +26,17 @@ class Abu(Bari):
     """
 
     n_iter: int = 1000
+    # the precentage of nodes that we are going to reseve VNFM resource
+    reserve_percentage: int = 100
 
     def _solve(
         self,
     ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
         placements: typing.List[typing.Tuple[Placement, None]] = []
 
+        self.logger.info(
+            "Reserving VNFM resources on %d nodes", self.reserve_percentage
+        )
         # we need to reserve resources on nodes for future VNFMs provisioning
         reserved_nodes: typing.List[str] = []
         for id, node in self.topology.nodes.items():
@@ -41,6 +46,8 @@ class Abu(Bari):
             ):
                 continue
             reserved_nodes.append(id)
+            if random.randint(0, 100) > self.reserve_percentage:
+                continue
             self.topology.update_node(
                 id,
                 Node(
