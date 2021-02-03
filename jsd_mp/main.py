@@ -46,7 +46,8 @@ from config import load
     "-r",
     default=1,
     type=int,
-    help="number of runs to have stronger results",
+    help="number of runs to have stronger "
+    "results if there is a randomness in solver",
 )
 def main(config, verbose, show_placement, solvers, runs):
     if verbose is True:
