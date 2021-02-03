@@ -26,7 +26,7 @@ class Abu(Bari):
     """
 
     n_iter: int = 1000
-    # the precentage of nodes that we are going to reseve VNFM resource
+    # the precentage of nodes that we are going to reserve VNFM resource on them
     reserve_percentage: int = 100
 
     def _solve(
