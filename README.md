@@ -14,7 +14,7 @@ Abu-Lebdeh describe a method based on tabu-search to improve VNFM placement on d
 In our work we are considering the VNF placement jointly with VNFM placement so we are going to change it to consider the placement and after that compare it with our method.
 In Abu-Lebdeh method there is no way to discard a chain so it can generate infeasible results so we are reserving resources for VNFM to prevent the infeasible situation.
 
-The following variables are available `./jsd_mp/abu` solution to configure it so you need to change them by hand and report them into results.
+The following variables are available `./jsd_mp/abu` solution to configure it so you need to change them by hand (with `--options`) and report them into results.
 
 ```python
 n_iter
