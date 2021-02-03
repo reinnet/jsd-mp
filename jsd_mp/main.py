@@ -41,7 +41,14 @@ from config import load
     help="the solver",
     type=click.Choice(["bari", "abu", "rari"]),
 )
-def main(config, verbose, show_placement, solvers):
+@click.option(
+    "--runs",
+    "-r",
+    default=1,
+    type=int,
+    help="number of runs to have stronger results",
+)
+def main(config, verbose, show_placement, solvers, runs):
     if verbose is True:
         logging.basicConfig(level=logging.INFO)
 
@@ -50,26 +57,32 @@ def main(config, verbose, show_placement, solvers):
     end = time.time()
     print(f"load configuration takes {end - start} seconds")
 
-    for name in solvers:
-        solver = getattr(__import__(name), name.title())(cfg)
+    for run in range(runs):
+        print()
+        print(f"{' run {} '.format(run + 1):*^50}")
+        print()
+        for name in solvers:
+            solver = getattr(__import__(name), name.title())(cfg)
 
-        start = time.time()
-        solver.solve()
-        end = time.time()
-        print(f"{name} solution takes {end - start} seconds")
+            start = time.time()
+            solver.solve()
+            end = time.time()
+            print(f"{name} solution takes {end - start} seconds")
 
-        if show_placement is True:
-            for (placement, manager_placement) in solver.solution:
-                print(f"{placement.chain.name:=^25}")
-                print(placement)
-                print(manager_placement)
-            print()
+            if show_placement is True:
+                for (placement, manager_placement) in solver.solution:
+                    print(f"{placement.chain.name:=^25}")
+                    print(placement)
+                    print(manager_placement)
+                print()
 
-        print(f"Placement has profit: {solver.profit} and cost: {solver.cost}")
-        print(
-            f"{len(solver.solution)} has been placed"
-            f" successfully from {len(cfg.chains)}"
-        )
+            print(
+                f"Placement has profit: {solver.profit} and cost: {solver.cost}"
+            )
+            print(
+                f"{len(solver.solution)} has been placed"
+                f" successfully from {len(cfg.chains)}"
+            )
 
 
 if __name__ == "__main__":
@@ -82,7 +95,8 @@ if __name__ == "__main__":
 ║╚╝║║╚═╝║╔╝╚╝║╚═══╝║║║║║║║║
 ╚══╝╚═══╝╚═══╝     ╚╝╚╝╚╝╚╝
 
-Author: @1995parham (M.Sc. Thesis Summer 2019)
+Joint Service Deployment - Manager Placement
+Author: @1995parham (M.Sc. Thesis Summer 2019) with @bahador-bakhshi
             """
     )
     main()
