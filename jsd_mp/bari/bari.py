@@ -23,6 +23,10 @@ class Bari(Solver):
 
     This algorithm minimize the cost functions based on DP (Viterbi algorithm)
     in a multi-stage graph. This graph provide feasible nodes in each stage.
+    For each node in a chain it calculate costs and has a stage besides it has
+    a stage for VNFM placement.
+
+    The Bari placement of VNFs is useful in other algorithms.
     """
 
     executor = ThreadPoolExecutor(max_workers=100)
