@@ -130,3 +130,6 @@ ipython_config.py
 
 # jsd-mp configuration
 config/
+
+# neovim coc configuration
+.vim
