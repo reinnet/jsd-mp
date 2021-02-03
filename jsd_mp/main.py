@@ -49,7 +49,10 @@ from config import load
     help="number of runs to have stronger "
     "results if there is a randomness in solver",
 )
-def main(config, verbose, show_placement, solvers, runs):
+@click.option(
+    "--options", type=(str, int), help="solver options", multiple=True
+)
+def main(config, verbose, show_placement, solvers, runs, options):
     if verbose is True:
         logging.basicConfig(level=logging.INFO)
 
@@ -63,7 +66,15 @@ def main(config, verbose, show_placement, solvers, runs):
         print(f"{' run {} '.format(run + 1):*^50}")
         print()
         for name in solvers:
+            # import solver based on given name, for example in case of bari
+            # we import Bari from bari package.
             solver = getattr(__import__(name), name.title())(cfg)
+
+            # pass options to the solver.
+            # please note that these options are class propeties
+            # on solver.
+            for option, value in options:
+                setattr(solver, option, value)
 
             start = time.time()
             solver.solve()

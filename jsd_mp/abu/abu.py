@@ -26,7 +26,8 @@ class Abu(Bari):
     """
 
     n_iter: int = 1000
-    # the precentage of nodes that we are going to reserve VNFM resource on them
+    # the precentage of nodes that we are
+    # going to reserve VNFM resource on them
     reserve_percentage: int = 100
 
     def _solve(
@@ -35,7 +36,7 @@ class Abu(Bari):
         placements: typing.List[typing.Tuple[Placement, None]] = []
 
         self.logger.info(
-            "Reserving VNFM resources on %d nodes", self.reserve_percentage
+            "Reserving VNFM resources on %d%% nodes", self.reserve_percentage
         )
         # we need to reserve resources on nodes for future VNFMs provisioning
         reserved_nodes: typing.List[str] = []
