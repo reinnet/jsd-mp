@@ -11,11 +11,37 @@ from config import load
 
 
 @click.command()
-@click.option("--config", "-c", required=True, type=click.Path(exists=True))
-@click.option("--verbose", "-v", default=False, is_flag=True)
-@click.option("--placement", "-p", default=False, is_flag=True)
-@click.option("--solvers", "-ss", multiple=True, default=["bari"])
-def main(config, verbose, placement, solvers):
+@click.option(
+    "--config",
+    "-c",
+    required=True,
+    type=click.Path(exists=True),
+    help="configuration folder",
+)
+@click.option(
+    "--verbose",
+    "-v",
+    default=False,
+    is_flag=True,
+    help="set the logging level to info",
+)
+@click.option(
+    "--placement",
+    "-p",
+    "show_placement",
+    default=False,
+    is_flag=True,
+    help="print the placement of VNFs and VNFMs",
+)
+@click.option(
+    "--solvers",
+    "-ss",
+    multiple=True,
+    default=["bari"],
+    help="the solver",
+    type=click.Choice(["bari", "abu", "rari"]),
+)
+def main(config, verbose, show_placement, solvers):
     if verbose is True:
         logging.basicConfig(level=logging.INFO)
 
@@ -32,11 +58,11 @@ def main(config, verbose, placement, solvers):
         end = time.time()
         print(f"{name} solution takes {end - start} seconds")
 
-        if placement is True:
-            for (p, pm) in solver.solution:
-                print(f"{p.chain.name:=^25}")
-                print(p)
-                print(pm)
+        if show_placement is True:
+            for (placement, manager_placement) in solver.solution:
+                print(f"{placement.chain.name:=^25}")
+                print(placement)
+                print(manager_placement)
             print()
 
         print(f"Placement has profit: {solver.profit} and cost: {solver.cost}")
