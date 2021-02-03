@@ -16,6 +16,15 @@ from domain import (
 
 
 class Bari(Solver):
+    """
+    The Bari algorithm is the modification
+    of Md. Faizul Bari (10.1109/TNSM.2016.2569020) algorithm
+    for the VNF placement that also place VNFMs.
+
+    This algorithm minimize the cost functions based on DP (Viterbi algorithm)
+    in a multi-stage graph. This graph provide feasible nodes in each stage.
+    """
+
     executor = ThreadPoolExecutor(max_workers=100)
 
     def _solve(
