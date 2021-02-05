@@ -101,9 +101,9 @@ class Solver(abc.ABC):
             manager, self.vnfm.bandwidth, max_height=self.vnfm.radius
         )
 
-        for node in nodes:
+        for _node in nodes:
             for (destination, height) in r:
-                if destination == node and height <= self.vnfm.radius:
+                if destination == _node and height <= self.vnfm.radius:
                     break
             else:
                 return False
