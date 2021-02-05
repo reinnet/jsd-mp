@@ -49,6 +49,14 @@ cp chains.yaml ../jsd-mp/config/chains.yml
 
 ## How to Run
 
+In the command line you can run jsd-mp with:
+
 ```sh
-python jsd_mp/main.py -ss rari -c config/
+python jsd_mp/main.py -ss rari -c config/ -r 10
+```
+
+but if you want to have its result in jupyter notebook then you must:
+
+```sh
+python -m ipykernel install --user --name=jsd-mp-krnl
 ```
