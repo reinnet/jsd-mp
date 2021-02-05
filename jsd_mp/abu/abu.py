@@ -46,9 +46,9 @@ class Abu(Bari):
                 or node.memory <= self.vnfm.memory
             ):
                 continue
-            reserved_nodes.append(id)
-            if random.randint(0, 100) > self.reserve_percentage:
+            if random.randint(1, 100) > self.reserve_percentage:
                 continue
+            reserved_nodes.append(id)
             self.topology.update_node(
                 id,
                 Node(
@@ -59,17 +59,19 @@ class Abu(Bari):
                 ),
             )
 
-        # place chains with Bari algorithm
+        # place chains with Bari algorithm.
+        # The Bari algorithm is the parent of Abu algorithm
+        # and we call its place method.
         for chain in self.chains:
             self.logger.info("Placement of %s started", chain.name)
 
-            p = self.place(chain)
-            if p is not None:
+            placement = self.place(chain)
+            if placement is not None:
                 self.logger.info(
                     "VNF Placement of %s was successful", chain.name
                 )
-                p.apply_on_topology(self.topology)
-                placements.append((p, None))
+                placement.apply_on_topology(self.topology)
+                placements.append((placement, None))
             else:
                 self.logger.info("VNF Placement of %s failed", chain.name)
 
