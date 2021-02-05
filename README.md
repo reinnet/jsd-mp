@@ -60,3 +60,5 @@ but if you want to have its result in jupyter notebook then you must:
 ```sh
 python -m ipykernel install --user --name=jsd-mp-krnl
 ```
+
+In your notebook, Kernel -> Change Kernel. Your kernel should now be an option.
