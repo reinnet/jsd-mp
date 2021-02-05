@@ -107,6 +107,10 @@ class Bari(Solver):
         return ManagementPlacement(chain, self.vnfm, min_node, paths)
 
     def place(self, chain: Chain) -> typing.Union[Placement, None]:
+        """
+        place VNF on `self.topology` but it doesn't update the topology
+        and you need to apply it later.
+        """
         # cost represents the cumulative cost of placing the i-th function
         # on the node j. The cost is updated on each step of chain placement.
         cost: typing.Dict[typing.Tuple[int, str], int] = {}

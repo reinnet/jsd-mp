@@ -23,9 +23,13 @@ class Link:
 
 
 class Topology:
+    """
+    Topology class handles the topology with some helpers
+    """
+
     def __init__(self):
         # stores nodes with their name
-        self.nodes: typing.Map[str, Node] = {}
+        self.nodes: typing.Dict[str, Node] = {}
         # stores connections in adjacency list
         self.connections: typing.Dict[str, typing.List[str]] = {}
         # stores link information of source and destination
@@ -42,15 +46,25 @@ class Topology:
         self.connections[name] = []
 
     def update_node(self, name: str, node: Node):
+        """
+        Based on given name updates the node with the given node
+        if it exists and inserts it if it doesn't
+        """
         if name not in self.nodes:
-            return self.add_node(name, node)
+            self.add_node(name, node)
+            return
         self.nodes[name] = node
 
     def update_link(self, source: str, destination: str, link: Link):
+        """
+        Based on given source and destination updates the link with given link,
+        if it doesn't exist inserts it.
+        """
         if source not in self.nodes or destination not in self.nodes:
             raise ValueError("source and destination must be valid nodes")
         if (source, destination) not in self.links:
-            return self.add_link(source, destination, link)
+            self.add_link(source, destination, link)
+            return
         self.links[(source, destination)] = link
 
     def add_link(self, source: str, destination: str, link: Link):
@@ -72,9 +86,9 @@ class Topology:
         if source not in self.nodes or destination not in self.nodes:
             raise ValueError("source must be valid nodes")
 
-        q: typing.List[typing.Tuple[str, typing.List[typing.Tuple[str, str]]]] = [
-            (source, [])
-        ]
+        q: typing.List[
+            typing.Tuple[str, typing.List[typing.Tuple[str, str]]]
+        ] = [(source, [])]
         see: typing.Set[str] = set()
 
         while len(q) != 0:
@@ -90,7 +104,8 @@ class Topology:
             for adj in self.connections[root[0]]:
                 if (
                     adj not in see
-                    and self.links[(root[0], adj)].bandwidth >= required_bandwidth
+                    and self.links[(root[0], adj)].bandwidth
+                    >= required_bandwidth
                 ):
                     path = root[1].copy()
                     path.append((root[0], adj))
@@ -99,7 +114,10 @@ class Topology:
         return None
 
     def bfs(
-        self, source: str, required_bandwidth: int, max_height: int = -1,
+        self,
+        source: str,
+        required_bandwidth: int,
+        max_height: int = -1,
     ) -> typing.List[typing.Tuple[str, int]]:
         """
         Run BFS from a given source and return its reachable nodes.
@@ -126,7 +144,8 @@ class Topology:
             for adj in self.connections[root[0]]:
                 if (
                     adj not in see
-                    and self.links[(root[0], adj)].bandwidth >= required_bandwidth
+                    and self.links[(root[0], adj)].bandwidth
+                    >= required_bandwidth
                 ):
                     q.append((adj, height + 1))
 

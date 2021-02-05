@@ -1,6 +1,3 @@
-"""
-random solver place chains with randomly.
-"""
 import typing
 import random
 import itertools
@@ -15,6 +12,10 @@ from .solver import Solver
 
 
 class Random(Solver):
+    """
+    Random solver place chains randomly by just considering the constraints.
+    """
+
     def _solve(
         self,
     ) -> typing.List[typing.Tuple[Placement, ManagementPlacement]]:
@@ -27,6 +28,8 @@ class Random(Solver):
             pp = PartialPlacement(chain)
 
             for i, function in enumerate(chain.functions):
+                # find available candidates based on problem constraints
+                # to make our random solver to perform better.
                 candidates = [
                     name
                     for (name, node) in topology.nodes.items()
@@ -66,6 +69,7 @@ class Random(Solver):
                 else:
                     break
             else:
+                # here we have placed all chains' functions
                 management_node: str = random.choice(
                     [
                         name

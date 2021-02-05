@@ -1,4 +1,5 @@
-from .random import Random
+import random
+
 from domain import (
     Type,
     Node,
@@ -8,11 +9,42 @@ from domain import (
     VNFM,
 )
 from config import Config
-
-import random
+from .random import Random
 
 
 class TestRandomSolver:
+    def test_not_available_resources(self):
+        fw = Type("fw", 2, 2)
+
+        ch = Chain("ch-1", 100)
+
+        ch.add_function(fw)
+        ch.add_function(fw)
+        ch.add_function(fw)
+        ch.add_function(fw)
+
+        ch.add_link(0, 1, Link(10))
+        ch.add_link(1, 2, Link(10))
+        ch.add_link(2, 3, Link(10))
+
+        topo = Topology()
+        topo.add_node("s1", Node(2, 2))
+        topo.add_node("s2", Node(2, 2))
+        topo.add_node("s3", Node(2, 2))
+        topo.add_link("s1", "s2", Link(20))
+        topo.add_link("s2", "s1", Link(20))
+        topo.add_link("s3", "s1", Link(20))
+        topo.add_link("s3", "s2", Link(20))
+
+        vnfm = VNFM(2, 2, 2, 2, 2, 2)
+
+        cfg = Config(types={"fw": fw}, chains=[ch], topology=topo, vnfm=vnfm)
+
+        random.seed(a=1378)
+        pls = Random(cfg).solve()
+
+        assert len(pls) == 0
+
     def test_simple_chain(self):
         fw = Type("fw", 2, 2)
 
@@ -34,7 +66,7 @@ class TestRandomSolver:
 
         vnfm = VNFM(2, 2, 2, 2, 2, 2)
 
-        cfg = Config(types=[fw], chains=[ch], topology=topo, vnfm=vnfm)
+        cfg = Config(types={"fw": fw}, chains=[ch], topology=topo, vnfm=vnfm)
 
         random.seed(a=1378)
         pls = Random(cfg).solve()

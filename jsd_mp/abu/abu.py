@@ -39,8 +39,10 @@ class Abu(Bari):
             "Reserving VNFM resources on %d%% nodes", self.reserve_percentage
         )
         # we need to reserve resources on nodes for future VNFMs provisioning
+        # also we store the list of reserved node to put back their resources
+        # after VNF placement.
         reserved_nodes: typing.List[str] = []
-        for id, node in self.topology.nodes.items():
+        for _id, node in self.topology.nodes.items():
             if (
                 node.cores <= self.vnfm.cores
                 or node.memory <= self.vnfm.memory
@@ -48,9 +50,9 @@ class Abu(Bari):
                 continue
             if random.randint(1, 100) > self.reserve_percentage:
                 continue
-            reserved_nodes.append(id)
+            reserved_nodes.append(_id)
             self.topology.update_node(
-                id,
+                _id,
                 Node(
                     cores=node.cores - self.vnfm.cores,
                     memory=node.memory - self.vnfm.memory,
@@ -82,10 +84,10 @@ class Abu(Bari):
         ] = []
 
         # take the reserved resources back to provision the VNFMs
-        for id in reserved_nodes:
-            node = self.topology.nodes[id]
+        for _id in reserved_nodes:
+            node = self.topology.nodes[_id]
             self.topology.update_node(
-                id,
+                _id,
                 Node(
                     cores=node.cores + self.vnfm.cores,
                     memory=node.memory + self.vnfm.memory,
@@ -95,21 +97,27 @@ class Abu(Bari):
             )
 
         # find manager placement for each placed chain
-        for p, _ in placements:
-            mp = self.place_manager(p.chain, self.topology, p)
-            if mp is not None:
+        # to fill actual placements.
+        for placement, _ in placements:
+            manager_placement = self.place_manager(
+                placement.chain, self.topology, placement
+            )
+            if manager_placement is not None:
                 self.manage_by_node[
-                    mp.management_node
-                ] = self.manage_by_node.get(mp.management_node, 0) + sum(
-                    p.chain.manageable_functions
+                    manager_placement.management_node
+                ] = self.manage_by_node.get(
+                    manager_placement.management_node, 0
+                ) + sum(
+                    placement.chain.manageable_functions
                 )
 
-                mp.apply_on_topology(self.topology)
-                actual_placements.append((p, mp))
+                manager_placement.apply_on_topology(self.topology)
+                actual_placements.append((placement, manager_placement))
             else:
-                p.revert_on_topology(self.topology)
+                placement.revert_on_topology(self.topology)
 
         # in each iteration we try to improve the manager placement
+        # based on tabu search
         for _ in range(self.n_iter):
             current_cost = self.cost
 

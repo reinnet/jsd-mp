@@ -5,14 +5,20 @@ import itertools
 
 from bari import Bari
 from solver import Solver, Random
-from config import Config
 from domain import (
     Placement,
     ManagementPlacement,
 )
+from config import Config
 
 
 class Rari(Solver):
+    """
+    Rari is our Random Bari implementation. in this algorithm
+    we don't use bari for all of the chains but we use it on our
+    critical chains that aren't place with bari.
+    """
+
     n_iter: int = 100
 
     def _solve(
@@ -30,6 +36,9 @@ class Rari(Solver):
         placements.extend(rnd.solve())
         for node, count in rnd.manage_by_node.items():
             self.manage_by_node[node] = count
+        # please note that we need to update the topology
+        # after the random placement
+        self.topology = rnd.topology
 
         self.logger.info(
             "Random place %d chains of %d", len(placements), rnd_index
