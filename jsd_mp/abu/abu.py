@@ -98,6 +98,9 @@ class Abu(Bari):
 
         # find manager placement for each placed chain
         # to fill actual placements.
+        # actual placements contains placement and manager placement.
+        # if we cannot find the manager placement we are going
+        # to revert its placement.
         for placement, _ in placements:
             manager_placement = self.place_manager(
                 placement.chain, self.topology, placement
@@ -181,30 +184,38 @@ class Abu(Bari):
     def place_manager(
         self, chain: Chain, topology: Topology, placement: Placement
     ) -> typing.Union[ManagementPlacement, None]:
+        """
+        selects manager from the chain's node then reserves bandwidth
+        for its connections
+        """
         node = ""
 
-        for n in set(
+        # returns list of the physical nodes that runs manageable functions.
+        # managable functions needs manager and placement only contains
+        # the single chain placement.
+        # we select one of these nodes as chain manager.
+        for _node in set(
             itertools.compress(placement.nodes, chain.manageable_functions)
         ):
             if self.is_management_resource_available(
                 topology,
-                n,
+                _node,
                 list(
                     itertools.compress(
                         placement.nodes, chain.manageable_functions
                     )
                 ),
             ):
-                node = n
+                node = _node
                 break
         else:
             return None
 
         paths = []
-        for n in itertools.compress(
+        for _node in itertools.compress(
             placement.nodes, placement.chain.manageable_functions
         ):
-            path = topology.path(node, n, self.vnfm.bandwidth)
+            path = topology.path(node, _node, self.vnfm.bandwidth)
             if path is not None:
                 paths.append(path)
 
