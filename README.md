@@ -8,6 +8,13 @@ Here we want to solve the placement problem of Virtual Network Functions and in 
 provide them with VNFMs. This is a NP-Hard problem so here we implement some heuristics to make
 solution faster.
 
+Methods:
+
+- Optimal
+- MASREN
+- Abu (baed on nearset work but as is)
+- Optimized Abu (based on nearest work but with some moditifcation)
+
 ## Abu Method
 
 Abu-Lebdeh describe a method based on tabu-search to improve VNFM placement on datacenter that already has VNF placement.
