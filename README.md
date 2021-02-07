@@ -10,10 +10,10 @@ solution faster.
 
 Methods that we are going to use it at jsd-mp:
 
-- Optimal
-- MASMAN
-- Abu (baed on nearset work but without moditifcation)
-- Optimized Abu (based on nearest work but with some moditifcation to have fare comparation)
+- Optimal with CPLEX implemented at [jsd-mp.simulation](https://github.com/reinnet/jsd-mp.simulation)
+- MASMAN implemented as `rari` method
+- Abu implemented as `abu` method, baed on nearset work but without modification
+- Optimized Abu as `oabu` method, based on nearest work but with some modification to have fare comparation
 
 ## Abu Method
 
@@ -27,6 +27,11 @@ The following variables are available `./jsd_mp/abu` solution to configure it so
 n_iter
 reserve_percentage
 ```
+
+## Optimized Abu Method
+
+Abu-Lebdeh uses tabu-search to improve its VNFM placement but at this method it doesn't use consider our problem constraints,
+so here we are going to optimize it based on our constraints.
 
 ## Results
 
