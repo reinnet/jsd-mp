@@ -8,12 +8,12 @@ Here we want to solve the placement problem of Virtual Network Functions and in 
 provide them with VNFMs. This is a NP-Hard problem so here we implement some heuristics to make
 solution faster.
 
-Methods:
+Methods that we are going to use it at jsd-mp:
 
 - Optimal
-- MASREN
-- Abu (baed on nearset work but as is)
-- Optimized Abu (based on nearest work but with some moditifcation)
+- MASMAN
+- Abu (baed on nearset work but without moditifcation)
+- Optimized Abu (based on nearest work but with some moditifcation to have fare comparation)
 
 ## Abu Method
 
