@@ -5,8 +5,10 @@ Here you can run solvers of this package on your network requests.
 
 import logging
 import time
+from typing import List
 import click
 
+from result import Result, report_csv
 from config import load
 
 
@@ -61,6 +63,8 @@ def main(config, verbose, show_placement, solvers, runs, options):
     end = time.time()
     print(f"load configuration takes {end - start} seconds")
 
+    results: List[Result] = []
+
     for run in range(runs):
         print()
         print(f"{' run {} '.format(run + 1):*^50}")
@@ -95,6 +99,18 @@ def main(config, verbose, show_placement, solvers, runs, options):
                 f"{len(solver.solution)} has been placed"
                 f" successfully from {len(cfg.chains)}"
             )
+            results.append(
+                Result(
+                    run=run,
+                    solver=name,
+                    elapsed_time=end - start,
+                    profit=solver.profit,
+                    cost=solver.cost,
+                    number_of_chains=len(cfg.chains),
+                    number_of_placed_chains=len(solver.solution),
+                )
+            )
+    report_csv(results)
 
 
 if __name__ == "__main__":
