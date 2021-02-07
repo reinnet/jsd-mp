@@ -118,6 +118,10 @@ class Abu(Bari):
                 actual_placements.append((placement, manager_placement))
             else:
                 placement.revert_on_topology(self.topology)
+                self.logger.info(
+                    "the placement %s failed because of its manager",
+                    placement.chain.name,
+                )
 
         # in each iteration we try to improve the manager placement
         # based on tabu search
