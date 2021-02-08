@@ -124,22 +124,23 @@ class Abu(Bari):
                 )
 
         # in each iteration we try to improve the manager placement
-        # based on tabu search
+        # based on tabu search. in each iteration we do the following:
+        # - randomly switch chains between vnfms
         for _ in range(self.n_iter):
             current_cost = self.cost
 
             # randomly switch chains between vnfms
             index = random.randint(0, len(actual_placements) - 1)
             p, mp = actual_placements[index]
+
             # each node can be a manager if it has the required resources
+            # here we are going to choose a new vnfm for randomly
+            # selected chain
             vnfm = random.choice(
-                list(
-                    set(self.topology.nodes)
-                    - (set(mp.management_node) if mp is not None else set())
-                )
+                list(set(self.topology.nodes) - set(mp.management_node))
             )
 
-            # revert the current manager placement
+            # revert the current manager placement if it exists
             self.revert_management(mp)
 
             # find new manager placement
