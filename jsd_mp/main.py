@@ -41,7 +41,7 @@ from config import load
     multiple=True,
     default=["bari"],
     help="the solver",
-    type=click.Choice(["bari", "abu", "rari"]),
+    type=click.Choice(["bari", "abu", "rari", "oabu"]),
 )
 @click.option(
     "--runs",
