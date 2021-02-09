@@ -15,6 +15,15 @@ Methods that we are going to use it at jsd-mp:
 - Abu implemented as `abu` method, baed on nearset work but without modification
 - Optimized Abu as `oabu` method, based on nearest work but with some modification to have fare comparation
 
+In the jsd-mp problem some functions can be managened and there are the functions that need VNFM,
+so the following code snippet find these functions in a chain.
+
+```python
+itertools.compress(
+        placement.nodes, chain.manageable_functions
+)
+```
+
 ## Abu Method
 
 Abu-Lebdeh describe a method based on tabu-search to improve VNFM placement on datacenter that already has VNF placement.
