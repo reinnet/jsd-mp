@@ -67,7 +67,12 @@ class Bari(Solver):
     def place_manager(
         self, chain: Chain, topology: Topology, placement: Placement
     ) -> typing.Union[ManagementPlacement, None]:
+        """
+        Iterate over the all topology node and then select a manager
+        for given chain.
+        """
         min_cost = float("inf")
+        # min_node is a node that costs min_cost
         min_node = ""
 
         for node in topology.nodes:
@@ -80,7 +85,7 @@ class Bari(Solver):
                     )
                 ),
             ):
-                c = self.get_management_cost(
+                cost = self.get_management_cost(
                     topology,
                     node,
                     list(
@@ -89,8 +94,8 @@ class Bari(Solver):
                         )
                     ),
                 )
-                if min_cost > c:
-                    min_cost = c
+                if min_cost > cost:
+                    min_cost = cost
                     min_node = node
 
         if min_cost == float("inf"):
@@ -116,7 +121,8 @@ class Bari(Solver):
         cost: typing.Dict[typing.Tuple[int, str], int] = {}
         pi: typing.Dict[typing.Tuple[int, str], PartialPlacement] = {}
 
-        # place the ingress function
+        # place the ingress function, this placement is different from others
+        # because there is no previous node available.
         for n in self.topology.nodes:
             if self.is_resource_available(
                 self.topology, "", n, chain.functions[0], None
@@ -183,10 +189,15 @@ class Bari(Solver):
 
     def get_management_cost(
         self,
-        topology: Topology,
+        _: Topology,
         manager: str,
         nodes: typing.List[str],
     ) -> int:
+        """
+        calculate the managemenet cost by selecting the given node as manager.
+        here we calculate the difference between current and future
+        cost to have this selection cost.
+        """
         current = math.ceil(
             self.manage_by_node.get(manager, 0) / self.vnfm.capacity
         )
