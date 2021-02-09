@@ -105,7 +105,7 @@ def main(config, verbose, show_placement, solvers, runs, options):
     results: List[Result] = []
     async_results = []
 
-    with Pool(8) as pool:
+    with Pool() as pool:
         for run in range(runs):
             for name in solvers:
                 async_result = pool.apply_async(
@@ -119,29 +119,33 @@ def main(config, verbose, show_placement, solvers, runs, options):
                 )
                 async_results.append(async_result)
 
-    for async_result in async_results:
-        result, solution = async_result.get()
+        for async_result in async_results:
+            result, solution = async_result.get()
 
-        print()
-        print(f"{' run {} '.format(result.run + 1):*^50}")
-        print()
-
-        print(f"{result.name} solution takes {result.elapsed_time} seconds")
-
-        if show_placement is True:
-            for (placement, manager_placement) in solution:
-                print(f"{placement.chain.name:=^25}")
-                print(placement)
-                print(manager_placement)
+            print()
+            print(f"{' run {} '.format(result.run + 1):*^50}")
             print()
 
-        print(f"Placement has profit: {result.profit} and cost: {result.cost}")
-        print(
-            f"{len(solution)} has been placed"
-            f" successfully from {len(cfg.chains)}"
-        )
+            print(
+                f"{result.name} solution takes {result.elapsed_time} seconds"
+            )
 
-        results.append(result)
+            if show_placement is True:
+                for (placement, manager_placement) in solution:
+                    print(f"{placement.chain.name:=^25}")
+                    print(placement)
+                    print(manager_placement)
+                print()
+
+            print(
+                f"Placement has profit: {result.profit} and cost: {result.cost}"
+            )
+            print(
+                f"{len(solution)} has been placed"
+                f" successfully from {len(cfg.chains)}"
+            )
+
+            results.append(result)
 
     report_csv(results)
 
