@@ -127,7 +127,7 @@ def main(config, verbose, show_placement, solvers, runs, options):
             print()
 
             print(
-                f"{result.name} solution takes {result.elapsed_time} seconds"
+                f"{result.solver} solution takes {result.elapsed_time} seconds"
             )
 
             if show_placement is True:
