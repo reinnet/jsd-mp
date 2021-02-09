@@ -30,7 +30,9 @@ class Solver(abc.ABC):
 
         self.logger: logging.Logger = logging.getLogger(__name__)
 
+        # number of the functions that are managed by an specific node
         self.manage_by_node: typing.Dict[str, int] = {}
+
         self.solved: bool = False
         self.solution: typing.List[
             typing.Tuple[Placement, ManagementPlacement]
@@ -91,6 +93,8 @@ class Solver(abc.ABC):
             / self.vnfm.capacity
         )
 
+        # if there is a need to placement additional vnfm
+        # we need to provision its resource
         if current < future:
             if node.memory < self.vnfm.memory:
                 return False
