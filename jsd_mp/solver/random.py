@@ -70,6 +70,7 @@ class Random(Solver):
                     break
             else:
                 # here we have placed all chains' functions
+                # let's place manager for the chain
                 management_node: str = random.choice(
                     [
                         name

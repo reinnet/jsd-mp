@@ -19,7 +19,7 @@ class Rari(Solver):
     critical chains that aren't place with bari.
     """
 
-    n_iter: int = 100
+    n_iter: int = 1000
 
     def _solve(
         self,
@@ -28,7 +28,7 @@ class Rari(Solver):
             typing.Tuple[Placement, ManagementPlacement]
         ] = []
 
-        rnd_index = math.ceil(len(self.chains) / 2)
+        rnd_index = math.ceil(len(self.chains) / 3)
 
         rnd = Random(
             Config({}, self.chains[:rnd_index], self.vnfm, self.topology)
