@@ -9,12 +9,18 @@ class Node:
     """
     Node represents a physical node in a data-center network. Nodes may
     have computation capacity.
+
+    not_manager_nodes contains the list of nodes that cannnot manage the
+    current node.
     """
 
     cores: int
     memory: int
     direction: Direction = Direction.NONE
     vnf_support: bool = True
+    not_manager_nodes: typing.List[str] = dataclasses.field(
+        default_factory=list
+    )
 
 
 @dataclasses.dataclass(frozen=True)
