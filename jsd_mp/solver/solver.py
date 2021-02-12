@@ -18,7 +18,7 @@ from config import Config
 class Solver(abc.ABC):
     """
     Solver solves the placement problem.
-    Solver must consider all of the constraints and
+    it must consider all of the constraints and
     document its shortage or specific use cases.
     Paths have direction and management paths goes from manager to nodes.
     """
@@ -110,6 +110,14 @@ class Solver(abc.ABC):
                 if destination == _node and height <= self.vnfm.radius:
                     break
             else:
+                return False
+
+        # check the not manager nodes constraints
+        # if the manager exists at least in the one the
+        # nodes' not_manager_nodes
+        # then it cannot manage the given chain.
+        for _node in nodes:
+            if manager in topology.nodes[_node].not_manager_nodes:
                 return False
         return True
 
