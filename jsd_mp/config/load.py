@@ -88,6 +88,7 @@ def load(directory: str) -> Config:
                 memory=n["ram"],
                 vnf_support=n["vnfSupport"],
                 direction=d,
+                not_manager_nodes=n["notManagerNodes"],
             ),
         )
     for l in topology_yml["links"]:

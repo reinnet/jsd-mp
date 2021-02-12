@@ -8,7 +8,7 @@ from domain import Chain, Type, VNFM, Topology
 class Config:
     """
     Configurations of JSD-MP problem.
-    These configurations try to be general as possible.
+    These configurations try to be as general as possible.
     """
 
     types: typing.Dict[str, Type]
