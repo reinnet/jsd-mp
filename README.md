@@ -24,6 +24,17 @@ itertools.compress(
 )
 ```
 
+Also we have the following configuration for our VNFM constraints as default:
+
+```yaml
+ram: 4
+cores: 2
+capacity: 10
+radius: 100
+bandwidth: 10
+licenseFee: 100
+```
+
 ## Abu Method
 
 Abu-Lebdeh describe a method based on tabu-search to improve VNFM placement on datacenter that already has VNF placement.
@@ -45,6 +56,7 @@ so here we are going to optimize it based on our constraints.
 ## Results
 
 Here we use Jupyter Notebook to collect all results from the optimal and heuristic solutions that you can find them at `/results`.
+After each run results are written into a `report.csv` that can be loaded into jupyter notebook.
 
 ## [Topologies](https://github.com/reinnet/topology)
 
