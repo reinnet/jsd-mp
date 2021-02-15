@@ -1,4 +1,5 @@
 import random
+from unittest.mock import patch
 
 from domain import (
     Type,
@@ -10,6 +11,107 @@ from domain import (
 )
 from config import Config
 from .random import Random
+from .solver import Solver
+
+
+class MockSolver(Solver):
+    def _solve(self):
+        return None
+
+
+class TestSolver:
+    def test_management_resource_availability_1(self):
+        topo = Topology()
+        topo.add_node("s1", Node(2, 2))
+        topo.add_node("s2", Node(2, 2))
+        topo.add_node("s3", Node(2, 2))
+        topo.add_link("s1", "s2", Link(20))
+        topo.add_link("s2", "s1", Link(20))
+        topo.add_link("s3", "s1", Link(20))
+        topo.add_link("s3", "s2", Link(20))
+
+        vnfm = VNFM(
+            cores=2,
+            radius=2,
+            memory=2,
+            bandwidth=2,
+            license_cost=2,
+            capacity=2,
+        )
+
+        cfg = Config(types={}, chains=[], topology=topo, vnfm=vnfm)
+
+        solver = MockSolver(cfg)
+        assert (
+            solver.is_management_resource_available(
+                topology=cfg.topology,
+                manager="s3",
+                nodes=["s1", "s2"],
+            )
+            is True
+        )
+
+    def test_management_resource_availability_2(self):
+        topo = Topology()
+        topo.add_node("s1", Node(2, 2))
+        topo.add_node("s2", Node(2, 2, not_manager_nodes=["s3"]))
+        topo.add_node("s3", Node(2, 2))
+        topo.add_link("s1", "s2", Link(20))
+        topo.add_link("s2", "s1", Link(20))
+        topo.add_link("s3", "s1", Link(20))
+        topo.add_link("s3", "s2", Link(20))
+
+        vnfm = VNFM(
+            cores=2,
+            radius=2,
+            memory=2,
+            bandwidth=2,
+            license_cost=2,
+            capacity=2,
+        )
+
+        cfg = Config(types={}, chains=[], topology=topo, vnfm=vnfm)
+
+        solver = MockSolver(cfg)
+        # reject with not_manager_nodes constraint
+        assert (
+            solver.is_management_resource_available(
+                topology=cfg.topology,
+                manager="s3",
+                nodes=["s1", "s2"],
+            )
+            is False
+        )
+
+    def test_management_resource_availability_3(self):
+        topo = Topology()
+        topo.add_node("s1", Node(2, 2))
+        topo.add_node("s2", Node(2, 2))
+        topo.add_node("s3", Node(2, 2))
+        topo.add_link("s1", "s2", Link(20))
+        topo.add_link("s2", "s3", Link(20))
+
+        vnfm = VNFM(
+            cores=2,
+            radius=1,
+            memory=2,
+            bandwidth=2,
+            license_cost=2,
+            capacity=2,
+        )
+
+        cfg = Config(types={}, chains=[], topology=topo, vnfm=vnfm)
+
+        # reject with radius
+        solver = MockSolver(cfg)
+        assert (
+            solver.is_management_resource_available(
+                topology=cfg.topology,
+                manager="s1",
+                nodes=["s2", "s3"],
+            )
+            is False
+        )
 
 
 class TestRandomSolver:
