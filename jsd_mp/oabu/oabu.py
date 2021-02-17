@@ -66,7 +66,7 @@ class Oabu(Abu):
                     )
                 )
                 if self.is_management_resource_available(
-                    self.topology,
+                    topology,
                     vnfm,
                     list(
                         itertools.compress(
