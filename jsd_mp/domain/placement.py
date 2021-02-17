@@ -1,9 +1,9 @@
+import typing
+import dataclasses
+
 from .nfv import Chain
 from .vnfm import VNFM
 from .topology import Topology, Link, Node
-
-import dataclasses
-import typing
 
 
 @dataclasses.dataclass(frozen=True)
@@ -39,6 +39,7 @@ class ManagementPlacement:
                 memory=node.memory - self.vnfm.memory,
                 direction=node.direction,
                 vnf_support=node.vnf_support,
+                not_manager_nodes=node.not_manager_nodes,
             ),
         )
 
@@ -59,6 +60,7 @@ class ManagementPlacement:
                 memory=node.memory + self.vnfm.memory,
                 direction=node.direction,
                 vnf_support=node.vnf_support,
+                not_manager_nodes=node.not_manager_nodes,
             ),
         )
 
@@ -76,7 +78,8 @@ class Placement:
     chain: Chain
     nodes: typing.List[str]
     links: typing.Dict[
-        typing.Tuple[int, int], typing.List[typing.Tuple[str, str]],
+        typing.Tuple[int, int],
+        typing.List[typing.Tuple[str, str]],
     ]
 
     def __post_init__(self):
@@ -84,14 +87,14 @@ class Placement:
             raise ValueError("Placement must place every node of the chain")
         for p in self.chain.links:
             if p not in self.links:
-                raise ValueError("Placement must place every link of the chain")
+                raise ValueError(
+                    "Placement must place every link of the chain"
+                )
 
     def __repr__(self):
         repr = ""
         for i, node in enumerate(self.nodes):
-            repr += (
-                f"funcion-{i} [{self.chain.functions[i].name}] is placed on {node}\n"
-            )
+            repr += f"funcion-{i} [{self.chain.functions[i].name}] is placed on {node}\n"
 
         for (from_function, to_function), path in self.links.items():
             repr += (
@@ -113,6 +116,7 @@ class Placement:
                     memory=node.memory - t.memory,
                     direction=node.direction,
                     vnf_support=node.vnf_support,
+                    not_manager_nodes=node.not_manager_nodes,
                 ),
             )
 
@@ -121,7 +125,9 @@ class Placement:
 
             for step in path:
                 topo.update_link(
-                    step[0], step[1], Link(topo.links[step].bandwidth - link.bandwidth)
+                    step[0],
+                    step[1],
+                    Link(topo.links[step].bandwidth - link.bandwidth),
                 )
 
     def revert_on_topology(self, topo: Topology):
@@ -135,6 +141,7 @@ class Placement:
                     memory=node.memory + t.memory,
                     direction=node.direction,
                     vnf_support=node.vnf_support,
+                    not_manager_nodes=node.not_manager_nodes,
                 ),
             )
 
@@ -143,5 +150,7 @@ class Placement:
 
             for step in path:
                 topo.update_link(
-                    step[0], step[1], Link(topo.links[step].bandwidth + link.bandwidth)
+                    step[0],
+                    step[1],
+                    Link(topo.links[step].bandwidth + link.bandwidth),
                 )

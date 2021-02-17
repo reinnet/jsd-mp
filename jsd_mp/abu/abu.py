@@ -58,6 +58,7 @@ class Abu(Bari):
                     memory=node.memory - self.vnfm.memory,
                     direction=node.direction,
                     vnf_support=node.vnf_support,
+                    not_manager_nodes=node.not_manager_nodes,
                 ),
             )
 
@@ -93,6 +94,7 @@ class Abu(Bari):
                     memory=node.memory + self.vnfm.memory,
                     direction=node.direction,
                     vnf_support=node.vnf_support,
+                    not_manager_nodes=node.not_manager_nodes,
                 ),
             )
 
