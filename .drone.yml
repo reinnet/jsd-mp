@@ -10,7 +10,7 @@ steps:
     commands:
       - pip install pipenv
       - pipenv install --dev -v
-      - pipenv run pytest -cov-report=xml:report.xml --cov=jsd_mp
+      - pipenv run pytest --cov-report=xml:report.xml --cov=jsd_mp
       - pipenv run mypy jsd_mp
   - name: coverage
     image: plugins/codecov
