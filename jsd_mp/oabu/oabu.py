@@ -57,7 +57,7 @@ class Oabu(Abu):
             for _ in range(self.n_iter):
                 vnfm = random.choice(
                     list(
-                        set(self.topology.nodes)
+                        set(topology.nodes)
                         - set(
                             itertools.compress(
                                 placement.nodes, chain.manageable_functions
