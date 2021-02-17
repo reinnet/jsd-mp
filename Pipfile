@@ -8,6 +8,7 @@ pytest = "*"
 mypy = "*"
 pylint = "*"
 ipykernel = "*"
+pytest-cov = "*"
 
 [packages]
 pyyaml = "*"
