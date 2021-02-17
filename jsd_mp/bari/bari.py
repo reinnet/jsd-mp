@@ -59,6 +59,11 @@ class Bari(Solver):
                     p.apply_on_topology(self.topology)
                     mp.apply_on_topology(self.topology)
                     placements.append((p, mp))
+                else:
+                    self.logger.info(
+                        "the placement %s failed because of its manager",
+                        chain.name,
+                    )
             else:
                 self.logger.info("VNF Placement of %s failed", chain.name)
 
