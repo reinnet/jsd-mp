@@ -1,6 +1,8 @@
 # Joint Service Deployment - Manager Placement
 
 [![Drone (cloud)](https://img.shields.io/drone/build/reinnet/jsd-mp.svg?style=flat-square&logo=drone)](https://cloud.drone.io/reinnet/jsd-mp)
+[![Codecov](https://img.shields.io/codecov/c/gh/reinnet/jsd-mp?logo=codecov&style=flat-square)](https://codecov.io/gh/reinnet/jsd-mp)
+
 
 ## Introduction
 
