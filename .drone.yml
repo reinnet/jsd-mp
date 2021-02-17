@@ -10,5 +10,12 @@ steps:
     commands:
       - pip install pipenv
       - pipenv install --dev -v
-      - pipenv run pytest
+      - pipenv run pytest -cov-report=xml --cov=jsd-mp
       - pipenv run mypy jsd_mp
+  - name: coverage
+    image: plugins/codecov
+    settings:
+      token:
+        from_secret: codecov_token
+      files:
+        - jsd-mp.xml
