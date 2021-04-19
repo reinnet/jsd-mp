@@ -13,6 +13,7 @@ pytest-cov = "*"
 [packages]
 pyyaml = "*"
 click = "*"
+pandas = "*"
 
 [requires]
 python_version = "3.8"
