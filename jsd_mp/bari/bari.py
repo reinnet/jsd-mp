@@ -2,6 +2,7 @@ import typing
 import copy
 import math
 import itertools
+import random
 from concurrent.futures import ThreadPoolExecutor
 
 from solver import Solver, PartialPlacement
@@ -159,10 +160,11 @@ class Bari(Solver):
                             chain.functions[i],
                             chain.links[(i - 1, i)],
                         )
-                        if min_cost > c:
+                        if min_cost > c or (
+                            min_cost == c and random.randint(0, 100) <= 50
+                        ):
                             min_cost = c
                             min_k = k
-                            break
 
                 if min_cost == float("inf"):
                     return
@@ -185,8 +187,11 @@ class Bari(Solver):
 
         for pair, c in cost.items():
             if len(pi[pair].nodes) == len(chain):
-                if min_cost > c:
+                if min_cost > c or (
+                    min_cost == c and random.randint(0, 100) <= 50
+                ):
                     min_placement = pi[pair]
+                    min_cost = c
 
         if min_placement is None:
             return None
@@ -220,4 +225,25 @@ class Bari(Solver):
         fn: Type,
         link: typing.Union[Link, None],
     ) -> int:
-        return 0
+        previous_not_managers = set()
+        if previous != "":
+            previous_not_managers = set(
+                topology.nodes[previous].not_manager_nodes
+            )
+        current_not_managers = set(topology.nodes[current].not_manager_nodes)
+
+        path_length = 0
+        if previous != "" and link is not None:
+            # the placement currently applied on topology,
+            # so we find the path with zero bandwidth
+            path = topology.path(previous, current, 0)
+
+            if path is None:
+                path_length = int(float("inf"))
+            else:
+                path_length = len(path)
+
+        return (
+            len(current_not_managers | previous_not_managers)
+            + 2 ** path_length
+        )
