@@ -110,6 +110,9 @@ class Solver(abc.ABC):
                 if destination == _node and height <= self.vnfm.radius:
                     break
             else:
+                self.logger.info(
+                    "fail to use %s as a manager because of radius", manager
+                )
                 return False
 
         # check the not manager nodes constraints
@@ -118,6 +121,10 @@ class Solver(abc.ABC):
         # then it cannot manage the given chain.
         for _node in nodes:
             if manager in topology.nodes[_node].not_manager_nodes:
+                self.logger.info(
+                    "fail to use %s as a manager because of not_manager_nodes",
+                    manager,
+                )
                 return False
         return True
 
