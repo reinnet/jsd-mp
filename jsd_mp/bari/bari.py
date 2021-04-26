@@ -217,8 +217,8 @@ class Bari(Solver):
         )
         return future - current
 
-    @staticmethod
     def get_cost(
+        self,
         topology: Topology,
         previous: str,
         current: str,
@@ -243,7 +243,17 @@ class Bari(Solver):
             else:
                 path_length = len(path)
 
+        # consider penalty when there isn't enough resource for
+        # a vnfm on a node
+        penalty = 0
+        if (
+            topology.nodes[current].cores < self.vnfm.cores
+            or topology.nodes[current].memory < self.vnfm.memory
+        ):
+            penalty = 100
+
         return (
             len(current_not_managers | previous_not_managers)
-            + 2 ** path_length
+            + path_length
+            + penalty
         )
