@@ -225,6 +225,11 @@ class Bari(Solver):
         fn: Type,
         link: typing.Union[Link, None],
     ) -> int:
+        """
+        called in each iteration of viterbi algorithms to find a minimum cost
+        path. by considering the constraints in this function we can make
+        algorithm to respect these constraints.
+        """
         previous_not_managers = set()
         if previous != "":
             previous_not_managers = set(
