@@ -1,0 +1,4 @@
+run,profit,cost,number_of_placed_chains,number_of_chains,solver,elapsed_time
+0,10500,1100,21,130,bari,33347.955060720444
+1,11200,1200,23,130,bari,32984.1685025692
+2,16100,1800,32,130,bari,31586.10351920128
