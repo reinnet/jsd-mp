@@ -33,6 +33,13 @@ class Solver(abc.ABC):
         # number of the functions that are managed by an specific node
         self.manage_by_node: typing.Dict[str, int] = {}
 
+        # cache of structural (bandwidth-independent) shortest-path hop counts
+        # between node pairs. The topology's connections never change during a
+        # solve, so these are constant and worth memoizing across the hot loop.
+        self.struct_path_len: typing.Dict[
+            typing.Tuple[str, str], float
+        ] = {}
+
         self.solved: bool = False
         self.solution: typing.List[
             typing.Tuple[Placement, ManagementPlacement]

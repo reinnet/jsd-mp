@@ -141,20 +141,33 @@ class Bari(Solver):
         # place rest of the functions
         for i in range(1, len(chain.functions)):
 
+            # The partial placement of step i-1 applied on the topology depends
+            # only on the previous node k, not on the current target j. Compute
+            # it once per candidate k and reuse it (read-only) across every j
+            # and both cost call-sites. This replaces the previous N*N*2
+            # full-topology deepcopies per function with just N, without
+            # changing the result. `apply_on_topology` deep-copies, so each
+            # `applied[k]` is an independent topology that callers only read.
+            applied: typing.Dict[str, Topology] = {
+                k: pi[(i - 1, k)].apply_on_topology(self.topology)
+                for k in self.topology.nodes
+                if (i - 1, k) in pi
+            }
+
             def task(j: str, i: int):
                 min_cost = float("inf")
                 min_k = ""
 
-                for k in self.topology.nodes:
-                    if (i - 1, k) in pi and self.is_resource_available(
-                        pi[(i - 1, k)].apply_on_topology(self.topology),
+                for k, topo_k in applied.items():
+                    if self.is_resource_available(
+                        topo_k,
                         k,
                         j,
                         chain.functions[i],
                         chain.links[(i - 1, i)],
                     ):
                         c = self.get_cost(
-                            pi[(i - 1, k)].apply_on_topology(self.topology),
+                            topo_k,
                             k,
                             j,
                             chain.functions[i],
@@ -169,10 +182,8 @@ class Bari(Solver):
                 if min_cost == float("inf"):
                     return
                 cost[(i, j)] = int(min_cost)
-                path = (
-                    pi[(i - 1, min_k)]
-                    .apply_on_topology(self.topology)
-                    .path(min_k, j, chain.links[(i - 1, i)].bandwidth)
+                path = applied[min_k].path(
+                    min_k, j, chain.links[(i - 1, i)].bandwidth
                 )
                 pi[(i, j)] = pi[(i - 1, min_k)].copy().append(j, path)
 
@@ -239,14 +250,16 @@ class Bari(Solver):
 
         path_length = 0
         if previous != "" and link is not None:
-            # the placement currently applied on topology,
-            # so we find the path with zero bandwidth
-            path = topology.path(previous, current, 0)
-
-            if path is None:
-                path_length = int(float("inf"))
-            else:
-                path_length = len(path)
+            # the placement currently applied on topology, so we find the path
+            # with zero bandwidth -- i.e. a purely structural shortest path that
+            # does not depend on the applied placement, so it is cached per pair.
+            path_length = self.struct_path_len.get((previous, current))
+            if path_length is None:
+                path = topology.path(previous, current, 0)
+                path_length = (
+                    int(float("inf")) if path is None else len(path)
+                )
+                self.struct_path_len[(previous, current)] = path_length
 
         # consider penalty when there isn't enough resource for
         # a vnfm on a node
