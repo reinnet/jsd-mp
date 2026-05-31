@@ -29,7 +29,10 @@ class PartialPlacement(Placement):
         return copy.deepcopy(self)
 
     def apply_on_topology(self, topology: Topology) -> Topology:
-        topo = copy.deepcopy(topology)
+        # light_copy (shallow dict copy) instead of deepcopy: callers only read
+        # the result, and super().apply_on_topology swaps dict entries for new
+        # frozen Node/Link objects rather than mutating the originals.
+        topo = topology.light_copy()
 
         super().apply_on_topology(topo)
 
