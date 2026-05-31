@@ -128,8 +128,16 @@ ipython_config.py
 
 # End of https://www.gitignore.io/api/jupyternotebooks
 
-# jsd-mp configuration
-config/
+# jsd-mp runtime configuration (root-level dir only, NOT the src/jsd_mp/config package)
+/config/
 
 # neovim coc configuration
 .vim
+
+# analysis virtualenv
+.analysis-venv/
+
+# generated outputs
+/report.csv
+/coverage.xml
+.coverage

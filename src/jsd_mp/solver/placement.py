@@ -1,0 +1,39 @@
+from __future__ import annotations
+
+import dataclasses
+import typing
+import copy
+
+from jsd_mp.domain import Topology, Chain, Placement
+
+
+@dataclasses.dataclass(frozen=True)
+class PartialPlacement(Placement):
+    def __init__(self, chain: Chain):
+        super().__init__(chain=chain, nodes=[], links={})
+
+    def __post_init__(self):
+        pass
+
+    def append(
+        self,
+        node: str,
+        path: typing.Union[typing.List[typing.Tuple[str, str]], None],
+    ) -> PartialPlacement:
+        self.nodes.append(node)
+        if len(self.nodes) > 1 and path is not None:
+            self.links[(len(self.nodes) - 2, len(self.nodes) - 1)] = path
+        return self
+
+    def copy(self) -> PartialPlacement:
+        return copy.deepcopy(self)
+
+    def apply_on_topology(self, topology: Topology) -> Topology:
+        # light_copy (shallow dict copy) instead of deepcopy: callers only read
+        # the result, and super().apply_on_topology swaps dict entries for new
+        # frozen Node/Link objects rather than mutating the originals.
+        topo = topology.light_copy()
+
+        super().apply_on_topology(topo)
+
+        return topo
