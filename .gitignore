@@ -133,3 +133,6 @@ config/
 
 # neovim coc configuration
 .vim
+
+# analysis virtualenv
+.analysis-venv/
