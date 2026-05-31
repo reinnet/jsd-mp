@@ -1,4 +1,5 @@
 import typing
+import collections
 import dataclasses
 
 from .direction import Direction
@@ -40,6 +41,23 @@ class Topology:
         self.connections: typing.Dict[str, typing.List[str]] = {}
         # stores link information of source and destination
         self.links: typing.Dict[typing.Tuple[str, str], Link] = {}
+
+    def light_copy(self) -> "Topology":
+        """
+        A cheap copy for resource bookkeeping during placement.
+
+        `Node` and `Link` are frozen, and the placement code only ever swaps
+        dict entries for new Node/Link objects (via update_node/update_link) --
+        it never mutates an existing one and never touches `connections`. So a
+        shallow copy of the three dicts is sufficient and leaves the original
+        untouched, while avoiding the very expensive deepcopy of every node,
+        link and adjacency list in the inner placement loop.
+        """
+        topo = Topology()
+        topo.nodes = dict(self.nodes)
+        topo.connections = self.connections
+        topo.links = dict(self.links)
+        return topo
 
     def add_node(self, name: str, node: Node):
         """
@@ -92,13 +110,15 @@ class Topology:
         if source not in self.nodes or destination not in self.nodes:
             raise ValueError("source must be valid nodes")
 
-        q: typing.List[
+        # deque for O(1) popleft (a plain list's pop(0) is O(n), making this
+        # BFS O(V^2)); FIFO order is unchanged, so the path returned is identical
+        q: typing.Deque[
             typing.Tuple[str, typing.List[typing.Tuple[str, str]]]
-        ] = [(source, [])]
+        ] = collections.deque([(source, [])])
         see: typing.Set[str] = set()
 
         while len(q) != 0:
-            root = q.pop(0)
+            root = q.popleft()
             see.add(root[0])
 
             if root[0] == destination:
