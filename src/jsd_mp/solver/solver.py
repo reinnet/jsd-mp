@@ -39,7 +39,7 @@ class Solver(abc.ABC):
         # between node pairs. The topology's connections never change during a
         # solve, so these are constant and worth memoizing across the hot loop.
         self.struct_path_len: typing.Dict[
-            typing.Tuple[str, str], float
+            typing.Tuple[str, str], int
         ] = {}
 
         self.solved: bool = False

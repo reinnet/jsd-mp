@@ -253,13 +253,12 @@ class Bari(Solver):
             # the placement currently applied on topology, so we find the path
             # with zero bandwidth -- i.e. a purely structural shortest path that
             # does not depend on the applied placement, so it is cached per pair.
-            path_length = self.struct_path_len.get((previous, current))
-            if path_length is None:
+            cached = self.struct_path_len.get((previous, current))
+            if cached is None:
                 path = topology.path(previous, current, 0)
-                path_length = (
-                    int(float("inf")) if path is None else len(path)
-                )
-                self.struct_path_len[(previous, current)] = path_length
+                cached = int(float("inf")) if path is None else len(path)
+                self.struct_path_len[(previous, current)] = cached
+            path_length = cached
 
         # consider penalty when there isn't enough resource for
         # a vnfm on a node
