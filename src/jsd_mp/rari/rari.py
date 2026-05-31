@@ -3,13 +3,13 @@ import random
 import math
 import itertools
 
-from bari import Bari
-from solver import Solver, Random
-from domain import (
+from jsd_mp.bari import Bari
+from jsd_mp.solver import Solver, Random
+from jsd_mp.domain import (
     Placement,
     ManagementPlacement,
 )
-from config import Config
+from jsd_mp.config import Config
 
 
 class Rari(Solver):
@@ -31,7 +31,9 @@ class Rari(Solver):
         rnd_index = math.ceil(len(self.chains) / 3)
 
         rnd = Random(
-            Config({}, self.chains[:rnd_index], self.vnfm, self.topology)
+            # mypy defers self.topology's type because it is reassigned from
+            # rnd.topology below; the inherited annotation makes this safe.
+            Config({}, self.chains[:rnd_index], self.vnfm, self.topology)  # type: ignore[has-type]
         )
         placements.extend(rnd.solve())
         for node, count in rnd.manage_by_node.items():

@@ -5,8 +5,8 @@ import itertools
 import random
 from concurrent.futures import ThreadPoolExecutor
 
-from solver import Solver, PartialPlacement
-from domain import (
+from jsd_mp.solver import Solver, PartialPlacement
+from jsd_mp.domain import (
     Placement,
     ManagementPlacement,
     Chain,

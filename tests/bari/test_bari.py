@@ -1,6 +1,6 @@
-from domain import Type, Node, Topology, Link, Chain, VNFM, Direction
-from config import Config
-from .bari import Bari
+from jsd_mp.domain import Type, Node, Topology, Link, Chain, VNFM, Direction
+from jsd_mp.config import Config
+from jsd_mp.bari import Bari
 
 
 class TestBari:

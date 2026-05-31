@@ -2,8 +2,8 @@ import random
 import itertools
 import typing
 
-from abu import Abu
-from domain import (
+from jsd_mp.abu import Abu
+from jsd_mp.domain import (
     Placement,
     ManagementPlacement,
     Chain,

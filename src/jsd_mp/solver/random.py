@@ -2,7 +2,7 @@ import typing
 import random
 import itertools
 
-from domain import (
+from jsd_mp.domain import (
     Placement,
     ManagementPlacement,
     Direction,

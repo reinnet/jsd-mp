@@ -1,7 +1,7 @@
 import random
 from unittest.mock import patch
 
-from domain import (
+from jsd_mp.domain import (
     Type,
     Node,
     Topology,
@@ -9,9 +9,9 @@ from domain import (
     Chain,
     VNFM,
 )
-from config import Config
-from .random import Random
-from .solver import Solver
+from jsd_mp.config import Config
+from jsd_mp.solver import Random
+from jsd_mp.solver import Solver
 
 
 class MockSolver(Solver):

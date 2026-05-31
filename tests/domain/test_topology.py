@@ -1,4 +1,4 @@
-from .topology import Topology, Node, Link
+from jsd_mp.domain import Topology, Node, Link
 
 import pytest
 import copy

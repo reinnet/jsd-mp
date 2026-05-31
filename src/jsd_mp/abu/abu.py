@@ -2,8 +2,8 @@ import typing
 import random
 import itertools
 
-from bari import Bari
-from domain import (
+from jsd_mp.bari import Bari
+from jsd_mp.domain import (
     Placement,
     ManagementPlacement,
     Chain,

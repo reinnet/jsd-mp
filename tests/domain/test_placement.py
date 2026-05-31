@@ -1,6 +1,6 @@
-from .placement import Placement
-from .nfv import Chain, Type
-from .topology import Link, Node, Topology
+from jsd_mp.domain import Placement
+from jsd_mp.domain import Chain, Type
+from jsd_mp.domain import Link, Node, Topology
 
 import pytest
 

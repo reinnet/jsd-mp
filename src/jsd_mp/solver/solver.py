@@ -4,7 +4,7 @@ import copy
 import math
 import logging
 
-from domain import (
+from jsd_mp.domain import (
     Placement,
     ManagementPlacement,
     Topology,
@@ -12,7 +12,7 @@ from domain import (
     Type,
     Direction,
 )
-from config import Config
+from jsd_mp.config import Config
 
 
 class Solver(abc.ABC):
@@ -26,7 +26,9 @@ class Solver(abc.ABC):
     def __init__(self, config: Config):
         self.chains = config.chains
         self.vnfm = config.vnfm
-        self.topology = copy.deepcopy(config.topology)
+        # explicit annotation: subclasses (e.g. Rari) reassign self.topology,
+        # which otherwise leaves mypy unable to infer the attribute's type.
+        self.topology: Topology = copy.deepcopy(config.topology)
 
         self.logger: logging.Logger = logging.getLogger(__name__)
 

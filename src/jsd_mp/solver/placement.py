@@ -4,7 +4,7 @@ import dataclasses
 import typing
 import copy
 
-from domain import Topology, Chain, Placement
+from jsd_mp.domain import Topology, Chain, Placement
 
 
 @dataclasses.dataclass(frozen=True)

@@ -1,4 +1,4 @@
-from .nfv import Chain, Type
+from jsd_mp.domain import Chain, Type
 
 import pytest
 import dataclasses

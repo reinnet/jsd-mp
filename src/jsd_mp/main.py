@@ -3,15 +3,16 @@ Entry point for JSD-MP (Joint Service Deployment - Manager Placement)
 Here you can run solvers of this package on your network requests.
 """
 
+import importlib
 import logging
 import time
 from typing import List, Tuple
 from multiprocessing import Pool
 import click
 
-from result import Result, report_csv
-from domain import Placement, ManagementPlacement
-from config import load, Config
+from jsd_mp.result import Result, report_csv
+from jsd_mp.domain import Placement, ManagementPlacement
+from jsd_mp.config import load, Config
 
 
 def execute(
@@ -24,8 +25,9 @@ def execute(
     Execute a solver run into isolated process to improve performance
     """
     # import solver based on given name, for example in case of bari
-    # we import Bari from bari package.
-    solver = getattr(__import__(name), name.title())(cfg)
+    # we import Bari from the jsd_mp.bari package.
+    module = importlib.import_module(f"jsd_mp.{name}")
+    solver = getattr(module, name.title())(cfg)
 
     # pass options to the solver.
     # please note that these options are class propeties
