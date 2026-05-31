@@ -37,7 +37,6 @@ Outputs (next to this file): sweep_constraint.{csv,png},
 sweep_capacity.{csv,png}, SWEEP.md
 """
 import os
-import sys
 import copy
 import random
 import argparse
@@ -50,11 +49,10 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-sys.path.insert(0, os.path.join(HERE, "..", "jsd_mp"))
-
-from config import load, Config  # noqa: E402
-from domain import Chain, Link, VNFM  # noqa: E402
-from bari import Bari  # noqa: E402
+# jsd_mp is installed as a package (uv sync); run via `uv run python ...`.
+from jsd_mp.config import load, Config
+from jsd_mp.domain import Chain, Link, VNFM
+from jsd_mp.bari import Bari
 
 MANAGEABLE = ["vFW", "vNAT", "vIDS", "vDPI"]
 CHAIN_FEE = 100

@@ -14,10 +14,9 @@ Two parts:
 ## Reproduce
 
 ```sh
-python3 -m venv .analysis-venv
-.analysis-venv/bin/pip install numpy pandas matplotlib scipy tabulate pyyaml click
-.analysis-venv/bin/python analysis/joint_vs_disjoint_corrected.py   # part 1 (instant)
-.analysis-venv/bin/python analysis/sensitivity_sweep.py             # part 2 (~80s)
+uv sync --group notebook
+uv run --group notebook python analysis/joint_vs_disjoint_corrected.py   # part 1 (instant)
+uv run --group notebook python analysis/sensitivity_sweep.py             # part 2 (~80s)
 ```
 
 ## Outputs

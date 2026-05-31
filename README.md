@@ -1,6 +1,6 @@
 # Joint Service Deployment - Manager Placement
 
-[![Drone (cloud)](https://img.shields.io/drone/build/reinnet/jsd-mp.svg?style=flat-square&logo=drone)](https://cloud.drone.io/reinnet/jsd-mp)
+[![CI](https://github.com/reinnet/jsd-mp/actions/workflows/ci.yml/badge.svg)](https://github.com/reinnet/jsd-mp/actions/workflows/ci.yml)
 [![Codecov](https://img.shields.io/codecov/c/gh/reinnet/jsd-mp?logo=codecov&style=flat-square)](https://codecov.io/gh/reinnet/jsd-mp)
 
 
@@ -84,16 +84,32 @@ cp chains.yaml ../jsd-mp/config/chains.yml
 
 ## How to Run
 
-In the command line you can run jsd-mp with:
+This project is managed with [uv](https://docs.astral.sh/uv/). Install the
+dependencies (and the `jsd-mp` package itself) with:
 
 ```sh
-python jsd_mp/main.py -ss rari -c config/ -r 10
+uv sync
 ```
 
-but if you want to have its result in jupyter notebook then you must:
+Then run a solver via the `jsd-mp` console entry point:
 
 ```sh
-python -m ipykernel install --user --name=jsd-mp-krnl
+uv run jsd-mp -ss rari -c config/ -r 10
+```
+
+Run the test suite and type checker with:
+
+```sh
+uv run pytest
+uv run mypy
+```
+
+The Jupyter notebooks and the `analysis/` scripts need the extra `notebook`
+dependency group:
+
+```sh
+uv sync --group notebook
+uv run --group notebook python -m ipykernel install --user --name=jsd-mp-krnl
 ```
 
 In your notebook, Kernel -> Change Kernel. Your kernel should now be an option.
