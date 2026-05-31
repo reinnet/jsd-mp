@@ -136,3 +136,8 @@ config/
 
 # analysis virtualenv
 .analysis-venv/
+
+# generated outputs
+/report.csv
+/coverage.xml
+.coverage
