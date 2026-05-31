@@ -1,7 +1,6 @@
 # Joint Service Deployment - Manager Placement
 
 [![CI](https://github.com/reinnet/jsd-mp/actions/workflows/ci.yml/badge.svg)](https://github.com/reinnet/jsd-mp/actions/workflows/ci.yml)
-[![Codecov](https://img.shields.io/codecov/c/gh/reinnet/jsd-mp?logo=codecov&style=flat-square)](https://codecov.io/gh/reinnet/jsd-mp)
 
 
 ## Introduction
