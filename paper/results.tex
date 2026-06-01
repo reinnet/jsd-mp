@@ -1,3 +1,75 @@
+\subsection{Heuristic vs. the Exact Solver}\label{sec:heuristic-vs-optimal}
+
+We implemented the ILP of Section~\ref{sec:formulation} in IBM CPLEX and use it
+both as the optimal baseline and to expose why a heuristic is needed. Two
+properties matter: the exact solver does not scale, and MASMAN stays close to its
+optimum where it does.
+
+\textbf{Scalability.} Table~\ref{tbl:exact-runtime-topology} reports the optimal
+solve time as the fat-tree degree grows, for a fixed load of 8 chains: it rises
+from 4~s at \(k = 6\) to 5~min~20~s at \(k = 12\). Fixing the topology at a
+12-ary fat tree and increasing the load instead
+(Table~\ref{tbl:exact-runtime-chains}), the solve time grows from 5~min~20~s at 8
+chains to 16~min~33~s at 11 chains, and exhausts the 12~GB heap (out-of-memory) at
+12 chains. The exact solver is therefore confined to small instances, whereas the
+heuristic places hundreds of chains (Section~\ref{sec:joint-vs-disjoint}). These
+runtimes were measured on 4~vCPUs with 16~GB of RAM and a 12~GB heap, with no
+constraint on the VNFM license fee.
+
+\begin{table}[H]
+\caption{Optimal solve time vs. fat-tree degree \(k\) (8 chains).}
+\label{tbl:exact-runtime-topology}
+\begin{tabularx}{0.6\textwidth}{Xr}
+\toprule
+\textbf{\(k\)-ary fat tree} & \textbf{Time} \\
+\midrule
+6 & 4 s \\
+8 & 7 s \\
+10 & 1 min \\
+12 & 5 min 20 s \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{table}[H]
+\caption{Optimal solve time vs. number of chains (12-ary fat tree, 4~vCPU /
+16~GB).}
+\label{tbl:exact-runtime-chains}
+\begin{tabularx}{0.6\textwidth}{Xr}
+\toprule
+\textbf{Chains} & \textbf{Time} \\
+\midrule
+8 & 5 min 20 s \\
+10 & 7 min 6 s \\
+11 & 16 min 33 s \\
+12 & out of memory \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\textbf{Near-optimality.} On instances the exact solver can handle, we report the
+heuristic revenue as a proportion of the optimal revenue
+(Table~\ref{tbl:near-optimal}), for 100 chains of length 5--7 at two per-instance
+revenue ranges. The management-aware VNF placement reaches 81\% of optimal and the
+full method (with Tabu VNFM consolidation) reaches 82\%, against 61\% for the
+unmodified Bari~\cite{Bari2015} baseline. The advantage widens as the per-instance
+revenue grows, i.e. as accepting each chain becomes more valuable relative to the
+VNFM license cost.
+
+\begin{table}[H]
+\caption{Heuristic revenue as a percentage of the optimal revenue (100 chains,
+length 5--7).}
+\label{tbl:near-optimal}
+\begin{tabularx}{\textwidth}{Xrrr}
+\toprule
+\textbf{Revenue per instance} & \textbf{Bari~\cite{Bari2015}} & \textbf{MASMAN (VNF phase)} & \textbf{MASMAN (full)} \\
+\midrule
+10--20 & 60\% & 65\% & 68\% \\
+15--25 & 61\% & 81\% & 82\% \\
+\bottomrule
+\end{tabularx}
+\end{table}
+
 \subsection{Joint vs. Disjoint}\label{sec:joint-vs-disjoint}
 
 We compare the \emph{joint} solution (placing VNFs and their VNFM together)
