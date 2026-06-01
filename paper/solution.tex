@@ -1,0 +1,87 @@
+We have formulated the JSD-MP problem in ILP and its optimal solution is NP-Hard so it takes a long time to solve and data centers need a faster way for their placement.
+In this section we represent a way to have a near-optimal solution in polynomial time for deciding quickly on SFC request with management resources and it can be used at large datacenters with many nodes and requests.
+
+\subsection{Maximizing the Accepted SFC Requests with Management Constraints (MASMAN)}
+As we mentioned before JSD-MP problem consists of placing chains that each chain placmenet includes two parts which are VNF placement, that means placing chain's VNFs, and VFNM placement, which means placing the chain VNFM, that we formulate them together.
+For each chain we divide the placement into two different phase that are solved using different algorithms but for considering the managers we are going the reserve at least one VNFM resource on each physical node before the placement phase.
+The first phase is the VNF placement phase that we are solve it with Bari \cite{Bari2015} algorithm.
+This algorithm is an efficient dynamic programming algorithm based on Veterbi algorithm for SFC placement that can be used here but it doesn't consider the management resources so we need to tweak it.
+\cite{Bari2015} algorithm for each chain solves a Dynamic Programming problem that finds the minimum cost path for the chain in a multi-stage graph.
+It decides each node location with its previous one to minimize the cost variable because it believs a minimum cost path consists of minimum cost sub-paths.
+Each stage in the graph is a one network function that needs a placement and graph nodes are the candidates. Each link is illustrated with edges between stages in this graph.
+At the end, we used Tabu Search for improving the VNFM placement. By improving we mean merging VNFMs to reduce the license cost. In tabu search we randomly select two physical nodes to merge them and also update the tabu table to not check them again at the end if this merge is fasible we wil update the min cost and continue the iteration.
+
+\begin{algorithm}
+  \caption{MASMAN Algorithm - 1}
+  \label{alg:masman}
+  \begin{algorithmic}[1]
+    \Require{$chains, topoloy$}
+    \Function{masman\_placement}{$chains, topology$}
+    \ForAll{$chain \in chains$}
+      \For{$i \gets 1, len(chain)$}\Comment{length of a chain is its number of VNFs}
+        \If{$i == 0$}\Comment{special treatment for the first chain because it doesn't have any predecessor}
+          \ForAll{$n \in topology.nodes$}
+            \If{$hasEnoughResource(n)$}
+              \State{$cost[(0, n)] \gets cost(n)$}
+            \EndIf
+          \EndFor
+        \Else
+          \ForAll{$n \in topology.nodes$}
+            \ForAll{$k \in topology.nodes$}
+              \If{$hasEnoughResourceOnState(i - 1, k, n)$}\Comment{decide on cost based on previous node}
+                \State{$cost \gets costOnState(i - 1, k, n)$}
+                \If{$cost \le min$}
+                  \State{$min = cost$}
+                \EndIf
+              \EndIf
+            \EndFor
+            \State{$cost[(i, n)] \gets min$}
+          \EndFor
+        \EndIf
+      \EndFor
+    \EndFor
+    \EndFunction
+    \algstore{masman}
+  \end{algorithmic}
+\end{algorithm}
+\begin{algorithm}
+  \caption{MASMAN Algorithm - 2}
+  \begin{algorithmic}[1]
+    \algrestore{masman}
+    \Function{masman\_manager\_placement}{$chains, topology$}
+    \ForAll{$chain \in chains$}
+      \ForAll{$n \in topology.nodes$}
+        \If{$canBeManager(chain, n)$}\Comment{node n must have connections to all chain's nodes besides required resources}
+          \State{$chain.manager = n$}
+          \State{$reserveManagementResources(n)$}
+        \EndIf
+      \EndFor
+    \EndFor
+    \For{$i \gets 0, maxIterations$}
+      \State{$n1 = randomNode(topology)$}
+      \State{$n2 = randomNode(topology)$}
+      \State{$updateTabuTable(n1, n2)$}
+      \If{$isMergePossible(n1, n2)$}
+        \ForAll{$chain \in chains$}
+          \If{$chain.manager == n1$}
+            \State{$chain.manager = n2$}
+            \State{$freeManagementResources(n1)$}
+            \State{$reserveManagementResources(n2)$}
+            \State{$updateMinCost()$}
+          \EndIf
+        \EndFor
+      \EndIf
+    \EndFor
+    \EndFunction
+  \end{algorithmic}
+\end{algorithm}
+
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=\textwidth]{images/bari.png}
+  \caption{\cite{Bari2015} algorithm transmissions to create multi-stage graph}
+\end{figure}
+
+Another way for placing the chains is to use \cite{Bari2015} algorithm but add new stage at the end for placing VNFM we will use as another algorithm in the following section to compare with \ref{alg:masman} algorithm.
+
+%% Complexity analysis

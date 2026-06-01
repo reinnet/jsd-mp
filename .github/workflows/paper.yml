@@ -16,16 +16,18 @@ permissions:
 
 jobs:
   typeset:
-    name: typeset (typst)
+    name: typeset (latex)
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4.3.1
 
-      - name: Install Typst
-        uses: typst-community/setup-typst@v5.1.0
-
       - name: Compile the paper
-        run: typst compile paper/main.typ paper/main.pdf
+        uses: xu-cheng/latex-action@v3
+        with:
+          working_directory: paper
+          root_file: main.tex
+          latexmk_use_xelatex: false
+          args: -pdf -bibtex -interaction=nonstopmode -halt-on-error
 
       - name: Upload PDF
         uses: actions/upload-artifact@v4

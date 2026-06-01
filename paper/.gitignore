@@ -1,3 +1,14 @@
-# Typst build output
+# LaTeX build artifacts
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+*.toc
+*.lof
+*.lot
+*.spl
 /main.pdf
-/main-typst.pdf

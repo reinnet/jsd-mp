@@ -98,10 +98,11 @@ the sensitivity study live under [`analysis/`](analysis/) and are regenerable wi
 
 ## Paper
 
-The manuscript lives under [`paper/`](paper/), written in
-[Typst](https://typst.app/). Build the PDF with `make -C paper` (or
-`typst compile paper/main.typ paper/main.pdf`); CI also typesets it on every
-change and uploads the PDF as an artifact.
+The manuscript lives under [`paper/`](paper/), written in LaTeX using the
+**MDPI _Future Internet_** class (vendored in `paper/Definitions/`). Build the
+PDF with `make -C paper` (or `latexmk -pdf -bibtex paper/main.tex`); CI also
+typesets it on every change and uploads the PDF as an artifact. See
+[`paper/README.md`](paper/README.md) for details.
 
 ## [Topologies](https://github.com/reinnet/topology)
 

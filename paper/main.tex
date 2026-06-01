@@ -1,0 +1,114 @@
+%=================================================================
+% Joint Service Chain Deployment and Manager Placement in NFV
+% MDPI (Future Internet) LaTeX manuscript.
+% Converted back from the Typst draft; uses the official MDPI class in
+% Definitions/ (download the latest from https://www.mdpi.com/authors/latex
+% before final submission).
+%=================================================================
+\documentclass[futureinternet,article,submit,pdftex,moreauthors]{Definitions/mdpi}
+
+% Extra packages (most are already loaded by the MDPI class: amsmath, float,
+% booktabs, graphicx, multirow, xcolor, hyperref).
+\usepackage{amssymb}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+
+\firstpage{1}
+\makeatletter
+\setcounter{page}{\@firstpage}
+\makeatother
+\pubvolume{1}
+\issuenum{1}
+\articlenumber{0}
+\pubyear{2026}
+\copyrightyear{2026}
+\history{Received: ; Accepted: ; Published: }
+
+%=================================================================
+\Title{Joint Service Chain Deployment and Manager Placement in NFV}
+
+\Author{Parham Alvani $^{1}$ and Bahador Bakhshi $^{1,}$*}
+
+\AuthorNames{Parham Alvani and Bahador Bakhshi}
+
+\address{%
+$^{1}$ \quad Amirkabir University of Technology, Tehran, Iran;
+parham.alvani@aut.ac.ir (P.A.); bbakhshi@aut.ac.ir (B.B.)}
+
+\corres{Correspondence: bbakhshi@aut.ac.ir}
+
+\abstract{Network operators deploying service function chains (SFCs) with Network
+Function Virtualization (NFV) must also provide each chain with a VNF Manager
+(VNFM) under capacity, latency-radius, and co-location constraints. Most prior
+work optimizes VNF placement first and assigns managers afterward. We show that
+this \emph{disjoint} approach is not merely suboptimal but frequently
+\emph{infeasible}: management-blind VNF layouts strand whole chains because no
+admissible manager exists for the chosen placement. We formulate the joint SFC
+deployment and VNFM placement problem (JSD-MP) as an Integer Linear Program,
+show it is NP-hard, and propose MASMAN, a polynomial-time heuristic that makes
+VNF placement management-aware (a Viterbi-style dynamic program) and then
+consolidates managers with Tabu search. Against an exact CPLEX solver the
+heuristic produces near-optimal results far faster. Finally, we characterize
+\emph{when} joint placement matters: its benefit is a feasibility effect that
+appears precisely when management constraints bind, and is negligible under
+slack management or when raw compute saturates the network.}
+
+\keyword{network function virtualization; service function chaining; VNF
+placement; VNF manager placement; joint optimization; integer linear
+programming; heuristic; feasibility}
+
+\begin{document}
+
+\section{Introduction}\label{sec:introduction}
+\input{introduction}
+
+\section{Related Work}\label{sec:related-works}
+\input{related-works}
+
+\section{System Model and Problem Statement}\label{sec:system-model}
+\input{system}
+
+\section{Problem Formulation}\label{sec:formulation}
+\input{formulation}
+
+\section{Proposed Solution}\label{sec:solution}
+\input{solution}
+
+\section{Evaluation and Numerical Results}\label{sec:results}
+\input{results}
+
+\section{Conclusions}\label{sec:conclusion}
+We considered, for the first time, the joint deployment of service function
+chains and the placement of their VNF Managers (JSD-MP). We formulated the
+problem as an ILP, showed its NP-hardness, and proposed MASMAN, a
+polynomial-time heuristic that is management-aware during VNF placement and
+consolidates managers with Tabu search. Our evaluation shows the heuristic is
+near-optimal, and that the value of joint placement is a feasibility effect that
+is large exactly when management constraints bind. Future work includes an
+online variant in which requests arrive over time, reliability-aware manager
+placement with backup managers, and tighter approximation guarantees for the
+manager-placement subproblem (which is a capacitated facility-location problem
+with a coverage radius).
+
+\vspace{6pt}
+
+\authorcontributions{Conceptualization, P.A. and B.B.; methodology, P.A. and
+B.B.; software, P.A.; validation, P.A. and B.B.; formal analysis, P.A.;
+investigation, P.A.; writing---original draft preparation, P.A.;
+writing---review and editing, B.B.; supervision, B.B. All authors have read and
+agreed to the published version of the manuscript.}
+
+\funding{This research received no external funding.}
+
+\conflictsofinterest{The authors declare no conflict of interest.}
+
+\appendixtitles{yes}
+\appendix
+\section{Revenue Tables}\label{sec:revenue-appendix}
+\input{appendix}
+
+\reftitle{References}
+\externalbibliography{yes}
+\bibliography{references}
+
+\end{document}
