@@ -8,16 +8,17 @@ in a data center. Results are placed in the results folder along with their conf
 
 ## Up and Running
 
-For running simulation, you need a working installation of CPLEX and Java/Maven on your system
-then you can run the simulation with the following command:
+For running the simulation, you need a working installation of CPLEX (tested with
+CPLEX Studio 12.8) and Java on your system; a Gradle wrapper (`./gradlew`) is
+included, so no separate Gradle install is required. Then run:
 
 ```sh
 cd simulation
 CPLEX_LIB="$HOME/ibm/ILOG/CPLEX_Studio128/cplex/bin/x86-64_linux"
 test -f cplex.jar || echo "Please provide 'cplex.jar' in the current directory"
-gradle build
-sed -i "s#cplexLibrary =.*#cplexLibrary = ${CPLEX_LIB}#g" build.gradle
-gradle run --args config
+# point the build at your CPLEX native library (keep the quotes: it is a Groovy string)
+sed -i "s#cplexLibrary = .*#cplexLibrary = '${CPLEX_LIB}'#" build.gradle
+./gradlew run --args config
 ```
 
 ## Exact Results
