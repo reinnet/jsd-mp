@@ -96,6 +96,13 @@ Running a solver writes a `report.csv` that the Jupyter notebooks under
 the sensitivity study live under [`analysis/`](analysis/) and are regenerable with
 `uv run --group notebook python analysis/<script>.py`.
 
+## Paper
+
+The manuscript lives under [`paper/`](paper/), written in
+[Typst](https://typst.app/). Build the PDF with `make -C paper` (or
+`typst compile paper/main.typ paper/main.pdf`); CI also typesets it on every
+change and uploads the PDF as an artifact.
+
 ## [Topologies](https://github.com/reinnet/topology)
 
 There are two topology that are considering here, fattree and usnet. There is another project that generate networks with these two topology.
