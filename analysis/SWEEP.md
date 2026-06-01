@@ -16,7 +16,7 @@ Same network, same chains; the only change is whether the per-node `notManagerNo
 |      7 |     87.5 |         75.0 |       12.5 |          87.5 |         0.0 |
 |      8 |     78.1 |         73.4 |        4.7 |          78.1 |         0.0 |
 |      9 |     70.8 |         69.4 |        1.4 |          70.8 |         0.0 |
-|     10 |     63.8 |         62.5 |        1.2 |          63.8 |         0.0 |
+|     10 |     63.8 |         63.8 |        0.0 |          63.8 |         0.0 |
 |     12 |     54.2 |         54.2 |        0.0 |          54.2 |         0.0 |
 
 ## 2. Manager capacity — a non-binding lever (negative control)
@@ -26,12 +26,12 @@ Varying manager capacity over two orders of magnitude barely moves the gap: on t
 |   capacity |   joint% |   disj% |   gap(pp) |
 |-----------:|---------:|--------:|----------:|
 |          1 |     93.8 |    77.1 |      16.7 |
-|          2 |     93.8 |    81.2 |      12.5 |
+|          2 |     93.8 |    77.1 |      16.7 |
 |          3 |     93.8 |    77.1 |      16.7 |
-|          5 |     93.8 |    81.2 |      12.5 |
+|          5 |     93.8 |    77.1 |      16.7 |
 |         10 |     93.8 |    77.1 |      16.7 |
 |         20 |     93.8 |    77.1 |      16.7 |
-|        100 |     93.8 |    79.2 |      14.6 |
+|        100 |     93.8 |    77.1 |      16.7 |
 
 ## Takeaway
 The joint formulation pays off **only when a management constraint actually binds** (here `notManagerNodes`; on the full topologies, manager radius — see `SUMMARY.md`). When management is slack, or when the network is so loaded that raw VNF resources are the binding constraint, joint and disjoint converge. This is the controllable, mechanistic version of the conditional result found in the corrected joint-vs-disjoint analysis.
