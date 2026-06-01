@@ -1,5 +1,3 @@
-#import "lib.typ": todo
-
 == Joint vs. Disjoint <sec:joint-vs-disjoint>
 
 We compare the _joint_ solution (placing VNFs and their VNFM together) against
@@ -100,9 +98,9 @@ management parameter, which is the central message of this comparison.
   caption: [Revenue of joint vs. disjoint on USNet (4-hop management radius)],
 ) <fig:usnet-tight>
 
-#todo[A complementary re-analysis reports chain _acceptance rate_ (feasibility)
-rather than mean revenue, with paired significance tests, and shows the disjoint
-outcomes are bimodal (a run either nearly succeeds or collapses). A controlled
-experiment that toggles the co-location constraint on and off confirms the joint
-advantage is caused by management binding and decays as load saturates raw
-compute. See the project's `analysis/` directory.]
+A complementary re-analysis reports chain _acceptance rate_ (feasibility) rather
+than mean revenue, with paired significance tests, and shows that the disjoint
+outcomes are bimodal — a run either nearly succeeds or collapses. A controlled
+experiment that toggles the co-location constraint on and off confirms that the
+joint advantage is caused by management binding and decays as load saturates raw
+compute.
