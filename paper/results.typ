@@ -41,6 +41,8 @@ infeasible for the layout the VNF stage happened to choose. The per-point
 coefficient of variation (`disj_CV%`, up to ~80%) and the worst single run
 (`disj_min%`, as low as 0%) expose a spread that the revenue averages hide.
 
+#[
+#show figure: set block(breakable: true)
 #figure(
   caption: [Chain acceptance rate, joint vs. disjoint. `disj_min%` is the
   worst single disjoint run; `disj_CV%` is the coefficient of variation across
@@ -48,7 +50,7 @@ coefficient of variation (`disj_CV%`, up to ~80%) and the worst single run
   $p < 0.05$ (paired Wilcoxon).],
   table(
     columns: 5, align: (center, right, right, right, right), inset: 5pt,
-    table.header([chains], [joint%], [disj%], [disj_min%], [disj_CV%]),
+    table.header[chains][joint%][disj%][disj_min%][disj_CV%],
     table.cell(colspan: 5, align: left)[*FatTree ($k = 6$, default VNFM) —
       management binds*],
     [10], [100.0], [46.0], [0.0], [69.6],
@@ -96,6 +98,7 @@ coefficient of variation (`disj_CV%`, up to ~80%) and the worst single run
     [150], [99.9], [100.0], [100.0], [0.0],
   ),
 ) <tbl:acceptance>
+]
 
 #figure(
   grid(
