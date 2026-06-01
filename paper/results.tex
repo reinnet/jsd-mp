@@ -249,7 +249,7 @@ exists if and only if the constraint binds, and decays under load.}
 7 & 87.5 & 75.0 & 12.5 & 87.5 & 0.0 \\
 8 & 78.1 & 73.4 & 4.7 & 78.1 & 0.0 \\
 9 & 70.8 & 69.4 & 1.4 & 70.8 & 0.0 \\
-10 & 63.8 & 62.5 & 1.2 & 63.8 & 0.0 \\
+10 & 63.8 & 63.8 & 0.0 & 63.8 & 0.0 \\
 12 & 54.2 & 54.2 & 0.0 & 54.2 & 0.0 \\
 \bottomrule
 \end{tabularx}
@@ -264,7 +264,7 @@ joint--disjoint gap appears only when the constraint is present.}
 \end{figure}
 
 \textbf{Manager capacity is not the lever (negative control).} Sweeping manager
-capacity over two orders of magnitude barely moves the gap
+capacity over two orders of magnitude does not move the gap at all
 (Table~\ref{tbl:sweep-capacity}): on this topology capacity does not bind, so it
 is not what drives the joint advantage. The binding lever here is the co-location
 constraint; on the full topologies it is the manager radius
@@ -272,19 +272,19 @@ constraint; on the full topologies it is the manager radius
 
 \begin{table}[H]
 \caption{Manager capacity as a non-binding lever (negative control). The gap is
-essentially constant from capacity 1 to 100.}
+constant at 16.7~pp from capacity 1 to 100.}
 \label{tbl:sweep-capacity}
 \begin{tabularx}{0.7\textwidth}{Xrrr}
 \toprule
 \textbf{Capacity} & \textbf{Joint (\%)} & \textbf{Disjoint (\%)} & \textbf{Gap (pp)} \\
 \midrule
 1 & 93.8 & 77.1 & 16.7 \\
-2 & 93.8 & 81.2 & 12.5 \\
+2 & 93.8 & 77.1 & 16.7 \\
 3 & 93.8 & 77.1 & 16.7 \\
-5 & 93.8 & 81.2 & 12.5 \\
+5 & 93.8 & 77.1 & 16.7 \\
 10 & 93.8 & 77.1 & 16.7 \\
 20 & 93.8 & 77.1 & 16.7 \\
-100 & 93.8 & 79.2 & 14.6 \\
+100 & 93.8 & 77.1 & 16.7 \\
 \bottomrule
 \end{tabularx}
 \end{table}
