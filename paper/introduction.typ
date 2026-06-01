@@ -88,11 +88,12 @@ Similar to other virtual functions, VNFMs need computing and network resources
 and can manage a limited number of chains. Our work considers the Service Chain
 Placement Problem and the Manager Placement Problem _jointly_ and places chains
 and their corresponding VNFMs at the same time. We believe this work has not been
-done in the literature before. By considering the joint problem, one may avoid
-accepting a chain that has no available management resource, or admit many chains
-with little management requirement. These considerations create a better solution
-with more profit to the data center, and the results in
-@sec:joint-vs-disjoint confirm it.
+done in the literature before. By considering the joint problem, the placement avoids
+committing VNFs to a layout that no admissible manager can serve, so chains a
+management-blind pipeline would strand stay feasible. The benefit is therefore a
+_feasibility_ effect that is _conditional_ on the management constraints binding,
+and the results in @sec:joint-vs-disjoint, @sec:acceptance, and @sec:sweep
+confirm it.
 
 The paper is structured as follows. In @sec:related-works we review the
 literature; we then describe the problem in @sec:system-model and formulate it in

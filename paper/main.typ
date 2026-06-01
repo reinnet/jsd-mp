@@ -81,4 +81,11 @@ placement with backup managers, and tighter approximation guarantees for the
 manager-placement subproblem (which is a capacitated facility-location problem
 with a coverage radius).
 
+// ---- Appendix ----
+#counter(heading).update(0)
+#set heading(numbering: "A.1")
+
+= Revenue Tables <sec:revenue-appendix>
+#include "appendix.typ"
+
 #bibliography("references.bib", style: "ieee")
