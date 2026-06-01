@@ -1,8 +1,3 @@
-#import "lib.typ": todo
-#todo[a) general context · b) problem context and importance · c) brief
-literature review and research gap · d) the problem · e) contributions ·
-f) paper structure]
-
 Telecommunications industry has traditionally been responsible for setting up
 and deploying services. Moreover, network operators deploy proprietary and
 custom-built hardware and equipment for each function in their infrastructure.
