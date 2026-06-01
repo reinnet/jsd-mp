@@ -2,25 +2,28 @@
 
 ## Introduction
 
-The latex files of JSD-MP article in Elsevier template. Article is written by [@1995parham](https://github.com/1995parham) and [@bahador-bakhshi](https://github.com/Bahador-Bakhshi).
-Source code is available on [overleaf](https://overleaf.com/).
+The [Typst](https://typst.app/) sources of the JSD-MP article, migrated from the
+original Elsevier LaTeX template. Written by
+[@1995parham](https://github.com/1995parham) and
+[@bahador-bakhshi](https://github.com/Bahador-Bakhshi).
+
+The manuscript is split into `main.typ` (preamble, title, abstract, structure)
+and one file per section (`introduction.typ`, `related-works.typ`, `system.typ`,
+`formulation.typ`, `solution.typ`, `results.typ`). Shared helpers live in
+`lib.typ`; references are in `references.bib`.
 
 ## Up and Running
 
-1. Install the required packages.
+Install [Typst](https://github.com/typst/typst) (e.g. `brew install typst`),
+then:
 
 ```sh
-sudo tlmgr install elsarticle
-sudo tlmgr install multirow
-sudo tlmgr install algorithmicx algorithms
-sudo tlmgr install soul
+make            # compiles main.typ -> main.pdf
+make watch      # live-recompile on changes
 ```
 
-2. Compile and Run :roket:
+or directly:
 
 ```sh
-## with Makefile
-make
-## with latexmk
-latexmk main.tex
+typst compile main.typ main.pdf
 ```
