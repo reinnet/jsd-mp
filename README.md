@@ -25,7 +25,8 @@ Methods implemented here:
 - `rari` — MASMAN, a randomized variant
 - `abu` — Abu-Lebdeh's tabu-search baseline, unmodified
 - `oabu` — Abu-Lebdeh adapted to our constraints for a fair comparison
-- Optimal with CPLEX, implemented at [jsd-mp.simulation](https://github.com/reinnet/jsd-mp.simulation)
+- Optimal with CPLEX, implemented under [`simulation/`](simulation/) (a Java/Gradle
+  project, formerly the standalone [jsd-mp.simulation](https://github.com/reinnet/jsd-mp.simulation) repo)
 
 In the jsd-mp problem some functions can be managened and there are the functions that need VNFM,
 so the following code snippet find these functions in a chain.
