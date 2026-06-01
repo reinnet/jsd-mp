@@ -10,8 +10,7 @@
 # This script run exact solution for given number of chains.
 # Please note that this script required the following hierarchy:
 # |- chainer/
-# |- jsd-mp/
-# |- jsd-mp.simulation/
+# |- jsd-mp/            (this repo; the CPLEX solver lives in jsd-mp/simulation/)
 # chainer generates random chain
 set -e
 
@@ -53,13 +52,13 @@ run() {
 
                 mv $jsd_mp/../chainer/chains.yaml chains-$i.yaml
                 # execute exact simulation
-                cp chains-$i.yaml $jsd_mp/../simulation/config/chains.yaml
-                cd $jsd_mp/../simulation
+                cp chains-$i.yaml $jsd_mp/simulation/config/chains.yaml
+                cd $jsd_mp/simulation
                 gradle run --args config
                 cd -
 
-                mv $jsd_mp/../simulation/joint-result.txt joint-result-$i.txt
-                mv $jsd_mp/../simulation/disjoint-result.txt disjoint-result-$i.txt
+                mv $jsd_mp/simulation/joint-result.txt joint-result-$i.txt
+                mv $jsd_mp/simulation/disjoint-result.txt disjoint-result-$i.txt
         done
 }
 
@@ -92,8 +91,7 @@ echo
 echo "> jsd-mp root directory located at $jsd_mp"
 echo "> assume the following structure:"
 echo "  |- chainer/"
-echo "  |- jsd-mp/"
-echo "  |- jsd-mp.simulation/"
+echo "  |- jsd-mp/            (CPLEX solver in jsd-mp/simulation/)"
 echo
 
 case $1 in

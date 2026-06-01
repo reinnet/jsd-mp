@@ -1,9 +1,10 @@
 """
 Sensitivity sweep: when does JOINT VNF+VNFM placement beat DISJOINT?
 
-The thesis' joint-vs-disjoint comparison ran in the separate CPLEX
-`jsd-mp.simulation` repo, so it cannot be reproduced here directly. Instead we
-reproduce the *same distinction* inside this repo's heuristic:
+The thesis' joint-vs-disjoint comparison ran in the CPLEX solver under
+`simulation/` (which needs a CPLEX licence), so it is not reproduced here
+directly. Instead we reproduce the *same distinction* inside this repo's
+heuristic:
 
   - JOINT    = the existing `Bari` solver. Its `get_cost` is management-aware
                (it penalises nodes that cannot host a VNFM and accounts for
