@@ -48,8 +48,10 @@ admissible manager exists for the chosen placement. We formulate the joint SFC
 deployment and VNFM placement problem (JSD-MP) as an Integer Linear Program,
 show it is NP-hard, and propose MASMAN, a polynomial-time heuristic that makes
 VNF placement management-aware (a Viterbi-style dynamic program) and then
-consolidates managers with Tabu search. Against an exact CPLEX solver the
-heuristic produces near-optimal results far faster. Finally, we characterize
+consolidates managers with Tabu search. Against an exact CPLEX solver---which
+already exhausts memory at around a dozen chains---the heuristic stays within
+roughly 18\% of the optimal revenue while scaling to hundreds of chains. Finally,
+we characterize
 \emph{when} joint placement matters: its benefit is a feasibility effect that
 appears precisely when management constraints bind, and is negligible under
 slack management or when raw compute saturates the network.}
@@ -83,9 +85,10 @@ We considered, for the first time, the joint deployment of service function
 chains and the placement of their VNF Managers (JSD-MP). We formulated the
 problem as an ILP, showed its NP-hardness, and proposed MASMAN, a
 polynomial-time heuristic that is management-aware during VNF placement and
-consolidates managers with Tabu search. Our evaluation shows the heuristic is
-near-optimal, and that the value of joint placement is a feasibility effect that
-is large exactly when management constraints bind. Future work includes an
+consolidates managers with Tabu search. Our evaluation shows the heuristic stays
+within roughly 18\% of the optimal revenue while scaling well beyond the reach of
+the exact solver, and that the value of joint placement is a feasibility effect
+that is large exactly when management constraints bind. Future work includes an
 online variant in which requests arrive over time, reliability-aware manager
 placement with backup managers, and tighter approximation guarantees for the
 manager-placement subproblem (which is a capacitated facility-location problem
