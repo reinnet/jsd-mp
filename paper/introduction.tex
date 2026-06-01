@@ -1,0 +1,79 @@
+Telecommunications industry has traditionally been responsible for setting up and deploying services. Moreover, network operators deploy proprietary and custom-built hardware and equipment for each function in their infrastructure. Stability and high-quality results can earn the trust of service providers in regards to proprietary hardware.
+
+However, we are facing increased users' demand for a variety of short-lived and high traffic services.
+Therefore, service providers should constantly upgrade themselves in terms of purchase, store, and deployment of new physical equipment.
+These implementations in turn increases the overall expenditure of service providers.
+In addition, with the increase in total number of equipment, the amount of available space for deploying new equipment shrinks.
+Finally, increased expenditure for retraining staff to gain the knowledge of working with new equipment should also be considered.
+The worst-case scenario is that, with the acceleration of innovation in services and technology, the hardware life cycle becomes shorter, which prevents innovation in network services.
+
+In the traditional method of deploying network service, user traffic must pass through a number of network functions in a certain order to create a traffic processing route.
+At present, these functions are connected to each other in the form of hardware, and traffic is forwarded to them using routing tables.
+The main challenge of this method is that it is difficult to establish and change the order of functions.
+For example, over time, as network conditions change, we need to change the connectivity and location of functions to better serve users,
+which requires moving functions and changing routing tables.
+In the traditional way, it was a difficult and costly task that can lead to many errors.
+On the other hand, the rapid change of services desired by users requires a rapid change in the order of functions.
+In the current method, these changes are difficult to make.
+Therefore, network operators have found the need for programmable networks and dynamic service chaining.
+
+In recent years, software-based networks and network virtualization have received much attention.
+Service providers have begun to move towards virtualized and software networked functions.
+Therefore, they will be able to provide innovative services to users. This process creates an option for service providers in regards to proprietary hardware and reduces the cost of setting up and maintaining the service.
+
+As mentioned, with development of softwarized functions, service providers' reliance on proprietary hardware is reduced, and services can be scaled up / down quickly. Finally, virtualization of network functions and chaining of service functions are solutions that have been proposed for this purpose.
+
+As mentioned, the main idea of virtualization of network functions is to separate the physical equipment of the network from its function.
+This means that a network function such as a firewall can be deployed on HVS servers as simple software.
+Therefore, a service can be deployed using virtual network functions, which can themselves be implemented as software and run on one or more physical standard hosts.
+
+Virtual network functions can be relocated or prototyped in different locations without the need to purchase and install new equipment.
+
+It is worth mentioning that SDN discusses forwarding tables and their centralized updates.
+This discussion can take place alongside NFV as well, as the NFV discussion is at the service layer and does not talk about how to update forwarding tables.
+Therefore, what is stated in this study is related to NFV networks, but it can also be used in networks that have SDN infrastructure.
+In the future, it will be possible to have networks whose services are based on SFC and NFV, and forwarding tables will be updated using SDN.
+
+The problem of deploying virtual network functions is one of the major challenges in allocating resources to service function chaining and had great attention in past few years.
+The problem of embedding virtual network functions is divided into two sub-problems of mapping of virtual nodes and virtual links, which must be considered simultaneously.
+
+There are many mapping limitations that need to be considered.
+The physical resources selected from the infrastructure network must meet the functional requirements of the virtual network.
+For example, the processing power of virtual functions must be less than or equal to the processing power of the physical node on which the mapping is performed.
+The need for a specific physical node in a function must also be considered.
+
+In addition, there is a set of restrictions that apply to service function chaining.
+One is the existence of VNFM for the management of the life cycle of functions in these networks,
+which due to the importance of the delay rate of the connection between the virtual network function and VNFM must be located in a suitable place.
+Therefore, a new sub-problem is added to the main issue.
+
+The issue of embedding service function chaining is of great importance.
+A great number of researches has been conducted on the issue.
+In addition, the issue of management and supervision of these chains is also raised.
+The present study discusses the issue for the first time, which increases the importance of the results.
+Nowadays, due to the importance of monitoring, huge amount of expenses is spent on monitoring data centers.
+In many cases, second thought monitoring is to bring about its own drawbacks and disadvantages in the future.
+This study intends to consider the need for supervision at the time of their mapping to prevent future losses.
+
+The main idea of this research is to provide a comprehensive and complete solution that covers all aspects of the problem of embedding service function chaining.
+In fact, in addition to considering the main dimensions of the embedding problem,
+the acceptance control mechanism, the applicability of the solution to different conditions
+and the existence of limitations of the node and edge, other dimensions have been considered.
+Due to the existence of VNFM in the form of a special node and the importance of  virtual network and VNFMs' connection delay, a placement and mapping step has been added to the main problem.
+The above are some restrictions on the connections between virtual network functions and VNFMs, and it is assumed that managing a certain number of virtual functions requires a license at a certain cost.
+
+One of the main innovations of this research is the definition of a problem along with paying attention to the management needs, which allows the system administrator to implement and adjust all the required policies.
+The present study examines the issue of placement of service function chaining along with the limitations of management resources and formulates it in the form of an acceptance control problem in a linear manner.
+
+Another innovations of the present research is the presentation of a Heuristic method based on \cite{Bari2015} and \cite{AbuLebdeh2017} methods,
+which further enhances its implementation time and final output.
+
+In NFV ecosystem, each chain must be monitored and managed by a VNFM. Similar to other virtual functions, VNFMs need computing and network resources and  can manage a limited number of chains.
+Our work considers Service Chain Placement Problem and Manager Placement Problem jointly and wants to place chains and their corresponding VNFM at the same time.
+We believe this work hasn't been done in the literature before.
+By considering the joint problem, you may not accept a chain that you don't have any management resource for it,
+or you can get many chains that have little management resource requirement.
+These considerations create a better solution with more profit to datacenter from provisioning the set of chains,
+and the results in \ref{sec:joint-vs-disjoint} approves it.
+
+The paper structure as follow in \ref{sec:related-works} we reviewed the literature then describe the problem in \ref{sec:system-model} and formulate it in \ref{sec:formulation} as ILP. In \ref{sec:solution} we proposed a polynomial time solution and evaluated its results in \ref{sec:results}. We concluded the paper in \ref{sec:conclusion}.

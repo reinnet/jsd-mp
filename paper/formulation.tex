@@ -1,0 +1,143 @@
+% \subsection{Mathematical Formulation}
+% فعلا که فقط یک ساب سکشن وجود دارد بنابراین نیاز به  شماره زدن نداریم
+In this section, the JSD-MP problem is formulated as a MILP model. To this, at first, the variables of the model are introduced. Then the constraints are discussed; and finally the objective is presented. 
+
+The variables of the model are listed in Table \ref{tbl:variables}.
+\(x_r\) is a binary variable that corresponds to acceptance of demand \(r \in R\).
+Integer variable \(y_{it}\) is the number of VNFs of type \(t \in T\) on server \(i\).
+Binary variable \(z^t_{vi}\) indicates whether an instance of VNF type \(t\) is running on server \(i\) or not.
+The integer variable \(\bar{y}_i\) is the number of VNFMs placed on server \(i\).
+The VNFM assignment of chain is represented by binary variable \(\bar{z}_{ri}\).
+Finally, the \(\pi_{ij}^(u,v)\) and \(\pi^v_ij\) are binary variables that show the virtual link \((u,v\) is mapped on link \((i,j)\) and link \((i,j)\) is used for managing the VNF \(v\) respectivly.
+
+\begin{table}[H]
+    \caption{Variables}
+    \label{tbl:variables}
+    \begin{center}\begin{tabular}{|c|p{0.75\textwidth}|}
+    \hline
+    \(x_r\) & binary variable assuming the value 1 if the \(h\)th SFC request is accepted; otherwise its value is zero \\
+    \hline
+    \(y_{it}\) & the number of VNF instances of type \(t \in T\) that are set up in a server \(i \in V^p\) \\
+    \hline
+    \(z^t_{vi}\) & \hly{binary variable}
+    % به نظر اندیس وی  در این متغیر اضافه است این متغیر نشان میدهد که یک نمونه از نوع کا روی سرور ای است یا نه  بنابراین اندیس وی  به نظرم اطلاعاتی در خود ندارد.
+    assuming the value 1 if the VNF node \(v \in \cup_{r=1}^R V^s_r\) is served by the VNF instance of type \(t \in T\) in the server \(i \in V^p\) \\
+    \hline
+    \(\bar{y}_i\) & the number of VNFMs (each VNFM has its capacity and license fee) that are set up in server \(i \in V^p \) \\
+    \hline
+    \(\bar{z}_{ri}\) & binary variable assuming the value 1 if \(r\)th SFC is assigned to VNFM on server \(i \in V^p\) \\
+    \hline
+    \(\pi^{(u,v)}_{ij}\) & binary variable assuming the value 1 if the virtual link \((u,v)\) is routed on the physical network link \((i,j)\) \\
+    \hline
+    \(\bar{\pi}^{v}_{ij}\) & binary variable assuming the value 1 if the management of VNF node \(v\) is routed on the physical network link \((i,j)\) \\
+    \hline
+    \end{tabular}\end{center}
+\end{table}
+
+Each node has limited installed memory. Each VNF instance based on its type, and each VNFM use a specific amount of it.
+Constraint \ref{eq:node-memory-constraint} limits the used memory for each node by its installed memory.
+
+\begin{align}\label{eq:node-memory-constraint}
+    \sum_{t \in T} y_{it} m^s_t + \bar{y}_i m^m \le m^p_i
+    \quad
+    \forall i \in V^p
+\end{align}
+
+Each node has limited amount of processing power in terms of CPU cores.
+Each VNF instance based on its type, and each VNFM use a specific amount of it.
+Constraint \ref{eq:node-cpu-constraint} limits the used processing power for each node by its installed CPUs.
+
+\begin{align}\label{eq:node-cpu-constraint}
+    \sum_{t \in T} y_{it} c^s_t + \bar{y}_i c^m \le c^p_i
+    \quad
+    \forall i \in V^p
+\end{align}
+
+If a chain's node is served on a physical node, there must be a set up VNF instance on it.
+Constraint \ref{eq:service-place-constaint} controls this relationship.
+
+\begin{align}\label{eq:service-place-constaint}
+    \sum_{v \in \cup_{r=1}^R V^s_r} z_{vi}^t \le y_{it}
+    \quad
+    \forall i \in V^p, \forall t \in T
+\end{align}
+
+Constraints \ref{eq:service-constraint} and \ref{eq:manager-constraint} only accept a chain that all of its nodes are placed on physical servers and have an assigned VNFM.
+
+\begin{align}\label{eq:service-constraint}
+    x_r = \sum_{t \in T} \sum_{i \in V^p} z_{vi}^{t}
+    \quad
+    \forall v \in V^s_r, \forall r \in R
+\end{align}
+
+\begin{align}\label{eq:manager-constraint}
+    x_r = \sum_{i \in V^p} \bar{z}_{ri}
+    \quad
+    \forall r \in R
+\end{align}
+
+Constraint \ref{eq:manager-capacity-constraint} limits managers capacity.
+
+\begin{align}\label{eq:manager-capacity-constraint}
+    \sum_{r \in R} \bar{z}_{ri} . |V^s_r| \le \kappa . \bar{y}_{i}
+    \quad
+    \forall i \in V^p
+\end{align}
+
+Constraint \ref{eq:type-constraint} assures that each chain's node must be serviced with a VNF from its type.
+
+\begin{align}\label{eq:type-constraint}
+    z_{vi}^{t} \le \tau(v, t)
+    \quad
+    \forall i \in V^p,
+    \forall t \in T,
+    \forall v \in \cup_{r \in R} V^s_r
+\end{align}
+
+Each physical server have an array of servers that cannot manage it.
+Constraint \ref{eq:management-relationship-constranit} represents it mathematically.
+
+\begin{align}\label{eq:management-relationship-constranit}
+    & 1 - z_{vi}^t + \bar{z}_{rj} = 0 \nonumber \\
+    & \forall i \in V^p,
+    \forall j \in V^p \eta_{(i, j)} = 1 \nonumber \\
+    & \forall r \in R,
+    \forall v \in V^s_r,
+    \forall t \in T
+\end{align}
+
+Constrains \ref{eq:flow-conservation} and \ref{eq:management-flow-conservation} shows flow conservation in service and management links respectively.
+
+\begin{align}\label{eq:flow-conservation}
+    \sum_{(i,j) \in E^p} \pi_{ij}^{(u,v)} - \sum_{(j,i) \in E^p} \pi_{ji}^{(u,v)} = \sum_{t \in T} z_{ui}^{t} - \sum_{t \in T} z_{vi}^{t} \nonumber \\
+    \forall i \in V^p, (u,v) \in E^s_r, r \in R
+\end{align}
+
+\begin{align}\label{eq:management-flow-conservation}
+    \sum_{(i,j) \in E^p} \bar{\pi}_{ij}^{v} - \sum_{(j,i) \in E^p} \bar{\pi}_{ji}^{v} = \sum_{t \in T} z_{vi}^{t} - \bar{z}_{ri} \nonumber \\
+    \forall i \in V^p, v \in V^s_r, r \in R
+\end{align}
+
+Constraint \ref{eq:link-bandwidth-constraint} limits the consumed bandwidth in each link by its capacity.
+
+\begin{align}\label{eq:link-bandwidth-constraint}
+    \sum_{v \in \cup_{r \in R} V^s_r} \bar{\pi}_{ij}^{v} . b^m + \sum_{r \in R}\sum_{(u, v) \in E^s_r} \pi_{ij}^{(u,v)} . b^s_{(u, v), r} \le b^p_{(i,j)} \nonumber \\
+    \forall (i, j) \in E^p
+\end{align}
+
+Constraint \ref{eq:radius-constraint} controls the management radius.
+
+\begin{align}\label{eq:radius-constraint}
+    \sum_{(i, j) \in E^p} \bar{\pi}_{ij}^{v} \le \rho
+    \quad
+    \forall v \in \cup_{r \in R} V^s_r
+\end{align}
+
+The objective is to maximize profit from placing chains:
+
+\begin{align}
+    max \sum_{r \in R} c_r x_r - \sum_{i \in V^p} \phi . \bar{y}_i
+\end{align}
+
+\hl{I don't know it should be here or it is correct or not}
+The problem formulates as ILP and it can be reduced to bin packing so it is NP-Hard.
