@@ -51,12 +51,11 @@ In these results there is no constraint on license fee of VNFMs.
 
 ## Heuristic Results
 
-Each instance has a price between 20 to 30.
-We have 100 chains, and each chain has a length between 5 to 7. I have run each test with 3 different versions of the algorithm and report the proportion of the final revenue to optimal revenue.
+With 100 chains, each of length 5 to 7, three versions of the heuristic were run and their final revenue is reported as a proportion of the optimal revenue, for two per-instance revenue ranges. These results are also reported in the paper under [`../paper/`](../paper/).
 
-| revenue per instance | Bari | Parham | Parham + Better VNFM Placement |
-|----------------------|------|--------|--------------------------------|
+| revenue per instance | Bari | MASMAN (VNF phase) | MASMAN (full) |
+|----------------------|------|--------------------|---------------|
 | 10 - 20              | 60   | 65     | 68                             |
 | 15 - 25              | 61   | 81     | 82                             |
 
-As the numbers show, the placement algorithm do better when the per instances revenue increase.
+As the numbers show, the heuristic does better as the per-instance revenue increases.
