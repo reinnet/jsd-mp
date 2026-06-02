@@ -1,35 +1,35 @@
 In this section, we review the works that have been done on service chain deployment and resource assignment in NFV, and mainly focus on the works that consider management requirements of chains.
 
 \subsection{Resource Allocation in NFV}
-The service chain deployment problem specially for virtual mobile core network functions has recently received substantial attention in the literature \cite{GilHerrera2016}\cite{Laghrissi2019}\cite{Bhamare2016}.
+The service chain deployment problem specially for virtual mobile core network functions has recently received substantial attention in the literature \cite{GilHerrera2016,Laghrissi2019,Bhamare2016}.
 This problem is composed of two main steps: allocating computing and memory resources for virtual machines to run the chains' virtual network functions and assigning network resources to the chains' virtual links \cite{Laghrissi2019}. 
 Various versions of this problem with different objective functions and considering wide range of constraints have been investigated in the literature \cite{Laghrissi2019}.
 Placement problem has many variations and we concentrate on VNF Placement with VNF Chain Placement. There are many different objectives
-like minimizing the deployment cost, increasing profit, and minimizing the resource usage, among others \cite{Laghrissi2019}\cite{Bhamare2016}.
+like minimizing the deployment cost, increasing profit, and minimizing the resource usage, among others \cite{Laghrissi2019,Bhamare2016}.
 There are also many other variations of the Chain Placement Problem, such as online, dynamic, and scheduled placement \cite{1608.00095}.
 
 From the objective function standpoint, deployment of service chains can be optimized for different goals.
-One of the most common category is the approaches that utilize SFC deployment as a tool to maximize the business profit of the infrastructure provider \cite{Eramo2016}\cite{Eramo2017}\cite{TahmasbiNejad2018}\cite{Huang2019}.
-In these approaches, the objective is to maximize the revenue gained by accepting SFC requests while minimizing the cost of physical servers and links \cite{Bouet2015}\cite{Pham2020}\cite{Huang2019}, the cost of VNF images and licenses \cite{Bouet2015}.
-Energy-awareness is another objective that has been considered in SFC deployment problem \cite{Eramo2017}\cite{Eramo20172}\cite{Farkiani2019},
+One of the most common category is the approaches that utilize SFC deployment as a tool to maximize the business profit of the infrastructure provider \cite{Eramo2016,Eramo2017,TahmasbiNejad2018,Huang2019}.
+In these approaches, the objective is to maximize the revenue gained by accepting SFC requests while minimizing the cost of physical servers and links \cite{Bouet2015,Pham2020,Huang2019}, the cost of VNF images and licenses \cite{Bouet2015}.
+Energy-awareness is another objective that has been considered in SFC deployment problem \cite{Eramo2017,Eramo20172,Farkiani2019},
 wherein, it is aimed to minimize the power footprint of the infrastructure provider by turning off the unused servers and links via green networking techniques, e.g., traffic consolidation \cite{Zheng2020}.
-While QoS requirements are typically considered as the constraints of the SFC deployment problem, some work have optimized QoS metrics, e.g., delay and congestion, as the objective function of the problem  \cite{Huang2019}\cite{Yu2017}\cite{Chen2017}.
+While QoS requirements are typically considered as the constraints of the SFC deployment problem, some work have optimized QoS metrics, e.g., delay and congestion, as the objective function of the problem  \cite{Huang2019,Yu2017,Chen2017}.
 Finally, it is worth noting that there is a body of work that aims to optimize multiple objectives simultaneously, e.g., load balancing and reconfiguration overheads \cite{Qu2020}.
 
 The constraints of the SFC deployment problem are the second differentiating factor of the existing work on this problem.
-The required computing resources for virtual functions and bandwidth for virtual links of chains as well as the limited capacity of the infrastructure network resources are the most basic constraints in the SFC problem \cite{TahmasbiNejad2018}\cite{Eramo2016}\cite{Huang2019}.
+The required computing resources for virtual functions and bandwidth for virtual links of chains as well as the limited capacity of the infrastructure network resources are the most basic constraints in the SFC problem \cite{TahmasbiNejad2018,Eramo2016,Huang2019}.
 In addition to these basic constraints, some more realistic assumptions as well as QoS requirements of chains have also been considered.
 While VNFs are software images, their processing capacity is typically limited by software implementation issues and license beside the underlying hardware capacity;
 these limitations was considered in \cite{Luo2020}.
-Authors also took into account different QoS requirements of service chains, for example end-to-end delay \cite{Yu2017}\cite{Yaghoubpour2019} and reliability \cite{Yu2017}\cite{Torkamandi2019}\cite{Khezri2019}.
-Finally, it should be noted that management requirements of service chains are another important category of constraints, which have received a little attention yet \cite{AbuLebdeh2017}\cite{AbuLebdeh20172}\cite{Chiang2019}.
+Authors also took into account different QoS requirements of service chains, for example end-to-end delay \cite{Yu2017,Yaghoubpour2019} and reliability \cite{Yu2017,Torkamandi2019,Khezri2019}.
+Finally, it should be noted that management requirements of service chains are another important category of constraints, which have received a little attention yet \cite{AbuLebdeh2017,AbuLebdeh20172,Chiang2019}.
 We will elaborate it in the following subsection.
 
 Several solution methods have been utilized to approach the SFC deployment problem.
-Mainly, the problem is formulated as a Mixed Integer Linear Programming (MILP) model; and since it is NP-Hard \cite{Eramo2016}\cite{Ma2017}, various approaches have been proposed to tackle its complexity.
-Optimization theory techniques like decomposition methods and Lagrangian relaxation methods were proposed \cite{Liu2017}\cite{Farkiani2019}\cite{1709.04772}.
+Mainly, the problem is formulated as a Mixed Integer Linear Programming (MILP) model; and since it is NP-Hard \cite{Eramo2016,Ma2017}, various approaches have been proposed to tackle its complexity.
+Optimization theory techniques like decomposition methods and Lagrangian relaxation methods were proposed \cite{Liu2017,Farkiani2019,1709.04772}.
 Another category is the solutions based on meta-heuristic algorithms, e.g., Tabu search and genetic algorithms \cite{AbuLebdeh2017}.
-The problem specific heuristic algorithms are also very common \cite{Ghaznavi2017}\cite{Bari2015}\cite{Eramo2016}.
+The problem specific heuristic algorithms are also very common \cite{Ghaznavi2017,Bari2015,Eramo2016}.
 Available information about demands is another important issue in solution approaches.
 In off-line approaches, it is assumed that whole demands are known at the beginning, while in on-line solutions, demands arrive one-by-one \cite{Alhussein2020}.
 
