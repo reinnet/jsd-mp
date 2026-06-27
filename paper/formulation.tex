@@ -81,15 +81,21 @@ z^t_{vi} \le \tau(v, t)
 \quad \forall i \in V^p,\ \forall t \in T,\ \forall v \in \bigcup_{r \in R} V^s_r
 \end{equation}
 
-Each physical server has a set of servers that cannot manage it.
-Equation~\eqref{eq:mgmt-relationship} represents this.
+Each physical server can be managed only by VNFMs on an admissible subset of
+servers. Equation~\eqref{eq:mgmt-relationship} enforces this: if VNF \(v\) of
+chain \(r\) is placed on server \(i\) and the chain's VNFM is placed on server
+\(j\), then \(j\) must be allowed to manage \(i\) (\(\eta_{i,j} = 1\)).
 
 \begin{equation}\label{eq:mgmt-relationship}
 \begin{aligned}
-& 1 - z^t_{vi} + \bar{z}_{rj} = 0, \\
-& \forall i, j \in V^p \text{ with } \eta_{i,j} = 1,\ \forall r \in R,\ \forall v \in V^s_r,\ \forall t \in T
+& z^t_{vi} + \bar{z}_{rj} \le 1 + \eta_{i,j}, \\
+& \forall i, j \in V^p,\ \forall r \in R,\ \forall v \in V^s_r,\ \forall t \in T
 \end{aligned}
 \end{equation}
+
+When \(\eta_{i,j} = 1\) the right-hand side is \(2\) and the constraint is
+inactive; when \(\eta_{i,j} = 0\) it reduces to \(z^t_{vi} + \bar{z}_{rj} \le 1\),
+forbidding the co-occurrence of a VNF on \(i\) with its manager on \(j\).
 
 Equations~\eqref{eq:flow} and \eqref{eq:mgmt-flow} express flow conservation on
 service and management links, respectively.
@@ -131,4 +137,5 @@ The objective is to maximize the profit from placing chains:
 \max \sum_{r \in R} c_r\, x_r - \sum_{i \in V^p} \phi \cdot \bar{y}_i
 \end{equation}
 
-The problem is an ILP and can be reduced to bin packing, so it is NP-hard.
+The problem is an ILP and contains bin packing as a special case, so it is
+NP-hard.
